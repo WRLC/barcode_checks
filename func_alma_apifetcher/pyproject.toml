@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "func-alma-apifetcher"
+version = "0.1.0"
+description = "Azure Function App for fetching data from Alma APIs"
+authors = ["Tom Boone <boone@wrlc.org>"]
+readme = "README.md"
+packages = [
+    {include = "handlers"},
+    {include = "shared_code"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+azure-functions = "^1.23.0"
+sqlalchemy = "^2.0.40"
+
+# Reference the local shared_code directory
+shared-code = { path = "../shared_code", develop = true }
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

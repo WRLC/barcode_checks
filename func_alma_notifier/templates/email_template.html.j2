@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ email_caption }}</title> {/* Use caption/subject for page title */}
+    <style>
+      body { font-family: sans-serif; font-size: 0.95em; }
+      table { border-collapse: collapse; margin-top: 15px; font-size: 0.9em; }
+      th, td { border: 1px solid #cccccc; text-align: left; padding: 8px; }
+      th { background-color: #f2f2f2; }
+      caption { caption-side: top; font-weight: bold; font-size: 1.1em; margin-bottom: 5px; text-align: left;}
+    </style>
+</head>
+<body>
+    {# --- Email Body --- #}
+    <p>Please find the results for the report: '{{ analysis_name | default(email_caption) }}' below.</p>
+
+    {# --- Render HTML Table --- #}
+    {# The 'data_table_html' variable will contain the pre-generated HTML from pandas #}
+    {# Use the 'safe' filter to prevent Jinja2 from escaping the HTML tags within the table #}
+    {{ data_table_html | safe }}
+
+    {# --- Footer --- #}
+    <p>
+        <br/>
+        Job ID: {{ job_id }}<br/>
+        Institution: {{ iz_code | default('N/A') }}<br/>
+        {# Add report path if desired #}
+        {% if original_report_path %}Report Path: {{ original_report_path }}{% endif %}
+    </p>
+
+</body>
+</html>
