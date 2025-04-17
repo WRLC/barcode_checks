@@ -2,7 +2,7 @@
 
 from .database import get_db_session, session_scope
 from .models import (
-    Base, InstitutionZone, Analysis, AlmaApiPermission, User, APIKey, IZAnalysisConnector, UserAnalysisConnector,
+    Base, InstitutionZone, Analysis, AlmaApiPermission, User, APIKey, IZAnalysisConnector,
     ApiKeyPermission, TimerTriggerConfig, TriggerConfigIZAnalysisLink, TriggerConfigUserLink
 )
 
@@ -16,7 +16,6 @@ __all__ = [
     'User',
     'APIKey',
     'IZAnalysisConnector',
-    'UserAnalysisConnector',
     'ApiKeyPermission',
     'TimerTriggerConfig',
     'TriggerConfigIZAnalysisLink',

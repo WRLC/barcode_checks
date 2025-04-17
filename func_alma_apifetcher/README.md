@@ -32,20 +32,18 @@ Structure of message in `apifetchqueue` to trigger the Alma API fetcher:
 
 ```json5
 {
-    "job_id": "fetch_job_20250416_164800",
+    "job_id": "trig5-20250417114437",
     "trigger_config_id": 1,
-    "iz_analysis_connector_id": 15,
-    "report_path": "/shared/Your Institution/Reports/Your Target Report",
-    "iz_code": "YOUR_IZ_CODE",
+    "iz_analysis_connector_id": 1,
+    "report_path": "/shared/Shared storage institution/Reports/Barcode Check/SCF No Row Tray/No RowTray in SCF - part 1c",
+    "iz_code": "scf",
     "alma_api_permission": "Analytics",
     "resumption_token": null,
     "chunk_index": 0,
-    "limit": 100,
+    "limit": 25,
     "header_map": null,
-    "analysis_id": 7,
-    "analysis_name": "Your Analysis Name For Context",
-    "email_subject": "Results for Your Analysis Name For Context",
-    "target_emails": ["recipient1@example.com", "recipient2@example.com"]
+    "analysis_id": 1,
+    "analysis_name": "No RowTray in SCF - part 1"
 }
 ```
 

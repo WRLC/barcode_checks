@@ -104,41 +104,6 @@ class IZAnalysisConnector(Base):
                 f"path='{self.analysis_path}')>")
 
 
-class UserAnalysisConnector(Base):
-    """Association object for linking Users to Analyses.
-
-    This allows for a many-to-many relationship between users and analyses.
-
-    Attributes:
-        id (int): Primary key for the association.
-        user_id (int): Foreign key referencing the user.
-        analysis_id (int): Foreign key referencing the analysis.
-        created_at (datetime): Timestamp of when the association was created.
-
-    """
-    __tablename__ = 'user_analysis_connector'
-
-    # Columns
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey('users.id'), nullable=False)
-    analysis_id: Mapped[int] = mapped_column(ForeignKey('analyses.id'), nullable=False)
-    created_at: Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
-
-    # Constraints
-    __table_args__ = (  # user_id and analysis_id must be unique together
-        UniqueConstraint('user_id', 'analysis_id', name='uq_user_analysis'),
-    )
-
-    # Relationships
-    user: Mapped["User"] = relationship(back_populates="analysis_links")
-    analysis: Mapped["Analysis"] = relationship(back_populates="user_links")
-
-    def __repr__(self):
-        """String representation of the UserAnalysisConnector object."""
-
-        return f"<UserAnalysisConnector(user_id={self.user_id}, analysis_id={self.analysis_id})>"
-
-
 class TriggerConfigIZAnalysisLink(Base):
     """Association object for linking Timer Trigger Configurations to Analyses.
 
@@ -327,9 +292,6 @@ class Analysis(Base):
     iz_analysis_connectors: Mapped[List["IZAnalysisConnector"]] = relationship(
         back_populates="analysis", cascade="all, delete-orphan"
     )
-    user_links: Mapped[List["UserAnalysisConnector"]] = relationship(
-        back_populates="analysis", cascade="all, delete-orphan"
-    )
     required_permission: Mapped[Optional["AlmaApiPermission"]] = relationship(
         back_populates="required_for_analyses"
     )
@@ -403,9 +365,6 @@ class User(Base):
 
     # Relationships
     institution_zone: Mapped[Optional["InstitutionZone"]] = relationship(back_populates="users")
-    analysis_links: Mapped[List["UserAnalysisConnector"]] = relationship(
-        back_populates="user", cascade="all, delete-orphan"
-    )
     trigger_config_links: Mapped[List["TriggerConfigUserLink"]] = relationship(
         back_populates="user", cascade="all, delete-orphan"
     )
