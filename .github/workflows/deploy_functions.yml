@@ -14,7 +14,7 @@ env:
   # Define your Azure Function App names here
   AZURE_FUNCTIONAPP_NAME_FETCHER: 'func-alma-apifetcher' # Replace with your actual name
   AZURE_FUNCTIONAPP_NAME_DATAPREP: 'func-alma-dataprep' # Replace with your actual name
-  AZURE_FUNCTIONAPP_NAME_NOTIFIER: 'func-alma-notifier' # Replace with your actual name
+  AZURE_FUNCTIONAPP_NAME_NOTIFIER: 'func-alam-notifier' # Replace with your actual name
 
 # Permissions needed for OIDC Azure Login (recommended)
 permissions:
