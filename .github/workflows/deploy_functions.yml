@@ -1,0 +1,130 @@
+#file: noinspection UndefinedAction
+name: Build and Deploy Azure Functions
+
+# Trigger on pushes to the main branch
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual triggering from GitHub UI
+
+# Optional: Define environment variables used across jobs
+env:
+  PYTHON_VERSION: '3.11'
+  # Define your Azure Function App names here
+  AZURE_FUNCTIONAPP_NAME_FETCHER: 'func-alma-apifetcher' # Replace with your actual name
+  AZURE_FUNCTIONAPP_NAME_DATAPREP: 'func-alma-dataprep' # Replace with your actual name
+  AZURE_FUNCTIONAPP_NAME_NOTIFIER: 'func-alma-notifier' # Replace with your actual name
+
+# Permissions needed for OIDC Azure Login (recommended)
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Define the directories for each function app
+        function_dir: [func_alma_apifetcher, func_alma_dataprep, func_alma_notifier]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ env.PYTHON_VERSION }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install Poetry
+      run: |
+        pip install poetry
+        poetry --version
+
+    - name: Install Dependencies for ${{ matrix.function_dir }}
+      run: |
+        cd ${{ matrix.function_dir }}
+        poetry install --no-interaction --no-root --only main # Install only runtime dependencies
+        # Optional: Install dev dependencies if running tests/linting here
+        # poetry install --no-interaction --no-root
+
+    - name: Copy shared_code into ${{ matrix.function_dir }}
+      # This is crucial: copies the shared code into the function app directory
+      run: |
+        cp -r ./shared_code ./${{ matrix.function_dir }}/shared_code
+
+    - name: Export requirements.txt for ${{ matrix.function_dir }}
+      # Generates requirements.txt from the lock file for Azure Functions runtime
+      run: |
+        cd ${{ matrix.function_dir }}
+        poetry export -f requirements.txt --output requirements.txt --without-hashes
+        # Verify requirements.txt content if needed
+        # cat requirements.txt
+        cd ..
+
+    # --- Optional: Add steps for linting/testing here if desired ---
+
+    - name: Archive function app package ${{ matrix.function_dir }}
+      # Creates a zip file containing the function app code, copied shared_code,
+      # requirements.txt, host.json, local.settings.json (if needed, usually not), etc.
+      # Excludes .venv, .git, __pycache__, etc.
+      run: |
+        cd ${{ matrix.function_dir }}
+        zip -r ../${{ matrix.function_dir }}.zip . -x ".venv/*" ".git/*" "__pycache__/*" "*.pyc" ".pytest_cache/*"
+        cd ..
+
+    - name: Upload function app artifact ${{ matrix.function_dir }}
+      # Uploads the zip file for the deploy job
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.function_dir }} # Artifact name matches directory
+        path: ${{ matrix.function_dir }}.zip
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build # This job runs only after the build job succeeds
+    environment: production # Optional: Define environment for approvals/secrets
+
+    steps:
+    - name: Download all function app artifacts
+      uses: actions/download-artifact@v4
+      # Downloads all artifacts created in the 'build' job
+      # They will be placed in directories named after the artifacts (e.g., ./func_alma_apifetcher/)
+      # Correction: download-artifact v4 downloads files directly if single file per artifact
+      # So we will have func_alma_apifetcher.zip, etc. in the root
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        # Use OIDC (preferred) - requires configuration in Azure AD & GitHub
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        # Or Use Service Principal Secret:
+        # creds: ${{ secrets.AZURE_CREDENTIALS }} # JSON with clientID, clientSecret, tenantID, subscriptionID
+
+    - name: Deploy Alma API Fetcher Function
+      uses: azure/functions-action@v1
+      with:
+        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_FETCHER }}
+        package: func_alma_apifetcher.zip # Path to the downloaded zip artifact
+
+    - name: Deploy Alma DataPrep Function
+      uses: azure/functions-action@v1
+      with:
+        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_DATAPREP }}
+        package: func_alma_dataprep.zip # Path to the downloaded zip artifact
+
+    - name: Deploy Alma Notifier Function
+      uses: azure/functions-action@v1
+      with:
+        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_NOTIFIER }}
+        package: func_alma_notifier.zip # Path to the downloaded zip artifact
+
+    # Optional: Azure Logout
+    # - name: Azure Logout
+    #   run: |
+    #     az logout
+    #     az cache purge
+    #     az account clear
