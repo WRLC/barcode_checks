@@ -60,10 +60,21 @@ jobs:
       # Generates requirements.txt from the lock file for Azure Functions runtime
       run: |
         cd ${{ matrix.function_dir }}
-        poetry export -f requirements.txt --output requirements.txt --without-hashes
+        echo "--- Verifying Poetry in export step ---"
+        echo "PATH is: $PATH" # See what the path looks like here
+        which poetry       # Which poetry executable is found?
+        poetry --version   # What version does it report?
+        echo "--- Running Export ---"
+        # Try the direct command first, if it fails, try via python -m
+        poetry export -f requirements.txt --output requirements.txt --without-hashes || \
+        (echo "Direct poetry export failed, trying python -m poetry export..." && \
+        python -m poetry export -f requirements.txt --output requirements.txt --without-hashes)
+          
         # Verify requirements.txt content if needed
-        # cat requirements.txt
+        echo "--- requirements.txt content (first 10 lines) ---"
+        head -n 10 requirements.txt
         cd ..
+      shell: bash # Ensure bash is used if not default
 
     # --- Optional: Add steps for linting/testing here if desired ---
 
