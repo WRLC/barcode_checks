@@ -103,12 +103,12 @@ jobs:
       uses: azure/login@v1
       with:
         # Use OIDC (preferred) - requires configuration in Azure AD & GitHub
-        # client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        # tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        # subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        # client-secret: ${{ secrets.AZURE_CLIENT_SECRET }} # Optional if using OIDC
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        client-secret: ${{ secrets.AZURE_CLIENT_SECRET }} # Optional if using OIDC
         # Or Use Service Principal Secret:
-        creds: ${{ secrets.AZURE_CREDENTIALS }} # JSON with clientID, clientSecret, tenantID, subscriptionID
+        # creds: ${{ secrets.AZURE_CREDENTIALS }} # JSON with clientID, clientSecret, tenantID, subscriptionID
 
     - name: Deploy Alma API Fetcher Function
       uses: azure/functions-action@v1
