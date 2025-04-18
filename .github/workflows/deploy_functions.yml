@@ -44,9 +44,6 @@ jobs:
           virtualenvs-create: false
           virtualenvs-in-project: false
 
-      - name: Install Poetry Export Plugin
-        run: poetry plugin add poetry-plugin-export
-
       # Install dependencies using the now-installed Poetry
       # Poetry should use the current Python environment automatically
       - name: Install Dependencies for ${{ matrix.function_dir }}
