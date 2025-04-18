@@ -111,19 +111,19 @@ jobs:
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_FETCHER }}
-        package: func_alma_apifetcher.zip # Path to the downloaded zip artifact
+        package: ./func_alma_apifetcher/func_alma_apifetcher.zip # Path to the downloaded zip artifact
 
     - name: Deploy Alma DataPrep Function
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_DATAPREP }}
-        package: func_alma_dataprep.zip # Path to the downloaded zip artifact
+        package: ./func_alma_dataprep/func_alma_dataprep.zip # Path to the downloaded zip artifact
 
     - name: Deploy Alma Notifier Function
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_NOTIFIER }}
-        package: func_alma_notifier.zip # Path to the downloaded zip artifact
+        package: ./func_alma_notifier/func_alma_notifier.zip # Path to the downloaded zip artifact
 
     # Optional: Azure Logout
     # - name: Azure Logout
