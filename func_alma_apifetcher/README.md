@@ -35,7 +35,7 @@ Structure of message in `apifetchqueue` to trigger the Alma API fetcher:
     "job_id": "trig5-20250417114437",
     "trigger_config_id": 1,
     "iz_analysis_connector_id": 1,
-    "report_path": "/shared/Shared storage institution/Reports/Barcode Check/SCF No Row Tray/No RowTray in SCF - part 1c",
+    "report_path": "/shared/Shared storage institution/Reports/Barcode Check/SCF No Row Tray/No RowTray in SCF - part 1",
     "iz_code": "scf",
     "alma_api_permission": "Analytics",
     "resumption_token": null,

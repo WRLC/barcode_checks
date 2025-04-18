@@ -7,106 +7,153 @@ import pandas as pd
 import io
 import pathlib
 from typing import Union, Dict, List, Optional
-from jinja2 import Environment, FileSystemLoader, select_autoescape
-# noinspection PyProtectedMember
-from azure.communication.email import EmailClient, EmailAddress
+from jinja2 import Environment, FileSystemLoader, select_autoescape, TemplateNotFound
+from azure.communication.email import EmailClient
 from azure.identity import DefaultAzureCredential
 from azure.core.exceptions import HttpResponseError, ServiceRequestError
 from shared_code.utils import storage_helpers, data_utils, config_helpers
+from shared_code.database import session_scope, TimerTriggerConfig, TriggerConfigUserLink, User
 
 bp = func.Blueprint()
 
 # --- Constants ---
 STORAGE_CONNECTION_STRING_NAME = "AzureWebJobsStorage"
-INPUT_QUEUE_NAME = "NotifierQueue"
+INPUT_QUEUE_NAME = "notifierqueue"
+
+# ACS Config
 ACS_CONNECTION_STRING = config_helpers.get_optional_env_var("COMMUNICATION_SERVICES_CONNECTION_STRING")
 ACS_ENDPOINT = config_helpers.get_optional_env_var("COMMUNICATION_SERVICES_ENDPOINT")
 SENDER_ADDRESS = config_helpers.get_required_env_var("SENDER_ADDRESS")
 TEMPLATE_FILE_NAME = "email_template.html.j2"
 
 # --- Jinja2 Environment Setup ---
+# Determine template directory path relative to this file
+# Assumes /templates directory is at the same level as the /handlers directory
 template_dir = pathlib.Path(__file__).parent.parent / "templates"
+jinja_env: Optional[Environment] = None
 # noinspection PyBroadException
 try:
-    jinja_env = Environment(
-        loader=FileSystemLoader(template_dir),
-        autoescape=select_autoescape(['html', 'xml'])
-    )
-    logging.info(f"Jinja2 environment loaded successfully from: {template_dir}")
+    if not template_dir.is_dir():
+        logging.error(f"Jinja template directory not found at: {template_dir}")
+        raise FileNotFoundError(f"Jinja template directory not found: {template_dir}")
+    else:
+        jinja_env = Environment(
+            loader=FileSystemLoader(template_dir),
+            autoescape=select_autoescape(['html', 'xml'])
+        )
+        logging.info(f"Jinja2 environment loaded successfully from: {template_dir}")
 except Exception as e:
     logging.exception(f"Failed to initialize Jinja2 environment from {template_dir}")
-    jinja_env = None
 
 
 # --- Function Definition ---
 @bp.queue_trigger(queue_name=INPUT_QUEUE_NAME, connection=STORAGE_CONNECTION_STRING_NAME, arg_name="msg")
 def report_notifier(msg: func.QueueMessage) -> None:
     """
-    Sends report notification via ACS Email using a Jinja2 template for HTML body.
-    Retrieves recipients and subject from the message payload.
+    Sends report notification via ACS Email using Jinja2 template.
+    Retrieves recipients and subject from DB using trigger_config_id from message.
+    Formats data from blob CSV into HTML table.
 
     Expected input message format (JSON):
     {
         "job_id": "...",
-        "trigger_config_id": number, // Context
+        "trigger_config_id": number, // REQUIRED ID for config lookup
         "iz_analysis_connector_id": number, // Context
         "combined_data_container": "...",
         "combined_data_blob": "...", // Path to CSV
         "status": "Combined",
-        "email_subject": "Subject Line / Caption", // REQUIRED
-        "target_emails": ["user1@example.com", ...], // REQUIRED list of recipients
-        // Optional context: iz_code, analysis_id, analysis_name, header_map, original_report_path
+        // email_subject and target_emails are fetched from DB using trigger_config_id
+        // Optional context passed through: iz_code, analysis_id, analysis_name, header_map, original_report_path
     }
     """
-    job_id = None
-    trigger_config_id = None
+    job_id: Optional[str] = None
+    trigger_config_id: Optional[int] = None
 
     try:
-        # --- Validate ACS & Jinja Config ---
         if not jinja_env:
             raise RuntimeError("Jinja2 environment failed to initialize. Cannot format email.")
         if not ACS_CONNECTION_STRING and not ACS_ENDPOINT:
-            raise ValueError("ACS Connection String or Endpoint required.")
+            raise ValueError("COMMUNICATION_SERVICES_CONNECTION_STRING or ENDPOINT required.")
         if not SENDER_ADDRESS:
             raise ValueError("SENDER_ADDRESS required.")
 
         logging.info(f"Notifier received message ID: {msg.id}, DequeueCount: {msg.dequeue_count}")
         message_body = data_utils.deserialize_data(msg.get_body())
-        if not isinstance(message_body, dict): raise ValueError("Msg body not dict.")
+        if not isinstance(message_body, dict):
+            raise ValueError("Msg body not dict.")
 
         # --- Get parameters ---
         job_id = message_body.get("job_id")
         trigger_config_id = message_body.get("trigger_config_id")
         combined_container = message_body.get("combined_data_container")
         combined_blob = message_body.get("combined_data_blob")
-        email_subject = message_body.get("email_subject")
-        target_emails = message_body.get("target_emails")
-        # noinspection PyUnusedLocal
-        analysis_id = message_body.get("analysis_id")
-        analysis_name = message_body.get("analysis_name", "Unknown Analysis")
+        analysis_name = message_body.get("analysis_name", "Analysis Report")
         iz_code = message_body.get("iz_code")
         original_report_path = message_body.get("original_report_path")
 
-        # --- Validate input ---
-        if not all([job_id, trigger_config_id, combined_container, combined_blob, email_subject]):
-            raise ValueError("Missing required fields: job_id, trigger_config_id, container, blob, email_subject")
-        if not target_emails or not isinstance(target_emails, list) or len(target_emails) == 0:
-            logging.warning(f"Job {job_id}: No target_emails provided. No email sent.")
-            return
+        # --- Validate necessary IDs and blob info ---
+        if not all([job_id, trigger_config_id, combined_container, combined_blob]):
+            raise ValueError("Missing required fields: job_id, trigger_config_id, container, blob")
 
-        logging.info(
-            f"Notifier started for Job ID: {job_id}, TriggerCfg: {trigger_config_id}, Subject: '{email_subject}'")
-        logging.info(f"Attempting to notify {len(target_emails)} recipient(s).")
+        logging.info(f"Notifier started for Job ID: {job_id}, TriggerCfg: {trigger_config_id}")
+
+        # --- Get Recipients and Subject from DB ---
+        target_emails: List[str] = []
+        email_subject: str = f"Report Ready: {analysis_name}"
+
+        try:
+            with session_scope() as db_session:
+                logging.debug(f"Job {job_id}: Querying recipients and subject for TriggerConfig ID {trigger_config_id}")
+
+                config: Optional[TimerTriggerConfig] = db_session.get(TimerTriggerConfig, trigger_config_id)
+
+                if not config:
+                    logging.error(f"Job {job_id}: Could not find TimerTriggerConfig ID {trigger_config_id} in DB.")
+                    raise ValueError(f"TimerTriggerConfig not found for ID {trigger_config_id}")
+
+                if config.email_subject:
+                    email_subject = config.email_subject
+                    logging.info(f"Job {job_id}: Using subject from DB: '{email_subject}'")
+                else:
+                    logging.warning(
+                        f"Job {job_id}: email_subject is empty for TriggerConfig ID {trigger_config_id}. "
+                        f"Using default."
+                    )
+
+                users_query = (
+                    db_session.query(User.user_email)
+                    .join(TriggerConfigUserLink, TriggerConfigUserLink.user_id == User.id)
+                    .filter(TriggerConfigUserLink.trigger_config_id == trigger_config_id)
+                )
+                recipient_emails = [email for email, in users_query.all() if email]
+
+                if not recipient_emails:
+                    logging.warning(
+                        f"Job {job_id}: No recipients found linked to TriggerConfig ID {trigger_config_id}. "
+                        f"No email will be sent.")
+                    return
+
+                logging.info(
+                    f"Job {job_id}: Found {len(recipient_emails)} recipient(s) for TriggerConfig ID "
+                    f"{trigger_config_id}."
+                )
+                target_emails = recipient_emails
+
+        except Exception as db_err:
+            logging.exception(f"Job {job_id}: Failed DB lookup for TriggerConfig ID {trigger_config_id}: {db_err}")
+            raise db_err
 
         # --- Download Combined Data CSV ---
         # noinspection PyUnusedLocal
         csv_data_string: Optional[str] = None
         try:
-            logging.debug(f"Job {job_id}: Downloading CSV from {combined_container}/{combined_blob}")
+            logging.debug(f"Job {job_id}: Downloading combined data from {combined_container}/{combined_blob}")
             csv_data_string = storage_helpers.download_blob_as_text(combined_container, combined_blob)
-            logging.info(f"Job {job_id}: Successfully downloaded CSV.")
+            logging.info(f"Job {job_id}: Successfully downloaded combined data CSV.")
         except Exception as download_err:
-            logging.error(f"Job {job_id}: Failed CSV download: {download_err}", exc_info=True)
+            logging.error(
+                f"Job {job_id}: Failed CSV download from {combined_container}/{combined_blob}: {download_err}",
+                exc_info=True)
             raise download_err
 
         # --- Convert CSV to HTML Table ---
@@ -114,7 +161,8 @@ def report_notifier(msg: func.QueueMessage) -> None:
         record_count = 0
         try:
             if csv_data_string:
-                df = pd.read_csv(io.StringIO(csv_data_string))
+                csv_io = io.StringIO(csv_data_string)
+                df = pd.read_csv(csv_io)
                 record_count = len(df)
                 logging.debug(f"Job {job_id}: Read {record_count} rows into DataFrame.")
                 if not df.empty:
@@ -122,17 +170,20 @@ def report_notifier(msg: func.QueueMessage) -> None:
                         index=False, border=1, escape=True, na_rep=''
                     ).replace(
                         'border="1"',
-                        'border="1" style="border-collapse: collapse; border: 1px solid black;"'
-                    )
+                        'border="1" style="border-collapse: collapse; border: 1px solid black;"')
                     logging.debug(f"Job {job_id}: Converted DataFrame to HTML string.")
                 else:
-                    html_table = f"<i>Report '{analysis_name}' generated, but contained no data rows.</i>"
+                    html_table = (
+                        f"<i>Report '{analysis_name}' generated, but contained no data rows.</i><br>"
+                        f"(Report Path: {original_report_path or 'N/A'})"
+                    )
             else:
                 html_table = "<i>Could not retrieve report data to display.</i>"
         except Exception as convert_err:
             logging.error(f"Job {job_id}: Failed CSV->HTML conversion: {convert_err}", exc_info=True)
 
         # --- Render HTML Email Body using Jinja2 ---
+        # noinspection PyUnusedLocal
         html_content_body = "Error rendering email template."
         try:
             template = jinja_env.get_template(TEMPLATE_FILE_NAME)
@@ -147,44 +198,65 @@ def report_notifier(msg: func.QueueMessage) -> None:
             }
             html_content_body = template.render(template_context)
             logging.debug(f"Job {job_id}: Successfully rendered Jinja2 email template.")
+        except TemplateNotFound:
+            logging.error(f"Job {job_id}: Email template '{TEMPLATE_FILE_NAME}' not found in {template_dir}.")
+            html_content_body = (
+                f"<p>Report {analysis_name} is ready. Data table could not be formatted (template not "
+                f"found).</p><p>Job ID: {job_id}</p>"
+            )
         except Exception as template_err:
             logging.exception(f"Job {job_id}: Failed to render Jinja2 template: {template_err}")
+            html_content_body = (
+                f"<p>Report {analysis_name} is ready. Data table formatting failed.</p><p>Job ID: {job_id}</p>"
+            )
 
         # --- Send Email using ACS ---
         logging.debug(f"Job {job_id}: Preparing to send email via ACS.")
         try:
             email_client: EmailClient
             if ACS_CONNECTION_STRING:
+                logging.debug("Using ACS Connection String.")
                 email_client = EmailClient.from_connection_string(ACS_CONNECTION_STRING)
             else:
+                logging.debug("Using ACS Endpoint and DefaultAzureCredential.")
                 credential = DefaultAzureCredential()
                 # noinspection PyTypeChecker
                 email_client = EmailClient(endpoint=ACS_ENDPOINT, credential=credential)
 
-            recipient_list_acs = [EmailAddress(email=email) for email in target_emails]
+            recipient_list_for_acs = [{"address": email} for email in target_emails]
+
             message = {
                 "senderAddress": SENDER_ADDRESS,
-                "recipients": {"to": recipient_list_acs},
+                "recipients": {
+                    "to": recipient_list_for_acs
+                },
                 "content": {
                     "subject": email_subject,
                     "html": html_content_body
                 }
             }
 
-            logging.info(f"Job {job_id}: Sending email to {len(recipient_list_acs)} recipients via ACS.")
+            logging.info(f"Job {job_id}: Sending email to {len(recipient_list_for_acs)} recipients via ACS.")
             poller = email_client.begin_send(message)
             send_result = poller.result()
+            logging.info(f"Job {job_id}: ACS send poller finished.")
 
             status = send_result.get('status') if isinstance(send_result, dict) else None
             message_id = send_result.get('id') if isinstance(send_result, dict) else None
-            if status and status.lower() == "succeeded":
-                logging.info(f"Job {job_id}: Successfully sent email. Message ID: {message_id}")
-            else:
-                logging.error(
-                    f"Job {job_id}: ACS Email send finished with status: {status}. Message ID: {message_id}. "
-                    f"Result: {send_result}"
-                )
 
+            if status and status.lower() == "succeeded":
+                logging.info(f"Job {job_id}: Successfully sent email via ACS. Message ID: {message_id}")
+            else:
+                error_details = send_result.get('error', {}) if isinstance(send_result, dict) else send_result
+                logging.error(
+                    f"Job {job_id}: ACS Email send finished with status: {status}. Message ID: {message_id}. Details: "
+                    f"{error_details}"
+                )
+                raise Exception(f"ACS Email send failed with status {status}")
+
+        except (HttpResponseError, ServiceRequestError) as acs_sdk_err:
+            logging.exception(f"Job {job_id}: Azure SDK Error sending email via ACS: {acs_sdk_err}")
+            raise acs_sdk_err
         except Exception as email_err:
             logging.exception(f"Job {job_id}: Failed to send email via ACS: {email_err}")
             raise email_err
@@ -194,12 +266,17 @@ def report_notifier(msg: func.QueueMessage) -> None:
     # --- Error Handling ---
     except (ValueError, TypeError, json.JSONDecodeError, data_utils.DataSerializationError, KeyError,
             RuntimeError) as config_or_data_err:
+        # Includes DB lookup failures (ValueError), bad messages, Jinja init failure etc.
         logging.error(
-            f"Configuration/Data/Runtime Error processing notify message for Job ID {job_id}, "
-            f"TriggerCfg {trigger_config_id}: {config_or_data_err}",
-            exc_info=True)
-        pass  # Let bad messages / config issues dead-letter
+            f"Configuration/Data/Runtime Error processing notify message for Job ID {job_id}, TriggerCfg "
+            f"{trigger_config_id}: {config_or_data_err}",
+            exc_info=True
+        )
+        # Let bad messages / config issues dead-letter without endless retries
+        pass
     except Exception as err:
+        # Includes DB connection errors from session_scope or query execution, ACS send errors if re-raised
         logging.exception(
             f"An unexpected error occurred in notifier for Job ID {job_id}, TriggerCfg {trigger_config_id}: {err}")
+        # Re-raise unknown errors / transient errors to allow host retries
         raise err

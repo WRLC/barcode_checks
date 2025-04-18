@@ -13,7 +13,7 @@ bp = func.Blueprint()
 
 # --- Constants ---
 STORAGE_CONNECTION_STRING_NAME = "AzureWebJobsStorage"
-INPUT_QUEUE_NAME = "DataCombineQueue"
+INPUT_QUEUE_NAME = "datacombinequeue"
 COMBINED_CONTAINER_NAME = config_helpers.get_optional_env_var(
     "COMBINED_CONTAINER_NAME", "alma-combined-reports"
 )
@@ -165,7 +165,7 @@ def report_chunk_combiner(msg: func.QueueMessage) -> None:
 
         # -- SimpleEmailNotifier handler --
         if dataprep_handler_type == "SimpleEmailNotifier":
-            target_queue_name = "NotifierQueue"
+            target_queue_name = "notifierqueue"
 
         # Add elif blocks here for other handler types -> different queue names
         # elif dataprep_handler_type == "CrossReferenceAndUpdate":
