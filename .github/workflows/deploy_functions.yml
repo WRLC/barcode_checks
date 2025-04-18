@@ -26,73 +26,73 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # Define the directories for each function app
-        function_dir: [func_alma_apifetcher, func_alma_dataprep, func_alma_notifier]
+        function_dir: [ func_alma_apifetcher, func_alma_dataprep, func_alma_notifier ]
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python ${{ env.PYTHON_VERSION }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          # cache: 'pip' # Optional: Enable pip caching
 
-    - name: Install Poetry
-      uses: snok/install-poetry@v1 # Check for latest major version (v1 is common)
-      with:
-        version: latest # Or pin to a specific version like '1.8.2' or '2.1.2'
-        virtualenvs-create: false # Recommended: avoid creating venvs automatically here
-        virtualenvs-in-project: false # Recommended: avoid creating venvs automatically here
+      # Install Poetry using pip INTO the main python env setup above
+      - name: Install Poetry via pip
+        run: |
+          pip install --upgrade pip
+          pip install "poetry>=1.7.0" # Pin to a known recent version
+          echo "Verifying pip install:"
+          which poetry || echo "poetry command not found on PATH yet"
+          python -m poetry --version # Verify module access
+          echo "Adding potential user bin path to GITHUB_PATH"
+          echo "$HOME/.local/bin" >> $GITHUB_PATH # Ensure user scripts are on path
 
-    - name: Install Dependencies for ${{ matrix.function_dir }}
-      run: |
-        cd ${{ matrix.function_dir }}
-        poetry install --no-interaction --no-root --only main # Install only runtime dependencies
-        # Optional: Install dev dependencies if running tests/linting here
-        # poetry install --no-interaction --no-root
+      # Install dependencies using the now-installed Poetry
+      # Poetry should use the current Python environment automatically
+      - name: Install Dependencies for ${{ matrix.function_dir }}
+        run: |
+          cd ${{ matrix.function_dir }}
+          echo "Verifying Poetry command before install:"
+          which poetry
+          poetry --version
+          # No need for --only main if we haven't explicitly configured groups/dev deps yet
+          poetry install --no-interaction --no-root
+        # shell: bash # Default
 
-    - name: Copy shared_code into ${{ matrix.function_dir }}
-      # This is crucial: copies the shared code into the function app directory
-      run: |
-        cp -r ./shared_code ./${{ matrix.function_dir }}/shared_code
+      - name: Copy shared_code into ${{ matrix.function_dir }}
+        run: |
+          mkdir -p ./${{ matrix.function_dir }}/shared_code
+          cp -r ./shared_code/* ./${{ matrix.function_dir }}/shared_code/
+        # shell: bash
 
-    - name: Export requirements.txt for ${{ matrix.function_dir }}
-      # Generates requirements.txt from the lock file for Azure Functions runtime
-      run: |
-        cd ${{ matrix.function_dir }}
-        echo "--- Verifying Poetry in export step ---"
-        echo "PATH is: $PATH" # See what the path looks like here
-        which poetry       # Which poetry executable is found?
-        poetry --version   # What version does it report?
-        echo "--- Running Export ---"
-        # Try the direct command first, if it fails, try via python -m
-        poetry export -f requirements.txt --output requirements.txt --without-hashes || \
-        (echo "Direct poetry export failed, trying python -m poetry export..." && \
-        python -m poetry export -f requirements.txt --output requirements.txt --without-hashes)
-          
-        # Verify requirements.txt content if needed
-        echo "--- requirements.txt content (first 10 lines) ---"
-        head -n 10 requirements.txt
-        cd ..
-      shell: bash # Ensure bash is used if not default
+      - name: Export requirements.txt for ${{ matrix.function_dir }}
+        run: |
+          cd ${{ matrix.function_dir }}
+          echo "--- Verifying Poetry in export step ---"
+          which poetry
+          poetry --version
+          echo "--- Running Export ---"
+          # Direct command should work now if installed correctly in main env
+          poetry export -f requirements.txt --output requirements.txt --without-hashes
+          echo "--- requirements.txt content (first 10 lines) ---"
+          head -n 10 requirements.txt
+          cd ..
+        # shell: bash
 
-    # --- Optional: Add steps for linting/testing here if desired ---
+      - name: Archive function app package ${{ matrix.function_dir }}
+        run: |
+          cd ${{ matrix.function_dir }}
+          zip -r ../${{ matrix.function_dir }}.zip . -x ".venv/*" ".git/*" "__pycache__/*" "*.pyc" ".pytest_cache/*" "poetry.lock" "pyproject.toml"
+          cd ..
+        # shell: bash
 
-    - name: Archive function app package ${{ matrix.function_dir }}
-      # Creates a zip file containing the function app code, copied shared_code,
-      # requirements.txt, host.json, local.settings.json (if needed, usually not), etc.
-      # Excludes .venv, .git, __pycache__, etc.
-      run: |
-        cd ${{ matrix.function_dir }}
-        zip -r ../${{ matrix.function_dir }}.zip . -x ".venv/*" ".git/*" "__pycache__/*" "*.pyc" ".pytest_cache/*"
-        cd ..
+      - name: Upload function app artifact ${{ matrix.function_dir }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.function_dir }}
+          path: ${{ matrix.function_dir }}.zip
 
-    - name: Upload function app artifact ${{ matrix.function_dir }}
-      # Uploads the zip file for the deploy job
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ matrix.function_dir }} # Artifact name matches directory
-        path: ${{ matrix.function_dir }}.zip
 
   deploy:
     runs-on: ubuntu-latest
