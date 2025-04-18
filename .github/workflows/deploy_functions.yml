@@ -37,11 +37,12 @@ jobs:
       with:
         python-version: ${{ env.PYTHON_VERSION }}
 
-    - name: Install Poetry # Remove or comment out this old step
-      run: |
-        pip install --upgrade pip # Ensure pip is up-to-date
-        pip install "poetry>=1.2.0" # Install Poetry 1.2.0 or newer
-        poetry --version # Verify installed version
+    - name: Install Poetry
+      uses: snok/install-poetry@v1 # Check for latest major version (v1 is common)
+      with:
+        version: latest # Or pin to a specific version like '1.8.2' or '2.1.2'
+        virtualenvs-create: false # Recommended: avoid creating venvs automatically here
+        virtualenvs-in-project: false # Recommended: avoid creating venvs automatically here
 
     - name: Install Dependencies for ${{ matrix.function_dir }}
       run: |
