@@ -67,6 +67,19 @@ jobs:
           cd ..
         shell: bash
 
+      - name: Pin cryptography version for ${{ matrix.function_dir }}
+        run: |
+          cd ${{ matrix.function_dir }}
+          # Check if cryptography is already in requirements.txt
+          if grep -q "cryptography==" requirements.txt; then
+            # Replace existing version
+            sed -i 's/cryptography==.*/cryptography==43.0.3/g' requirements.txt
+          else
+            # Add pinned version
+            echo "cryptography==43.0.3" >> requirements.txt
+          fi
+          cd ..
+
       - name: Archive function app package ${{ matrix.function_dir }}
         run: |
           # First copy shared_code into each function directory
@@ -106,27 +119,21 @@ jobs:
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_FETCHER }}
         package: ./func_alma_apifetcher/func_alma_apifetcher.zip
-        scm-do-build-during-deployment: true # Keep this!
+        scm-do-build-during-deployment: true
+        enable-oryx-build: true
 
     - name: Deploy Alma DataPrep Function
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_DATAPREP }}
-        # **** CORRECTED PATH ****
         package: ./func_alma_dataprep/func_alma_dataprep.zip
-        scm-do-build-during-deployment: true # Keep this!
+        scm-do-build-during-deployment: true
+        enable-oryx-build: true
 
     - name: Deploy Alma Notifier Function
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_NOTIFIER }}
-        # **** CORRECTED PATH ****
         package: ./func_alma_notifier/func_alma_notifier.zip
-        scm-do-build-during-deployment: true # Keep this!
-
-    # Optional: Azure Logout
-    # - name: Azure Logout
-    #   run: |
-    #     az logout
-    #     az cache purge
-    #     az account clear
+        scm-do-build-during-deployment: true
+        enable-oryx-build: true
