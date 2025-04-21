@@ -32,6 +32,10 @@ alembic = "^1.15.2"
 python-dotenv = "^1.1.0"
 
 
+[tool.poetry.group.dev.dependencies]
+# No dev dependencies for this project
+
+
 
 [build-system]
 requires = ["poetry-core"]
