@@ -44,9 +44,6 @@ jobs:
           virtualenvs-create: false
           virtualenvs-in-project: false
 
-      - name: Install Poetry Export Plugin
-        run: poetry plugin add poetry-plugin-export
-
       - name: Clear Poetry Caches
         run: poetry cache clear . --all -n
         shell: bash

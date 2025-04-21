@@ -10,16 +10,13 @@ packages = [
 ]
 
 
-[tool.poetry.requires-plugins]
-poetry-plugin-export = ">=1.8"
-
-
 [tool.poetry.dependencies]
 python = "^3.11"
 azure-functions = "^1.23.0"
 sqlalchemy = "^2.0.40"
 pymysql = "^1.1.1"
 requests = "^2.31.0"
+poetry-plugin-export = ">=1.8.0"
 
 # Reference the local shared_code directory
 shared-code = { path = "../shared_code", develop = true }
