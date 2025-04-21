@@ -80,6 +80,15 @@ jobs:
           fi
           cd ..
 
+      - name: Ensure SQLAlchemy is in requirements.txt for fetcher
+        run: |
+          cd func_alma_apifetcher
+          if ! grep -q "sqlalchemy==" requirements.txt; then
+            echo "sqlalchemy" >> requirements.txt
+          fi
+          cd ..
+        shell: bash
+
       - name: Archive function app package ${{ matrix.function_dir }}
         run: |
           # First copy shared_code into each function directory
