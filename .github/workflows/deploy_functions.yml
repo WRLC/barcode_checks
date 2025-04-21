@@ -12,7 +12,7 @@ env:
   AZURE_FUNCTIONAPP_NAME_FETCHER: 'func-alma-apifetcher'
   AZURE_FUNCTIONAPP_NAME_DATAPREP: 'func-alma-dataprep'
   AZURE_FUNCTIONAPP_NAME_NOTIFIER: 'func-alam-notifier'
-  AZURE_FUNCTIONS_IMAGE: mcr.microsoft.com/azure-functions/python:4-python${{ env.PYTHON_VERSION }}
+  AZURE_FUNCTIONS_IMAGE: mcr.microsoft.com/azure-functions/python:4-python3.11
 
 permissions:
   id-token: write
