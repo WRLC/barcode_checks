@@ -44,33 +44,37 @@ jobs:
           virtualenvs-create: false
           virtualenvs-in-project: false
 
+      - name: Install Poetry Export Plugin
+        run: poetry plugin add poetry-plugin-export
+
+      - name: Clear Poetry Caches
+        run: poetry cache clear . --all -n
+        shell: bash
+
       # Install dependencies using the now-installed Poetry
       # Poetry should use the current Python environment automatically
       - name: Install Dependencies for ${{ matrix.function_dir }}
         run: |
           cd ${{ matrix.function_dir }}
           poetry install --no-interaction --no-root  --only main
-        # shell: bash # Default
+        shell: bash # Default
 
       - name: Copy shared_code into ${{ matrix.function_dir }}
         run: |
           mkdir -p ./${{ matrix.function_dir }}/shared_code
           cp -r ./shared_code/* ./${{ matrix.function_dir }}/shared_code/
-        # shell: bash
+        shell: bash
 
       - name: Export requirements.txt for ${{ matrix.function_dir }}
         run: |
           cd ${{ matrix.function_dir }}
-          echo "--- Verifying Poetry in export step ---"
-          which poetry
-          poetry --version
           echo "--- Running Export ---"
-          # Direct command should work now if installed correctly in main env
           poetry export -f requirements.txt --output requirements.txt --without-hashes
-          echo "--- requirements.txt content (first 10 lines) ---"
-          head -n 10 requirements.txt
+          echo "--- requirements.txt content ---"
+          cat requirements.txt
+          echo "--- End requirements.txt content ---"
           cd ..
-        # shell: bash
+        shell: bash
 
       - name: Archive function app package ${{ matrix.function_dir }}
         run: |
