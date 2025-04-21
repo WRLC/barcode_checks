@@ -3,6 +3,16 @@
   "logging": {
     "applicationInsights": {
       "samplingSettings": { "isEnabled": true, "excludedTypes": "Request" }
+    },
+    "logLevel": {
+      "default": "Information",
+      "Function": "Debug",
+      "Host.Startup": "Information",
+      "Host.Results": "Information",
+      "Host.Aggregator": "Warning",
+      "Microsoft": "Warning",
+      "Azure": "Warning",
+      "Worker": "Information"
     }
   },
   "functionTimeout": "00:02:00",
