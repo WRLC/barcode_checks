@@ -15,13 +15,20 @@ poetry-plugin-export = ">=1.8"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-azure-functions = "^1.18.0"
-pandas = "^2.2.3"
+azure-core = "^1.33.0"
 azure-communication-email = "^1.0.1b1"
+azure-functions = "^1.18.0"
+azure-storage-blob = "^12.25.1"
+azure-storage-queue = "^12.12.0"
 azure-identity = "^1.21.0"
+pandas = "^2.2.3"
 jinja2 = "^3.1.6"
 sqlalchemy = "^2.0.40"
 pymysql = "^1.1.1"
+requests = "^2.32.3"
+alembic = "^1.15.2"
+python-dotenv = "^1.1.0"
+
 
 # Reference the local shared_code directory
 shared-code = { path = "../shared_code", develop = true }
