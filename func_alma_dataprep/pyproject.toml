@@ -17,7 +17,7 @@ poetry-plugin-export = ">=1.8"
 python = "^3.11"
 azure-functions = "^1.23.0"
 pandas = "^2.2.3"
-SQLAlchemy = "^2.0.23"  # Add this if it's not already there
+SQLAlchemy = "^2.0.23"
 PyMySQL = "^1.1.1"
 azure-core = "^1.33.0"
 azure-communication-email = "^1.0.1b1"

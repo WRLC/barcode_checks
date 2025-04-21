@@ -1,22 +1,19 @@
 #file: noinspection UndefinedAction
 name: Build and Deploy Azure Functions
 
-# Trigger on pushes to the main branch
 on:
   push:
     branches:
       - main
-  workflow_dispatch: # Allows manual triggering from GitHub UI
+  workflow_dispatch:
 
-# Optional: Define environment variables used across jobs
 env:
   PYTHON_VERSION: '3.11'
-  # Define your Azure Function App names here
-  AZURE_FUNCTIONAPP_NAME_FETCHER: 'func-alma-apifetcher' # Replace with your actual name
-  AZURE_FUNCTIONAPP_NAME_DATAPREP: 'func-alma-dataprep' # Replace with your actual name
-  AZURE_FUNCTIONAPP_NAME_NOTIFIER: 'func-alam-notifier' # Replace with your actual name
+  AZURE_FUNCTIONAPP_NAME_FETCHER: 'func-alma-apifetcher'
+  AZURE_FUNCTIONAPP_NAME_DATAPREP: 'func-alma-dataprep'
+  AZURE_FUNCTIONAPP_NAME_NOTIFIER: 'func-alam-notifier'
+  AZURE_FUNCTIONS_IMAGE: mcr.microsoft.com/azure-functions/python:4-python${{ env.PYTHON_VERSION }}
 
-# Permissions needed for OIDC Azure Login (recommended)
 permissions:
   id-token: write
   contents: read
@@ -26,21 +23,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        function_dir: [ func_alma_apifetcher, func_alma_dataprep, func_alma_notifier ]
+        function_dir: [ func_alma_apifetcher, func_alma_dataprep, func_alam_notifier ]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        # Fetch all history so Poetry can get path dependency info if needed (though we copy manually)
+        with:
+          fetch-depth: 0
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      # Install Poetry using pip INTO the main python env setup above
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
-          version: latest # Or your desired Poetry 2.x version
+          version: latest
           virtualenvs-create: false
           virtualenvs-in-project: false
 
@@ -48,54 +47,55 @@ jobs:
         run: poetry cache clear . --all -n
         shell: bash
 
-      - name: Validate/Install Base Env for ${{ matrix.function_dir }}
+      # This step may not even be strictly necessary anymore if export works without it
+      - name: Validate lock file for ${{ matrix.function_dir }}
         run: |
           cd ${{ matrix.function_dir }}
-          echo "Running poetry install for $(pwd)"
-          poetry install --no-interaction --no-root --sync
+          poetry lock --check
         shell: bash
 
       - name: Export requirements.txt for ${{ matrix.function_dir }}
         run: |
           cd ${{ matrix.function_dir }}
-          echo "--- Running Export ---"
-          # Revert: Do NOT filter out shared_code anymore
-          poetry export -f requirements.txt --output requirements.txt --without-hashes
+          echo "--- Running Export (Excluding shared_code edit line) ---"
+          # Exclude the editable install line - we copy shared_code manually later
+          poetry export -f requirements.txt --output requirements.txt --without-hashes | grep -v -- "-e file:" > requirements.txt
           echo "--- requirements.txt content ---"
           cat requirements.txt
           echo "--- End requirements.txt content ---"
+          # Verify cryptography is NOT pinned here (should use version from lock file)
+          echo "--- Checking for manual cryptography pin ---"
+          grep "cryptography==" requirements.txt || echo "Cryptography not pinned in requirements.txt (good)"
           cd ..
         shell: bash
 
-      - name: Pin cryptography version for ${{ matrix.function_dir }}
+      - name: Install dependencies into .python_packages using Docker for ${{ matrix.function_dir }}
         run: |
-          cd ${{ matrix.function_dir }}
-          # Check if cryptography is already in requirements.txt
-          if grep -q "cryptography==" requirements.txt; then
-            # Replace existing version
-            sed -i 's/cryptography==.*/cryptography==43.0.3/g' requirements.txt
-          else
-            # Add pinned version
-            echo "cryptography==43.0.3" >> requirements.txt
-          fi
-          cd ..
+          echo "Pulling Azure Functions image: ${{ env.AZURE_FUNCTIONS_IMAGE }}"
+          docker pull ${{ env.AZURE_FUNCTIONS_IMAGE }}
+          echo "Running pip install in Docker container for ${{ matrix.function_dir }}"
+          docker run --rm \
+            -v "${{ github.workspace }}/${{ matrix.function_dir }}:/src" \
+            ${{ env.AZURE_FUNCTIONS_IMAGE }} \
+            pip install --target="/src/.python_packages/lib/site-packages" -r /src/requirements.txt
+        shell: bash
 
-      - name: Install critical dependencies directly in function directory
+      - name: Copy shared_code into ${{ matrix.function_dir }}
         run: |
-          cd ${{ matrix.function_dir }}
-          pip install SQLAlchemy==2.0.23 PyMySQL==1.1.1 -t .
-          cd ..
+          echo "Copying shared_code into ./${{ matrix.function_dir }}/"
+          # Copy the contents of shared_code into a directory named shared_code within the function app dir
+          mkdir -p ./${{ matrix.function_dir }}/shared_code
+          cp -r ./shared_code/* ./${{ matrix.function_dir }}/shared_code/
+        shell: bash
 
       - name: Archive function app package ${{ matrix.function_dir }}
         run: |
-          # First copy shared_code into each function directory
-          cp -r shared_code ${{ matrix.function_dir }}/
-
-          # Then create the zip file from the function directory
           cd ${{ matrix.function_dir }}
-          zip -r ../${{ matrix.function_dir }}.zip . -x ".venv/" ".git/" "pycache/" ".pyc" ".pytest_cache/" "poetry.lock" ".poetry/" ".python_packages/*"
+          echo "Zipping contents of $(pwd)"
+          # Zip ., which now includes .python_packages and shared_code
+          zip -r ../${{ matrix.function_dir }}.zip . -x ".venv/*" ".git/*" "__pycache__/*" "*.pyc" ".pytest_cache/*" "poetry.lock" "pyproject.toml" ".poetry/*"
           cd ..
-        # shell: bash
+        shell: bash
 
       - name: Upload function app artifact ${{ matrix.function_dir }}
         uses: actions/upload-artifact@v4
@@ -103,12 +103,10 @@ jobs:
           name: ${{ matrix.function_dir }}
           path: ${{ matrix.function_dir }}.zip
 
-
   deploy:
     runs-on: ubuntu-latest
     needs: build
     environment: production
-
     steps:
     - name: Download all function app artifacts
       uses: actions/download-artifact@v4
@@ -126,7 +124,6 @@ jobs:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_FETCHER }}
         package: ./func_alma_apifetcher/func_alma_apifetcher.zip
         scm-do-build-during-deployment: false
-        enable-oryx-build: false
 
     - name: Deploy Alma DataPrep Function
       uses: azure/functions-action@v1
@@ -134,7 +131,6 @@ jobs:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_DATAPREP }}
         package: ./func_alma_dataprep/func_alma_dataprep.zip
         scm-do-build-during-deployment: false
-        enable-oryx-build: false
 
     - name: Deploy Alma Notifier Function
       uses: azure/functions-action@v1
@@ -142,4 +138,3 @@ jobs:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_NOTIFIER }}
         package: ./func_alma_notifier/func_alma_notifier.zip
         scm-do-build-during-deployment: false
-        enable-oryx-build: false
