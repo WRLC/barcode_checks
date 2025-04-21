@@ -49,16 +49,26 @@ jobs:
 
       - name: Export requirements.txt for ${{ matrix.function_dir }}
         run: |
+          echo "--- Preparing Poetry environment for ${{ matrix.function_dir }} ---"
           cd ${{ matrix.function_dir }}
+
+          # Add this step: Install plugins and prepare Poetry for this project
+          echo "--- Running poetry install (for plugins/setup) ---"
+          poetry install --no-root --sync # --no-root avoids installing the function app itself, --sync ensures only locked deps are present (good practice)
+
           echo "--- Running Export (Excluding shared_code edit line) ---"
           # Exclude the editable install line - we copy shared_code manually later
-          poetry export -f requirements.txt --output requirements.txt --without-hashes | grep -v -- "-e file:" > requirements.txt
+          # Use --without dev if you have dev dependencies you don't want exported
+          poetry export -f requirements.txt --output requirements.txt --without-hashes --without dev | grep -v -- "-e file:" > requirements.txt
+
           echo "--- requirements.txt content ---"
           cat requirements.txt
           echo "--- End requirements.txt content ---"
+
           # Verify cryptography is NOT pinned here (should use version from lock file)
           echo "--- Checking for manual cryptography pin ---"
           grep "cryptography==" requirements.txt || echo "Cryptography not pinned in requirements.txt (good)"
+
           cd ..
         shell: bash
 
