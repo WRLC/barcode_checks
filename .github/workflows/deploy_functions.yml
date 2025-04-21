@@ -55,12 +55,6 @@ jobs:
           poetry install --no-interaction --no-root --sync
         shell: bash
 
-      - name: Copy shared_code into ${{ matrix.function_dir }}
-        run: |
-          mkdir -p ./${{ matrix.function_dir }}/shared_code
-          cp -r ./shared_code/* ./${{ matrix.function_dir }}/shared_code/
-        shell: bash
-
       - name: Export requirements.txt for ${{ matrix.function_dir }}
         run: |
           cd ${{ matrix.function_dir }}
@@ -72,17 +66,10 @@ jobs:
           cd ..
         shell: bash
 
-      - name: Install packages to .python_packages for ${{ matrix.function_dir }}
-        run: |
-          cd ${{ matrix.function_dir }}
-          echo "Installing packages from requirements.txt into .python_packages for $(pwd)"
-          pip install --target="./.python_packages/lib/site-packages" -r ./requirements.txt
-        shell: bash
-
       - name: Archive function app package ${{ matrix.function_dir }}
         run: |
           cd ${{ matrix.function_dir }}
-          zip -r ../${{ matrix.function_dir }}.zip . -x ".venv/*" ".git/*" "__pycache__/*" "*.pyc" ".pytest_cache/*" "poetry.lock" "pyproject.toml"
+          zip -r ../{{ matrix.function_dir }}.zip . -x ".venv/" ".git/" "pycache/" ".pyc" ".pytest_cache/" "poetry.lock" "pyproject.toml" ".poetry/" ".python_packages/*"
           cd ..
         # shell: bash
 
@@ -119,18 +106,21 @@ jobs:
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_FETCHER }}
         package: ./func_alma_apifetcher/func_alma_apifetcher.zip # Path to the downloaded zip artifact
+        scm-do-build-during-deployment: true
 
     - name: Deploy Alma DataPrep Function
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_DATAPREP }}
         package: ./func_alma_dataprep/func_alma_dataprep.zip # Path to the downloaded zip artifact
+        scm-do-build-during-deployment: true
 
     - name: Deploy Alma Notifier Function
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_NOTIFIER }}
         package: ./func_alma_notifier/func_alma_notifier.zip # Path to the downloaded zip artifact
+        scm-do-build-during-deployment: true
 
     # Optional: Azure Logout
     # - name: Azure Logout
