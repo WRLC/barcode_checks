@@ -47,27 +47,46 @@ jobs:
         run: poetry cache clear . --all -n
         shell: bash
 
-      - name: Export requirements.txt for ${{ matrix.function_dir }}
+      - name: Export requirements.txt for ${{ matrix.function_dir }} (DEBUG)
         run: |
           echo "--- Preparing Poetry environment for ${{ matrix.function_dir }} ---"
           cd ${{ matrix.function_dir }}
 
-          # Add this step: Install plugins and prepare Poetry for this project
           echo "--- Running poetry install (for plugins/setup) ---"
-          poetry install --no-root --sync # --no-root avoids installing the function app itself, --sync ensures only locked deps are present (good practice)
+          poetry install --no-root --sync
 
-          echo "--- Running Export (Excluding shared_code edit line) ---"
-          # Exclude the editable install line - we copy shared_code manually later
-          # Use --without dev if you have dev dependencies you don't want exported
-          poetry export -f requirements.txt --output requirements.txt --without-hashes --without dev | grep -v -- "-e file:" > requirements.txt
+          echo "--- Running Export (DEBUG - Step 1: Verbose Export Only) ---"
+          # Run export with max verbosity, let it write to stdout
+          poetry -vvv export -f requirements.txt --without-hashes --without dev
+          export_exit_code=$? # Capture exit code
+          echo "--- Export Exit Code: $export_exit_code ---"
+          if [ $export_exit_code -ne 0 ]; then
+            echo "!!! Poetry export failed !!!"
+            exit $export_exit_code # Exit the script if export failed
+          fi
 
-          echo "--- requirements.txt content ---"
-          cat requirements.txt
-          echo "--- End requirements.txt content ---"
+          echo "--- Running Export (DEBUG - Step 2: Full Command with Verbose Export) ---"
+          # Now run the full command, still with verbose export
+          poetry -vvv export -f requirements.txt --without-hashes --without dev | grep -v -- "-e file:" > requirements.txt
+          pipeline_exit_code=$? # Capture exit code of the pipeline (due to pipefail)
+          echo "--- Pipeline Exit Code: $pipeline_exit_code ---"
+          if [ $pipeline_exit_code -ne 0 ]; then
+            echo "!!! Pipeline (export | grep > file) failed !!!"
+            # Don't exit here yet, let's see the content check
+          fi
 
+          echo "--- requirements.txt content (DEBUG) ---"
+          cat requirements.txt || echo "requirements.txt might be empty or failed to generate"
+          echo "--- End requirements.txt content (DEBUG) ---"
+          
           # Verify cryptography is NOT pinned here (should use version from lock file)
           echo "--- Checking for manual cryptography pin ---"
           grep "cryptography==" requirements.txt || echo "Cryptography not pinned in requirements.txt (good)"
+
+          # Final check on pipeline exit code
+          if [ $pipeline_exit_code -ne 0 ]; then
+            exit $pipeline_exit_code
+          fi
 
           cd ..
         shell: bash
