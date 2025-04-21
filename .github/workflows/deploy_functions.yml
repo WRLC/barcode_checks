@@ -58,8 +58,9 @@ jobs:
       - name: Export requirements.txt for ${{ matrix.function_dir }}
         run: |
           cd ${{ matrix.function_dir }}
-          echo "--- Running Export ---"
-          poetry export -f requirements.txt --output requirements.txt --without-hashes
+          echo "--- Running Export (Excluding shared_code) ---"
+          # Export dependencies BUT filter out the editable shared_code path
+          poetry export -f requirements.txt --without-hashes | grep -v "shared-code" > requirements.txt
           echo "--- requirements.txt content ---"
           cat requirements.txt
           echo "--- End requirements.txt content ---"
