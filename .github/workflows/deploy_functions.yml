@@ -82,21 +82,17 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build # This job runs only after the build job succeeds
-    environment: production # Optional: Define environment for approvals/secrets
+    needs: build
+    environment: production
 
     steps:
     - name: Download all function app artifacts
       uses: actions/download-artifact@v4
-      # Downloads all artifacts created in the 'build' job
-      # They will be placed in directories named after the artifacts (e.g., ./func_alma_apifetcher/)
-      # Correction: download-artifact v4 downloads files directly if single file per artifact
-      # So we will have func_alma_apifetcher.zip, etc. in the root
+      # Downloads artifacts directly to the root: ./func_alma_apifetcher.zip, etc.
 
     - name: Azure Login
       uses: azure/login@v2
       with:
-        # Use OIDC (preferred) - requires configuration in Azure AD & GitHub
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
@@ -105,22 +101,25 @@ jobs:
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_FETCHER }}
-        package: ./func_alma_apifetcher/func_alma_apifetcher.zip # Path to the downloaded zip artifact
-        scm-do-build-during-deployment: true
+        # **** CORRECTED PATH ****
+        package: ./func_alma_apifetcher.zip
+        scm-do-build-during-deployment: true # Keep this!
 
     - name: Deploy Alma DataPrep Function
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_DATAPREP }}
-        package: ./func_alma_dataprep/func_alma_dataprep.zip # Path to the downloaded zip artifact
-        scm-do-build-during-deployment: true
+        # **** CORRECTED PATH ****
+        package: ./func_alma_dataprep.zip
+        scm-do-build-during-deployment: true # Keep this!
 
     - name: Deploy Alma Notifier Function
       uses: azure/functions-action@v1
       with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_NOTIFIER }}
-        package: ./func_alma_notifier/func_alma_notifier.zip # Path to the downloaded zip artifact
-        scm-do-build-during-deployment: true
+        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_NOTIFIER }} # Check env var name consistency?
+        # **** CORRECTED PATH ****
+        package: ./func_alma_notifier.zip
+        scm-do-build-during-deployment: true # Keep this!
 
     # Optional: Azure Logout
     # - name: Azure Logout
