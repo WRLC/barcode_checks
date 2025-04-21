@@ -80,25 +80,21 @@ jobs:
           fi
           cd ..
 
-      - name: Ensure SQLAlchemy is in requirements.txt for fetcher
+      - name: Install critical dependencies directly in function directory
         run: |
-          cd func_alma_apifetcher
-          if ! grep -q "sqlalchemy==" requirements.txt; then
-            echo "sqlalchemy" >> requirements.txt
-          fi
-          cd ..
-        shell: bash
-
-      - name: Archive function app package ${{ matrix.function_dir }}
-        run: |
-          # First copy shared_code into each function directory
-          cp -r shared_code ${{ matrix.function_dir }}/
-    
-          # Then create the zip file from the function directory
           cd ${{ matrix.function_dir }}
-          zip -r ../${{ matrix.function_dir }}.zip . -x ".venv/" ".git/" "pycache/" ".pyc" ".pytest_cache/" "poetry.lock" ".poetry/" ".python_packages/*"
+          pip install SQLAlchemy==2.0.23 PyMySQL==1.1.1 -t .
           cd ..
-        # shell: bash
+            - name: Archive function app package ${{ matrix.function_dir }}
+              run: |
+                # First copy shared_code into each function directory
+                cp -r shared_code ${{ matrix.function_dir }}/
+
+                # Then create the zip file from the function directory
+                cd ${{ matrix.function_dir }}
+                zip -r ../${{ matrix.function_dir }}.zip . -x ".venv/" ".git/" "pycache/" ".pyc" ".pytest_cache/" "poetry.lock" ".poetry/" ".python_packages/*"
+                cd ..
+              # shell: bash
 
       - name: Upload function app artifact ${{ matrix.function_dir }}
         uses: actions/upload-artifact@v4
@@ -128,21 +124,21 @@ jobs:
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_FETCHER }}
         package: ./func_alma_apifetcher/func_alma_apifetcher.zip
-        scm-do-build-during-deployment: true
-        enable-oryx-build: true
+        scm-do-build-during-deployment: false
+        enable-oryx-build: false
 
     - name: Deploy Alma DataPrep Function
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_DATAPREP }}
         package: ./func_alma_dataprep/func_alma_dataprep.zip
-        scm-do-build-during-deployment: true
-        enable-oryx-build: true
+        scm-do-build-during-deployment: false
+        enable-oryx-build: false
 
     - name: Deploy Alma Notifier Function
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_NOTIFIER }}
         package: ./func_alma_notifier/func_alma_notifier.zip
-        scm-do-build-during-deployment: true
-        enable-oryx-build: true
+        scm-do-build-during-deployment: false
+        enable-oryx-build: false
