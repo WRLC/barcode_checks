@@ -85,16 +85,17 @@ jobs:
           cd ${{ matrix.function_dir }}
           pip install SQLAlchemy==2.0.23 PyMySQL==1.1.1 -t .
           cd ..
-            - name: Archive function app package ${{ matrix.function_dir }}
-              run: |
-                # First copy shared_code into each function directory
-                cp -r shared_code ${{ matrix.function_dir }}/
 
-                # Then create the zip file from the function directory
-                cd ${{ matrix.function_dir }}
-                zip -r ../${{ matrix.function_dir }}.zip . -x ".venv/" ".git/" "pycache/" ".pyc" ".pytest_cache/" "poetry.lock" ".poetry/" ".python_packages/*"
-                cd ..
-              # shell: bash
+      - name: Archive function app package ${{ matrix.function_dir }}
+        run: |
+          # First copy shared_code into each function directory
+          cp -r shared_code ${{ matrix.function_dir }}/
+
+          # Then create the zip file from the function directory
+          cd ${{ matrix.function_dir }}
+          zip -r ../${{ matrix.function_dir }}.zip . -x ".venv/" ".git/" "pycache/" ".pyc" ".pytest_cache/" "poetry.lock" ".poetry/" ".python_packages/*"
+          cd ..
+        # shell: bash
 
       - name: Upload function app artifact ${{ matrix.function_dir }}
         uses: actions/upload-artifact@v4
