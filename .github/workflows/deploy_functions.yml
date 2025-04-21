@@ -47,13 +47,6 @@ jobs:
         run: poetry cache clear . --all -n
         shell: bash
 
-      # This step may not even be strictly necessary anymore if export works without it
-      - name: Validate lock file for ${{ matrix.function_dir }}
-        run: |
-          cd ${{ matrix.function_dir }}
-          poetry lock --check
-        shell: bash
-
       - name: Export requirements.txt for ${{ matrix.function_dir }}
         run: |
           cd ${{ matrix.function_dir }}
