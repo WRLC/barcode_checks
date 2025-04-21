@@ -52,9 +52,14 @@ jobs:
           echo "--- Preparing Poetry environment for ${{ matrix.function_dir }} ---"
           cd ${{ matrix.function_dir }}
 
-          echo "--- Running poetry install (for plugins/setup) ---"
-          poetry install --no-root --sync
+          echo "--- Verifying Poetry version BEFORE install ---"
+          poetry --version
+          which poetry
 
+          echo "--- Running poetry install (for plugins/setup) ---"
+          poetry install --no-root --sync # <-- This is where it fails
+
+          
           echo "--- Running Export (Excluding shared_code edit line) ---"
           poetry export -f requirements.txt --output requirements.txt --without-hashes --without dev | grep -v -- "-e file:" > requirements.txt
           export_exit_code=$? # Capture exit code of the pipeline (due to pipefail)
