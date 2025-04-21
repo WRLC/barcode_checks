@@ -69,8 +69,12 @@ jobs:
 
       - name: Archive function app package ${{ matrix.function_dir }}
         run: |
+          # First copy shared_code into each function directory
+          cp -r shared_code ${{ matrix.function_dir }}/
+    
+          # Then create the zip file from the function directory
           cd ${{ matrix.function_dir }}
-          zip -r ../${{ matrix.function_dir }}.zip . -x ".venv/" ".git/" "pycache/" ".pyc" ".pytest_cache/" "poetry.lock" "pyproject.toml" ".poetry/" ".python_packages/*"
+          zip -r ../${{ matrix.function_dir }}.zip . -x ".venv/" ".git/" "pycache/" ".pyc" ".pytest_cache/" "poetry.lock" ".poetry/" ".python_packages/*"
           cd ..
         # shell: bash
 

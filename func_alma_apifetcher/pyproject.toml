@@ -31,10 +31,6 @@ alembic = "^1.15.2"
 python-dotenv = "^1.1.0"
 
 
-# Reference the local shared_code directory
-shared-code = { path = "../shared_code", develop = true }
-
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

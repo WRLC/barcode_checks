@@ -985,35 +985,6 @@ requests = ">=2.0.0"
 rsa = ["oauthlib[signedtoken] (>=3.0.0)"]
 
 [[package]]
-name = "shared-code"
-version = "0.1.0"
-description = "Shared code for Alma API processing"
-optional = false
-python-versions = "^3.11"
-groups = ["main"]
-files = []
-develop = true
-
-[package.dependencies]
-alembic = "^1.15.2"
-azure-communication-email = "^1.0.1b1"
-azure-core = "^1.33.0"
-azure-functions = "^1.18.0"
-azure-identity = "^1.21.0"
-azure-storage-blob = "^12.25.1"
-azure-storage-queue = "^12.12.0"
-jinja2 = "^3.1.6"
-pandas = "^2.2.3"
-pymysql = "^1.1.1"
-python-dotenv = "^1.1.0"
-requests = "^2.32.3"
-sqlalchemy = "^2.0.40"
-
-[package.source]
-type = "directory"
-url = "../shared_code"
-
-[[package]]
 name = "six"
 version = "1.17.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -1184,4 +1155,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "808c50ff59e757b952a728176d0136f62b07e644769d36b7ae83bc8fce5e548d"
+content-hash = "6099a8b53eef6e963adb10305643a1b37afcc181bbbf30ac283203abf7595c68"
