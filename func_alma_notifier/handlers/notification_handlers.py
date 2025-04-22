@@ -166,13 +166,47 @@ def report_notifier(msg: func.QueueMessage) -> None:
                 record_count = len(df)
                 logging.debug(f"Job {job_id}: Read {record_count} rows into DataFrame.")
                 if not df.empty:
-                    html_table = df.to_html(
-                        index=False, border=1, escape=True, na_rep=''
-                    ).replace(
-                        'border="1"',
-                        'border="1" style="border-collapse: collapse; border: 1px solid black;"')
-                    logging.debug(f"Job {job_id}: Converted DataFrame to HTML string.")
-                else:
+                    columns_to_drop = []
+                    for col in df.columns:
+                        # Check if column header is the string "0"
+                        if col == '0':
+                            # Check if ALL values in the column are also the string "0"
+                            # Use astype(str) for robust comparison, in case pandas inferred numeric type
+                            if (df[col].astype(str) == '0').all():
+                                columns_to_drop.append(col)
+                                logging.debug(
+                                    f"Job {job_id}: Identified column '{col}' for removal (header and all values are "
+                                    f"'0')."
+                                )
+
+                    if columns_to_drop:
+                        logging.info(
+                            f"Job {job_id}: Removing {len(columns_to_drop)} column(s) where header and all values are "
+                            f"'0': {columns_to_drop}"
+                        )
+                        df.drop(columns=columns_to_drop, inplace=True)
+                    else:
+                        logging.debug(f"Job {job_id}: No columns met the criteria for removal.")
+
+                    # --- END MODIFICATION ---
+
+                    # Proceed with HTML generation using the potentially modified DataFrame
+                    if not df.empty:  # Check again in case all columns were dropped (unlikely but possible)
+                        html_table = df.to_html(
+                            index=False, border=1, escape=True, na_rep=''
+                        ).replace(
+                            'border="1"',
+                            'border="1" style="border-collapse: collapse; border: 1px solid black;"'
+                        )
+                        logging.debug(f"Job {job_id}: Converted DataFrame to HTML string.")
+                    else:
+                        html_table = (
+                            f"<i>Report '{analysis_name}' generated, but contained no displayable data columns after "
+                            f"filtering.</i><br>"
+                            f"(Report Path: {original_report_path or 'N/A'})"
+                        )
+
+                else:  # Original df was empty
                     html_table = (
                         f"<i>Report '{analysis_name}' generated, but contained no data rows.</i><br>"
                         f"(Report Path: {original_report_path or 'N/A'})"
