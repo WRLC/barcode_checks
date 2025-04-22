@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         function_dir: [ func_alma_apifetcher, func_alma_dataprep, func_alma_notifier ]
