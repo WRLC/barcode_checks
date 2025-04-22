@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ email_caption }}</title> {/* Use caption/subject for page title */}
+    <title>{{ email_caption }}</title>
     <style>
       body { font-family: sans-serif; font-size: 0.95em; }
       table { border-collapse: collapse; margin-top: 15px; font-size: 0.9em; }
@@ -13,11 +13,9 @@
 </head>
 <body>
     {# --- Email Body --- #}
-    <p>Please find the results for the report: '{{ analysis_name | default(email_caption) }}' below.</p>
+    <h1>{{ email_caption) }}'</h1>
 
     {# --- Render HTML Table --- #}
-    {# The 'data_table_html' variable will contain the pre-generated HTML from pandas #}
-    {# Use the 'safe' filter to prevent Jinja2 from escaping the HTML tags within the table #}
     {{ data_table_html | safe }}
 
     {# --- Footer --- #}
@@ -28,6 +26,6 @@
         {# Add report path if desired #}
         {% if original_report_path %}Report Path: {{ original_report_path }}{% endif %}
     </p>
-
+    <p>This is an automated notification. Replies to this email address are not monitored.</p>
 </body>
 </html>
