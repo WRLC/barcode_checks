@@ -19,12 +19,12 @@ DEFAULT_CHUNK_LIMIT = 1000
 
 
 # --- Function Definition ---
-@bp.queue_trigger(queue_name="ApiFetchQueue", connection=STORAGE_CONNECTION_STRING_NAME, arg_name="msg")
+@bp.queue_trigger(queue_name="apifetchqueue", connection=STORAGE_CONNECTION_STRING_NAME, arg_name="msg")
 @bp.queue_output(
-    queue_name="ApiFetchQueue", connection=STORAGE_CONNECTION_STRING_NAME, arg_name="outputPaginationQueue"
+    queue_name="apifetchqueue", connection=STORAGE_CONNECTION_STRING_NAME, arg_name="outputPaginationQueue"
 )
 @bp.queue_output(
-    queue_name="DataCombineQueue", connection=STORAGE_CONNECTION_STRING_NAME, arg_name="outputCombineQueue"
+    queue_name="datacombinequeue", connection=STORAGE_CONNECTION_STRING_NAME, arg_name="outputCombineQueue"
 )
 def alma_analytics_fetcher(
         msg: func.QueueMessage,
