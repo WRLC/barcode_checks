@@ -12,6 +12,7 @@ env:
   AZURE_FUNCTIONAPP_NAME_FETCHER: 'func-alma-apifetcher'
   AZURE_FUNCTIONAPP_NAME_DATAPREP: 'func-alma-dataprep'
   AZURE_FUNCTIONAPP_NAME_NOTIFIER: 'func-alam-notifier'
+  AZURE_FUNCTIONAPP_NAME_SCHEDULER: 'func-alma-scheduler'
   AZURE_FUNCTIONS_IMAGE: mcr.microsoft.com/azure-functions/python:4-python3.11
 
 permissions:
@@ -23,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        function_dir: [ func_alma_apifetcher, func_alma_dataprep, func_alma_notifier ]
+        function_dir: [ func_alma_apifetcher, func_alma_dataprep, func_alma_notifier, func_alma_scheduler ]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -143,4 +144,11 @@ jobs:
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_NOTIFIER }}
         package: ./func_alma_notifier/func_alma_notifier.zip
+        scm-do-build-during-deployment: false
+
+    - name: Deploy Alma Scheduler Function
+      uses: azure/functions-action@v1
+      with:
+        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_SCHEDULER }}
+        package: ./func_alma_scheduler/func_alma_scheduler.zip
         scm-do-build-during-deployment: false
