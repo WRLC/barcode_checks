@@ -9,6 +9,11 @@ packages = [
     {include = "shared_code"}
 ]
 
+
+[tool.poetry.requires-plugins] # Keep if using export in build
+poetry-plugin-export = ">=1.8"
+
+
 [tool.poetry.dependencies]
 python = "^3.11"
 azure-core = "^1.33.0"
@@ -26,8 +31,9 @@ alembic = "^1.15.2"
 python-dotenv = "^1.1.0"
 
 
-[tool.poetry.requires-plugins] # Keep if using export in build
-poetry-plugin-export = ">=1.8"
+[tool.poetry.group.dev.dependencies]
+# No dev dependencies for this project
+
 
 [build-system]
 requires = ["poetry-core"]
