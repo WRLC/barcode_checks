@@ -55,35 +55,15 @@ jobs:
           # Consider changing to 'poetry sync' as per deprecation warning, though not the cause of failure
           poetry install --no-root --sync
 
-          echo "--- Running Export (DEBUG - Isolate Export Command) ---"
           # Run export directly, redirect output, capture exit code
           poetry export -f requirements.txt --output temp_requirements.txt --without-hashes --without dev
 
-          echo "--- Export succeeded, now filtering with grep ---"
           grep -v -- "-e file:" temp_requirements.txt > requirements.txt
 
           # Clean up temporary file
           rm temp_requirements.txt
 
-          echo "--- Final requirements.txt content ---"
-          cat requirements.txt
-          echo "--- End requirements.txt content ---"
-
-          echo "--- Checking for manual cryptography pin ---"
-          grep "cryptography==" requirements.txt || echo "Cryptography not pinned in requirements.txt (good)"
-
           cd ..
-        shell: bash
-
-      - name: Install dependencies into .python_packages using Docker for ${{ matrix.function_dir }}
-        run: |
-          echo "Pulling Azure Functions image: ${{ env.AZURE_FUNCTIONS_IMAGE }}"
-          docker pull ${{ env.AZURE_FUNCTIONS_IMAGE }}
-          echo "Running pip install in Docker container for ${{ matrix.function_dir }}"
-          docker run --rm \
-            -v "${{ github.workspace }}/${{ matrix.function_dir }}:/src" \
-            ${{ env.AZURE_FUNCTIONS_IMAGE }} \
-            pip install --target="/src/.python_packages/lib/site-packages" -r /src/requirements.txt
         shell: bash
 
       - name: Copy shared_code into ${{ matrix.function_dir }}
@@ -129,18 +109,18 @@ jobs:
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_FETCHER }}
         package: ./func_alma_apifetcher/func_alma_apifetcher.zip
-        scm-do-build-during-deployment: false
+        scm-do-build-during-deployment: true
 
     - name: Deploy Alma DataPrep Function
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_DATAPREP }}
         package: ./func_alma_dataprep/func_alma_dataprep.zip
-        scm-do-build-during-deployment: false
+        scm-do-build-during-deployment: true
 
     - name: Deploy Alma Notifier Function
       uses: azure/functions-action@v1
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME_NOTIFIER }}
         package: ./func_alma_notifier/func_alma_notifier.zip
-        scm-do-build-during-deployment: false
+        scm-do-build-during-deployment: true
