@@ -4,8 +4,12 @@
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "excludedTypes": "Request"
+        "excludedTypes": "Request",
+        "percentage": 10
       }
+    },
+    "logLevel": {
+      "default": "Warning"
     }
   },
   "extensionBundle": {
