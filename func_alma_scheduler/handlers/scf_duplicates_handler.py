@@ -28,7 +28,12 @@ def scf_duplicates_timer(scfDupTimer: func.TimerRequest) -> None:
     logging.info(f'Python timer trigger function initiating job for "{timer_config_name}".')
 
     try:
-        _trigger_fetcher_job(timer_config_name)
+        # Generate Job ID
+        timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d%H%M%S")
+        unique_id = str(uuid.uuid4())[:8]
+        job_id = f"timer_{timer_config_name}_{timestamp}_{unique_id}"  # Use passed name
+
+        _trigger_fetcher_job(timer_config_name, job_id, 1, 1)
     except Exception as e:
         logging.error(f"Error during '{timer_config_name}' timer execution: {e}", exc_info=True)
         raise
