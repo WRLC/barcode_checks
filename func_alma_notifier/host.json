@@ -2,17 +2,14 @@
   "version": "2.0",
   "logging": {
     "applicationInsights": {
-      "samplingSettings": { "isEnabled": true, "excludedTypes": "Request" }
+      "samplingSettings": {
+        "isEnabled": true,
+        "excludedTypes": "Request",
+        "percentage": 10
+      }
     },
     "logLevel": {
-      "default": "Information",
-      "Function": "Debug",
-      "Host.Startup": "Information",
-      "Host.Results": "Information",
-      "Host.Aggregator": "Warning",
-      "Microsoft": "Warning",
-      "Azure": "Warning",
-      "Worker": "Information"
+      "default": "Warning"
     }
   },
   "functionTimeout": "00:02:00",
