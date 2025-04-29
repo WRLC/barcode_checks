@@ -6,7 +6,7 @@ import azure.functions as func
 import pandas as pd
 import io
 import pathlib
-from typing import Union, Dict, List, Optional
+from typing import List, Optional
 from jinja2 import Environment, FileSystemLoader, select_autoescape, TemplateNotFound
 from azure.communication.email import EmailClient
 from azure.identity import DefaultAzureCredential
@@ -160,6 +160,10 @@ def report_notifier(msg: func.QueueMessage) -> None:
         html_table = "Error generating table from data."
         record_count = 0
         try:
+            if csv_data_string == "[]":
+                logging.warning(f"Job {job_id}: CSV data is empty (empty list).")
+                csv_data_string = None
+
             if csv_data_string:
                 csv_io = io.StringIO(csv_data_string)
                 df = pd.read_csv(csv_io)
@@ -208,7 +212,7 @@ def report_notifier(msg: func.QueueMessage) -> None:
 
                 else:  # Original df was empty
                     html_table = (
-                        f"<i>Report '{analysis_name}' generated, but contained no data rows.</i><br>"
+                        f"<i>Report '{analysis_name}' but contained no data.</i><br>"
                         f"(Report Path: {original_report_path or 'N/A'})"
                     )
             else:

@@ -1,18 +1,14 @@
 """Helper functions for timer triggers."""
 
-import azure.functions as func
 import logging
-import os
 import json
-import datetime
-import uuid
 from shared_code.database import get_db_session
 from shared_code.database.models import (
     TimerTriggerConfig, TriggerConfigIZAnalysisLink, IZAnalysisConnector,
     InstitutionZone, Analysis
 )
-from sqlalchemy import select, join
-from shared_code.utils import storage_helpers, config_helpers
+from sqlalchemy import select
+from shared_code.utils import storage_helpers
 
 # --- Constants ---
 # Queue name remains constant for this handler's purpose
@@ -28,7 +24,12 @@ INITIAL_HEADER_MAP = None
 
 
 # --- Reusable Helper Function ---
-def _trigger_fetcher_job(timer_config_name: str):
+def _trigger_fetcher_job(
+        timer_config_name: str,
+        job_id: str,
+        report_sequence_number: int,
+        total_reports_expected: int
+) -> None:
     """
     Reads config for the given timer_config_name, gets linked analysis details,
     constructs a fetcher message using hardcoded defaults and DB data,
@@ -78,11 +79,6 @@ def _trigger_fetcher_job(timer_config_name: str):
                 f"Aborting job trigger.")
             return
 
-        # 4. Generate Job ID
-        timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d%H%M%S")
-        unique_id = str(uuid.uuid4())[:8]
-        job_id = f"timer_{timer_config_name}_{timestamp}_{unique_id}"  # Use passed name
-
         # 5. Construct the FETCHER queue message payload
         message_payload = {
             "job_id": job_id,
@@ -96,7 +92,9 @@ def _trigger_fetcher_job(timer_config_name: str):
             "limit": DEFAULT_LIMIT,  # Hardcoded
             "header_map": INITIAL_HEADER_MAP,  # Hardcoded
             "analysis_id": analysis_id,
-            "analysis_name": analysis_name
+            "analysis_name": analysis_name,
+            "report_sequence_number": report_sequence_number,
+            "total_reports_expected": total_reports_expected
         }
         message_str = json.dumps(message_payload, ensure_ascii=False)
 
