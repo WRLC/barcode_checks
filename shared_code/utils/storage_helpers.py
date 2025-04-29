@@ -1,12 +1,11 @@
 """Storage Helpers for Azure Blob and Queue Services"""
 
-import json
 import logging
 from typing import Dict, List, Union, Optional
-from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient, ContentSettings
-from azure.storage.queue import QueueServiceClient, QueueClient, TextBase64EncodePolicy, QueueMessage
+from azure.storage.blob import BlobServiceClient, ContentSettings
+from azure.storage.queue import QueueServiceClient, QueueClient, TextBase64EncodePolicy
 from azure.core.exceptions import ResourceNotFoundError, ResourceExistsError
-from .config_helpers import get_required_env_var
+from .config_helpers import get_required_env_var, ConfigurationError
 
 # Cache the connection string locally within the module
 _STORAGE_CONNECTION_STRING: Optional[str] = None
@@ -183,8 +182,7 @@ def download_blob_as_text(container_name: str, blob_name: str, encoding: str = '
         raise
     except UnicodeDecodeError as e:
         logging.error(f"Failed to decode blob {container_name}/{blob_name} using encoding '{encoding}': {e}")
-        raise UnicodeDecodeError(
-            f"Failed to decode blob {container_name}/{blob_name} using encoding '{encoding}': {e}") from e
+        raise e
     except Exception as e:
         logging.error(f"Failed to download blob {container_name}/{blob_name} as text: {e}")
         raise

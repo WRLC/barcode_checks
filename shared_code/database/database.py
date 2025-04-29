@@ -1,7 +1,6 @@
 """Database connection and session management for SQLAlchemy."""
 
 import logging
-import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session as SQLAlchemySession  # Rename to avoid confusion
 from contextlib import contextmanager

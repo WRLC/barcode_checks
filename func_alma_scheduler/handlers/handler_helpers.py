@@ -1,18 +1,14 @@
 """Helper functions for timer triggers."""
 
-import azure.functions as func
 import logging
-import os
 import json
-import datetime
-import uuid
 from shared_code.database import get_db_session
 from shared_code.database.models import (
     TimerTriggerConfig, TriggerConfigIZAnalysisLink, IZAnalysisConnector,
     InstitutionZone, Analysis
 )
-from sqlalchemy import select, join
-from shared_code.utils import storage_helpers, config_helpers
+from sqlalchemy import select
+from shared_code.utils import storage_helpers
 
 # --- Constants ---
 # Queue name remains constant for this handler's purpose

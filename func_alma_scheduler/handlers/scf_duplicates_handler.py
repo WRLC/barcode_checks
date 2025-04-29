@@ -2,8 +2,6 @@
 
 import azure.functions as func
 import logging
-import os
-import json
 import datetime
 import uuid
 from .handler_helpers import _trigger_fetcher_job

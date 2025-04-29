@@ -28,6 +28,7 @@ jinja2 = "^3.1.6"
 requests = "^2.32.3"
 alembic = "^1.15.2"
 python-dotenv = "^1.1.0"
+azure-functions-durable = "^1.2.10"
 
 
 [tool.poetry.group.dev.dependencies]

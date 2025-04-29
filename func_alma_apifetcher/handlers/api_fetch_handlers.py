@@ -1,12 +1,10 @@
 """SQLAlchemy ORM models for the Alma API data."""
 
 import logging
-import json
 import azure.functions as func
-from typing import Union, Dict, List, Optional
-import datetime
+from typing import Dict, Optional
 from sqlalchemy import desc
-from shared_code.alma_client import AlmaClient, AlmaApiError, AlmaClientConfigurationError
+from shared_code.alma_client import AlmaClient
 from shared_code.utils import storage_helpers, data_utils, config_helpers
 from shared_code.database import session_scope, APIKey, InstitutionZone, AlmaApiPermission, ApiKeyPermission
 
@@ -170,7 +168,9 @@ def alma_analytics_fetcher(
             "alma_api_permission": permission_name_from_message,
             "header_map": map_for_next_step,
             "analysis_id": message_body.get("analysis_id"),  # Pass if present
-            "analysis_name": message_body.get("analysis_name")  # Pass if present
+            "analysis_name": message_body.get("analysis_name"),  # Pass if present
+            "report_sequence_number": message_body.get("report_sequence_number"),
+            "total_reports_expected": message_body.get("total_reports_expected")
         }
 
         if not is_finished and next_token:
