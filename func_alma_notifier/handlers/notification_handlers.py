@@ -160,9 +160,6 @@ def report_notifier(msg: func.QueueMessage) -> None:
         html_table = "Error generating table from data."
         record_count = 0
         try:
-            if csv_data_string == "[]":
-                logging.warning(f"Job {job_id}: CSV data is empty (empty list).")
-                csv_data_string = None
 
             if csv_data_string:
                 csv_io = io.StringIO(csv_data_string)
@@ -176,6 +173,7 @@ def report_notifier(msg: func.QueueMessage) -> None:
                         if col == '0':
                             # Check if ALL values in the column are also the string "0"
                             # Use astype(str) for robust comparison, in case pandas inferred numeric type
+                            # noinspection PyUnresolvedReferences
                             if (df[col].astype(str) == '0').all():
                                 columns_to_drop.append(col)
                                 logging.debug(
@@ -211,12 +209,11 @@ def report_notifier(msg: func.QueueMessage) -> None:
                         )
 
                 else:  # Original df was empty
-                    html_table = (
-                        f"<i>Report '{analysis_name}' but contained no data.</i><br>"
-                        f"(Report Path: {original_report_path or 'N/A'})"
-                    )
+                    logging.info(f"Job {job_id}: DataFrame is empty after CSV read.")
+                    return
             else:
-                html_table = "<i>Could not retrieve report data to display.</i>"
+                logging.info(f"Job {job_id}: No CSV data string available for conversion.")
+                return
         except Exception as convert_err:
             logging.error(f"Job {job_id}: Failed CSV->HTML conversion: {convert_err}", exc_info=True)
 
