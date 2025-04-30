@@ -83,7 +83,7 @@ def multi_report_email_workflow(context: df.DurableOrchestrationContext):
 
     # --- Call Activity to Merge Combined Reports ---
     # Define where the final merged report should go
-    final_merged_container = "alma-merged-reports"  # Example container for the final merged file
+    final_merged_container = "alma-combined-reports"  # Example container for the final merged file
     final_merged_blob_name = f"{job_id}/merged_report_{trigger_config_id}.json"  # Example final blob name
 
     merge_activity_input = {
@@ -98,9 +98,6 @@ def multi_report_email_workflow(context: df.DurableOrchestrationContext):
     merged_blob_info = {}
     try:
         logging.info(f"Job {job_id}: Calling activity 'merge_reports_activity'.")
-        # This activity needs to be created. It takes the list of combined blob paths,
-        # downloads, merges them, uploads the final result, and returns its path.
-        # Expected return: {"container_name": "alma-merged-reports", "blob_name": "job_id/merged_report_config_id.json"}
         merged_blob_info = yield context.call_activity("merge_reports_activity", merge_activity_input)
 
         merged_data_container = merged_blob_info.get("container_name")

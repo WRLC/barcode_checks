@@ -9,7 +9,7 @@
       }
     },
     "logLevel": {
-      "default": "Warning"
+      "default": "Information"
     }
   },
   "functionTimeout": "00:02:00",

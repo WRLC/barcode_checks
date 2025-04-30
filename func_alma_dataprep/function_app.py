@@ -9,6 +9,7 @@ from handlers.sub_orchestrators import multi_report
 from handlers.activities import combine_chunks
 from handlers.activities import merge_reports
 from handlers.activities import send_notifications
+from handlers.entities import report_tracker_entity
 
 # Define the main Function App instance
 app = func.FunctionApp()
@@ -20,6 +21,7 @@ app.register_functions(multi_report.bp)
 app.register_functions(combine_chunks.bp)
 app.register_functions(merge_reports.bp)
 app.register_functions(send_notifications.bp)
+app.register_functions(report_tracker_entity.bp)
 
 
 # Optional health check

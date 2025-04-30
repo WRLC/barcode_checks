@@ -76,7 +76,7 @@ class AlmaClient:
             headers: Optional[Dict] = None,  # Allow overriding default headers
             json_payload: Optional[Any] = None,  # For sending JSON body
             data_payload: Optional[Union[str, bytes]] = None,  # For sending form data or raw body
-            timeout: int = 60
+            timeout: int = 270
     ) -> requests.Response:
         """ Internal helper method to make HTTP requests. """
         url = f"{self.base_url}{api_path}"
