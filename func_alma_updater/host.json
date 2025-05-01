@@ -4,16 +4,25 @@
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "excludedTypes": "Request",
-        "percentage": 10
+        "excludedTypes": "Request"
       }
     },
     "logLevel": {
       "default": "Warning"
     }
   },
+  "functionTimeout": "00:10:00",
   "extensionBundle": {
     "id": "Microsoft.Azure.Functions.ExtensionBundle",
     "version": "[4.*, 5.0.0)"
+  },
+  "extensions": {
+    "queues": {
+      "maxPollingInterval": "00:00:10",
+      "visibilityTimeout": "00:01:00",
+      "batchSize": 8,
+      "maxDequeueCount": 5,
+      "newBatchThreshold": 4
+    }
   }
 }

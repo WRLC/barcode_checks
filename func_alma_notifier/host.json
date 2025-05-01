@@ -4,15 +4,14 @@
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "excludedTypes": "Request",
-        "percentage": 10
+        "excludedTypes": "Request"
       }
     },
     "logLevel": {
-      "default": "Information"
+      "default": "Warning"
     }
   },
-  "functionTimeout": "00:02:00",
+  "functionTimeout": "00:10:00",
   "extensionBundle": {
     "id": "Microsoft.Azure.Functions.ExtensionBundle",
     "version": "[4.*, 5.0.0)"
