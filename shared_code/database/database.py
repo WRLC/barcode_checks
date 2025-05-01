@@ -7,7 +7,7 @@ from contextlib import contextmanager
 from typing import Generator
 
 # Import config helper to get connection string
-from ..utils import config_helpers
+from shared_code.utils import config_helpers
 
 # Global engine and session factory (initialized once)
 _engine = None

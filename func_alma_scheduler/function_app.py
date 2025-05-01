@@ -2,14 +2,15 @@
 import azure.functions as func
 import logging
 
-# Import the blueprint from the handler file
-from handlers import scf_duplicates_handler
+# Import the blueprint from the handlers module
+from handlers import scf_duplicates_handler, scf_missing_incorrect_row_tray
 
 # Define the main Function App instance
-app = func.FunctionApp()  # Or ANONYMOUS
+app = func.FunctionApp()
 
-# Register the blueprint containing the timer trigger
-app.register_functions(scf_duplicates_handler.bp)  # Assumes blueprint named 'bp'
+# Register all trigger blueprints
+app.register_functions(scf_duplicates_handler.bp)
+app.register_functions(scf_missing_incorrect_row_tray.bp)
 
 
 # Optional health check

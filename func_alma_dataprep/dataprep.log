@@ -1,0 +1,1396 @@
+Found Python version 3.11.12 (python3).
+Selected out-of-process host.
+
+                  %%%%%%
+                 %%%%%%
+            @   %%%%%%    @
+          @@   %%%%%%      @@
+       @@@    %%%%%%%%%%%    @@@
+     @@      %%%%%%%%%%        @@
+       @@         %%%%       @@
+         @@      %%%       @@
+           @@    %%      @@
+                %%
+                %
+
+
+Azure Functions Core Tools
+Core Tools Version:       4.0.6610 Commit hash: N/A +0d55b5d7efe83d85d2b5c6e0b0a9c1b213e96256 (64-bit)
+Function Runtime Version: 4.1036.1.23224
+
+[2025-04-30T21:16:09.406Z] Valid directories for shared memory usage: 
+[2025-04-30T21:16:09.415Z] Starting Rpc Initialization Service.
+[2025-04-30T21:16:09.416Z] Initializing RpcServer
+[2025-04-30T21:16:09.433Z] Started AspNetCoreGrpcServer on http://127.0.0.1:65359.
+[2025-04-30T21:16:09.433Z] RpcServer initialized
+[2025-04-30T21:16:09.433Z] Rpc Initialization Service started.
+[2025-04-30T21:16:09.435Z] Startup operation '76178b9f-8128-4da9-9d29-9bdc98858fbd' with parent id '(null)' created.
+[2025-04-30T21:16:09.437Z] Startup operation '76178b9f-8128-4da9-9d29-9bdc98858fbd' starting.
+[2025-04-30T21:16:09.438Z] Building host: version spec: , startup suppressed: 'False', configuration suppressed: 'False', startup operation id: '76178b9f-8128-4da9-9d29-9bdc98858fbd'
+[2025-04-30T21:16:09.486Z] Host configuration applied.
+[2025-04-30T21:16:09.486Z] Reading host configuration file '/Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep/host.json'
+[2025-04-30T21:16:09.487Z] Host configuration file read:
+[2025-04-30T21:16:09.487Z] {
+[2025-04-30T21:16:09.487Z]   "version": "2.0",
+[2025-04-30T21:16:09.487Z]   "logging": {
+[2025-04-30T21:16:09.487Z]     "applicationInsights": {
+[2025-04-30T21:16:09.487Z]       "samplingSettings": {
+[2025-04-30T21:16:09.487Z]         "isEnabled": true,
+[2025-04-30T21:16:09.487Z]         "excludedTypes": "Request",
+[2025-04-30T21:16:09.487Z]         "percentage": 100
+[2025-04-30T21:16:09.487Z]       }
+[2025-04-30T21:16:09.487Z]     },
+[2025-04-30T21:16:09.487Z]     "logLevel": {
+[2025-04-30T21:16:09.487Z]       "default": "Debug"
+[2025-04-30T21:16:09.487Z]     }
+[2025-04-30T21:16:09.487Z]   },
+[2025-04-30T21:16:09.487Z]   "functionTimeout": "00:05:00",
+[2025-04-30T21:16:09.487Z]   "extensionBundle": {
+[2025-04-30T21:16:09.487Z]     "id": "Microsoft.Azure.Functions.ExtensionBundle",
+[2025-04-30T21:16:09.487Z]     "version": "[4.*, 5.0.0)"
+[2025-04-30T21:16:09.487Z]   },
+[2025-04-30T21:16:09.487Z]   "extensions": {
+[2025-04-30T21:16:09.487Z]     "queues": {
+[2025-04-30T21:16:09.487Z]       "maxPollingInterval": "00:00:05",
+[2025-04-30T21:16:09.487Z]       "visibilityTimeout": "00:01:00",
+[2025-04-30T21:16:09.487Z]       "batchSize": 8,
+[2025-04-30T21:16:09.487Z]       "maxDequeueCount": 5,
+[2025-04-30T21:16:09.487Z]       "newBatchThreshold": 4
+[2025-04-30T21:16:09.487Z]     }
+[2025-04-30T21:16:09.487Z]   }
+[2025-04-30T21:16:09.487Z] }
+[2025-04-30T21:16:09.490Z] Workers Directory set to: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers
+[2025-04-30T21:16:09.491Z] Found worker config: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/python/worker.config.json
+[2025-04-30T21:16:09.496Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME: python
+[2025-04-30T21:16:09.497Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME_VERSION: 3.11
+[2025-04-30T21:16:09.497Z] Added WorkerConfig for language: python
+[2025-04-30T21:16:09.497Z] Found worker config: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/java/worker.config.json
+[2025-04-30T21:16:09.504Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME: python
+[2025-04-30T21:16:09.504Z] FUNCTIONS_WORKER_RUNTIME set to python. Skipping WorkerConfig for language: java
+[2025-04-30T21:16:09.504Z] Found worker config: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/powershell/worker.config.json
+[2025-04-30T21:16:09.504Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME: python
+[2025-04-30T21:16:09.504Z] FUNCTIONS_WORKER_RUNTIME set to python. Skipping WorkerConfig for language: powershell
+[2025-04-30T21:16:09.504Z] Found worker config: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/node/worker.config.json
+[2025-04-30T21:16:09.504Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME: python
+[2025-04-30T21:16:09.504Z] FUNCTIONS_WORKER_RUNTIME set to python. Skipping WorkerConfig for language: node
+[2025-04-30T21:16:09.505Z] Looking for extension bundle Microsoft.Azure.Functions.ExtensionBundle at /Users/trb74/.azure-functions-core-tools/Functions/ExtensionBundles/Microsoft.Azure.Functions.ExtensionBundle
+[2025-04-30T21:16:09.505Z] Found a matching extension bundle at /Users/trb74/.azure-functions-core-tools/Functions/ExtensionBundles/Microsoft.Azure.Functions.ExtensionBundle/4.21.0
+[2025-04-30T21:16:09.508Z] Loading functions metadata
+[2025-04-30T21:16:09.509Z] Worker indexing is enabled
+[2025-04-30T21:16:09.510Z] Fetching metadata for workerRuntime: python
+[2025-04-30T21:16:09.510Z] Reading functions metadata (Worker)
+[2025-04-30T21:16:09.510Z] Host is starting up, initializing language worker channel
+[2025-04-30T21:16:09.510Z] Initializing language worker channel for runtime:python
+[2025-04-30T21:16:09.511Z] Creating language worker channel for runtime:python
+[2025-04-30T21:16:09.520Z] Using OrderedInvocationMessageDispatcherFactory.
+[2025-04-30T21:16:09.520Z] Unable to resolve ScriptJobHostOptions
+[2025-04-30T21:16:09.520Z] Adding webhost language worker channel for runtime: python. workerId:94d2e643-2f2f-43b1-868b-690396872918
+[2025-04-30T21:16:09.521Z] Initiating Worker Process start up
+[2025-04-30T21:16:09.521Z] [channel] processing reader loop for worker 94d2e643-2f2f-43b1-868b-690396872918:
+[2025-04-30T21:16:09.525Z] Starting worker process with FileName:python3 WorkingDirectory:/Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep Arguments: "/opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/python/3.11/OSX/Arm64/worker.py" --host 127.0.0.1 --port 65359 --workerId 94d2e643-2f2f-43b1-868b-690396872918 --requestId 0f656d92-0d89-4cb4-b556-73fe0a387437 --grpcMaxMessageLength 2147483647 --functions-uri http://127.0.0.1:65359/ --functions-worker-id 94d2e643-2f2f-43b1-868b-690396872918 --functions-request-id 0f656d92-0d89-4cb4-b556-73fe0a387437 --functions-grpc-max-message-length 2147483647
+[2025-04-30T21:16:09.540Z] python3 process with Id=47188 started
+[2025-04-30T21:16:09.638Z]  INFO: Starting Azure Functions Python Worker.
+[2025-04-30T21:16:09.638Z]  INFO: Worker ID: 94d2e643-2f2f-43b1-868b-690396872918, Request ID: 0f656d92-0d89-4cb4-b556-73fe0a387437, Host Address: 127.0.0.1:65359
+[2025-04-30T21:16:09.760Z]  INFO: Successfully opened gRPC channel to 127.0.0.1:65359 
+[2025-04-30T21:16:09.760Z]  INFO: Detaching console logging.
+[2025-04-30T21:16:11.815Z] Established RPC channel. WorkerId: 94d2e643-2f2f-43b1-868b-690396872918
+[2025-04-30T21:16:11.821Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: StartStream
+[2025-04-30T21:16:11.822Z] Switched to gRPC logging.
+[2025-04-30T21:16:11.822Z] Worker Process started. Received StartStream message
+[2025-04-30T21:16:11.834Z] Received WorkerInitRequest, python version 3.11.12 (main, Apr  8 2025, 14:15:29) [Clang 16.0.0 (clang-1600.0.26.6)], worker version 4.31.0, request ID 0f656d92-0d89-4cb4-b556-73fe0a387437. App Settings state: PYTHON_THREADPOOL_THREAD_COUNT: 1000 | PYTHON_ENABLE_WORKER_EXTENSIONS: False. To enable debug level logging, please refer to https://aka.ms/python-enable-debug-logging
+[2025-04-30T21:16:11.898Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: WorkerInitResponse
+[2025-04-30T21:16:11.898Z] Received WorkerInitResponse. Worker process initialized
+[2025-04-30T21:16:11.899Z] Worker capabilities: [TypedDataCollection, true], [RawHttpBodyBytes, true], [RpcHttpTriggerMetadataRemoved, true], [SharedMemoryDataTransfer, true], [RpcHttpBodyOnly, true], [WorkerStatus, true]
+[2025-04-30T21:16:11.931Z] Worker metadata: { "runtimeName": "python", "runtimeVersion": "3.11", "workerVersion": "4.31.0", "workerBitness": "arm64" }
+[2025-04-30T21:16:11.941Z] Updating capabilities using Merge strategy. Current: {} Incoming: {"TypedDataCollection":"true","RawHttpBodyBytes":"true","RpcHttpTriggerMetadataRemoved":"true","SharedMemoryDataTransfer":"true","RpcHttpBodyOnly":"true","WorkerStatus":"true"}
+[2025-04-30T21:16:11.941Z] Updated capabilities: {"TypedDataCollection":"true","RawHttpBodyBytes":"true","RpcHttpTriggerMetadataRemoved":"true","SharedMemoryDataTransfer":"true","RpcHttpBodyOnly":"true","WorkerStatus":"true"}
+[2025-04-30T21:16:11.942Z] Adding WebHost language worker channel for runtime: python. workerId:94d2e643-2f2f-43b1-868b-690396872918
+[2025-04-30T21:16:11.942Z] Initializing webhost language worker channel for runtime: python. workerId:94d2e643-2f2f-43b1-868b-690396872918
+[2025-04-30T21:16:11.942Z] Found initialized language worker channel for runtime: python workerId:94d2e643-2f2f-43b1-868b-690396872918
+[2025-04-30T21:16:11.942Z] Fetching worker metadata, FunctionMetadataReceived set to: False
+[2025-04-30T21:16:11.942Z] Sending WorkerMetadataRequest to python worker with worker ID 94d2e643-2f2f-43b1-868b-690396872918
+[2025-04-30T21:16:11.943Z] Received WorkerMetadataRequest, request ID 0f656d92-0d89-4cb4-b556-73fe0a387437, function_path: /Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep/function_app.py
+[2025-04-30T21:16:12.325Z] Indexed function app and found 9 functions
+[2025-04-30T21:16:12.325Z] Successfully processed FunctionMetadataRequest for functions: Function Name: dataprep_queue_trigger, Function Binding: [('durableClient', 'starter', ''), ('queueTrigger', 'msg', '')] Function Name: orchestrator_function, Function Binding: [('durableClient', 'starter', ''), ('queueTrigger', 'msg', ''), ('orchestrationTrigger', 'context', '')] Function Name: single_report_email_workflow, Function Binding: [('durableClient', 'starter', ''), ('queueTrigger', 'msg', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', '')] Function Name: multi_report_email_workflow, Function Binding: [('durableClient', 'starter', ''), ('queueTrigger', 'msg', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', '')] Function Name: combine_report_chunks_activity, Function Binding: [('durableClient', 'starter', ''), ('queueTrigger', 'msg', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', ''), ('activityTrigger', 'payload', '')] Function Name: merge_reports_activity, Function Binding: [('durableClient', 'starter', ''), ('queueTrigger', 'msg', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', ''), ('activityTrigger', 'payload', ''), ('activityTrigger', 'payload', '')] Function Name: process_and_send_single_report_activity, Function Binding: [('durableClient', 'starter', ''), ('queueTrigger', 'msg', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', ''), ('activityTrigger', 'payload', ''), ('activityTrigger', 'payload', ''), ('activityTrigger', 'payload', '')] Function Name: report_tracker_entity_trigger, Function Binding: [('durableClient', 'starter', ''), ('queueTrigger', 'msg', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', ''), ('activityTrigger', 'payload', ''), ('activityTrigger', 'payload', ''), ('activityTrigger', 'payload', ''), ('entityTrigger', 'context', '')] Function Name: health_check, Function Binding: [('durableClient', 'starter', ''), ('queueTrigger', 'msg', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', ''), ('orchestrationTrigger', 'context', ''), ('activityTrigger', 'payload', ''), ('activityTrigger', 'payload', ''), ('activityTrigger', 'payload', ''), ('entityTrigger', 'context', ''), ('httpTrigger', 'req', ''), ('http', '$return', '')]. Deferred bindings enabled: False.
+[2025-04-30T21:16:12.326Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: FunctionMetadataResponse
+[2025-04-30T21:16:12.327Z] Received the worker function metadata response from worker 94d2e643-2f2f-43b1-868b-690396872918
+[2025-04-30T21:16:12.332Z] 9 functions found (Worker)
+[2025-04-30T21:16:12.336Z] 9 functions loaded
+[2025-04-30T21:16:12.336Z] Looking for extension bundle Microsoft.Azure.Functions.ExtensionBundle at /Users/trb74/.azure-functions-core-tools/Functions/ExtensionBundles/Microsoft.Azure.Functions.ExtensionBundle
+[2025-04-30T21:16:12.336Z] Found a matching extension bundle at /Users/trb74/.azure-functions-core-tools/Functions/ExtensionBundles/Microsoft.Azure.Functions.ExtensionBundle/4.21.0
+[2025-04-30T21:16:12.337Z] Fetching information on versions of extension bundle Microsoft.Azure.Functions.ExtensionBundle available on https://functionscdn.azureedge.net/public/ExtensionBundles/Microsoft.Azure.Functions.ExtensionBundle/index.json
+[2025-04-30T21:16:12.378Z] Skipping bundle download since it already exists at path /Users/trb74/.azure-functions-core-tools/Functions/ExtensionBundles/Microsoft.Azure.Functions.ExtensionBundle/4.21.0
+[2025-04-30T21:16:12.379Z] Loading extension bundle from /Users/trb74/.azure-functions-core-tools/Functions/ExtensionBundles/Microsoft.Azure.Functions.ExtensionBundle/4.21.0/bin
+[2025-04-30T21:16:12.379Z] Script Startup resetting load context with base path: '/Users/trb74/.azure-functions-core-tools/Functions/ExtensionBundles/Microsoft.Azure.Functions.ExtensionBundle/4.21.0/bin'.
+[2025-04-30T21:16:12.382Z] Loading startup extension 'NetheriteProvider'
+[2025-04-30T21:16:12.400Z] Loaded extension 'NetheriteProvider' (1.0.0.0)
+[2025-04-30T21:16:12.404Z] Loading startup extension 'SqlDurabilityProvider'
+[2025-04-30T21:16:12.405Z] Loaded extension 'SqlDurabilityProvider' (1.4.0.0)
+[2025-04-30T21:16:12.405Z] Loading startup extension 'DurableTask'
+[2025-04-30T21:16:12.406Z] Loaded extension 'DurableTask' (2.0.0.0)
+[2025-04-30T21:16:12.407Z] Loading startup extension 'AzureStorageQueues'
+[2025-04-30T21:16:12.407Z] Loaded extension 'AzureStorageQueues' (5.3.3.0)
+[2025-04-30T21:16:12.413Z] Host configuration applied.
+[2025-04-30T21:16:12.413Z] Reading host configuration file '/Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep/host.json'
+[2025-04-30T21:16:12.413Z] Host configuration file read:
+[2025-04-30T21:16:12.413Z] {
+[2025-04-30T21:16:12.413Z]   "version": "2.0",
+[2025-04-30T21:16:12.413Z]   "logging": {
+[2025-04-30T21:16:12.413Z]     "applicationInsights": {
+[2025-04-30T21:16:12.413Z]       "samplingSettings": {
+[2025-04-30T21:16:12.413Z]         "isEnabled": true,
+[2025-04-30T21:16:12.413Z]         "excludedTypes": "Request",
+[2025-04-30T21:16:12.413Z]         "percentage": 100
+[2025-04-30T21:16:12.413Z]       }
+[2025-04-30T21:16:12.413Z]     },
+[2025-04-30T21:16:12.413Z]     "logLevel": {
+[2025-04-30T21:16:12.413Z]       "default": "Debug"
+[2025-04-30T21:16:12.413Z]     }
+[2025-04-30T21:16:12.413Z]   },
+[2025-04-30T21:16:12.413Z]   "functionTimeout": "00:05:00",
+[2025-04-30T21:16:12.413Z]   "extensionBundle": {
+[2025-04-30T21:16:12.413Z]     "id": "Microsoft.Azure.Functions.ExtensionBundle",
+[2025-04-30T21:16:12.413Z]     "version": "[4.*, 5.0.0)"
+[2025-04-30T21:16:12.413Z]   },
+[2025-04-30T21:16:12.413Z]   "extensions": {
+[2025-04-30T21:16:12.413Z]     "queues": {
+[2025-04-30T21:16:12.413Z]       "maxPollingInterval": "00:00:05",
+[2025-04-30T21:16:12.413Z]       "visibilityTimeout": "00:01:00",
+[2025-04-30T21:16:12.413Z]       "batchSize": 8,
+[2025-04-30T21:16:12.413Z]       "maxDequeueCount": 5,
+[2025-04-30T21:16:12.413Z]       "newBatchThreshold": 4
+[2025-04-30T21:16:12.413Z]     }
+[2025-04-30T21:16:12.413Z]   }
+[2025-04-30T21:16:12.413Z] }
+[2025-04-30T21:16:12.421Z] Services registered by external startup type DurableTask.Netherite.AzureFunctions.NetheriteProviderStartup:
+[2025-04-30T21:16:12.421Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurabilityProviderFactory: Implementation: DurableTask.Netherite.AzureFunctions.UnambiguousNetheriteProviderFactory, Lifetime: Singleton
+[2025-04-30T21:16:12.421Z]  DurableTask.Netherite.ConnectionResolver: Implementation: DurableTask.Netherite.AzureFunctions.NameResolverBasedConnectionNameResolver, Lifetime: Singleton
+[2025-04-30T21:16:12.421Z] Services registered by external startup type DurableTask.SqlServer.AzureFunctions.SqlDurabilityProviderStartup:
+[2025-04-30T21:16:12.421Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurabilityProviderFactory: Implementation: DurableTask.SqlServer.AzureFunctions.SqlDurabilityProviderFactory, Lifetime: Singleton
+[2025-04-30T21:16:12.423Z] Services registered by external startup type Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskWebJobsStartup:
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Host.Config.IExtensionConfigProvider: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskExtension, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Extensions.Options.IConfigureOptions`1[[Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskOptions, Microsoft.Azure.WebJobs.Extensions.DurableTask, Version=2.0.0.0, Culture=neutral, PublicKeyToken=014045d636e89289]]: Factory, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Host.Config.IExtensionOptionsProvider: Factory, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Extensions.Azure.AzureEventSourceLogForwarder: Factory, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Extensions.Azure.AzureComponentFactory: Implementation: Microsoft.Extensions.Azure.AzureComponentFactoryImpl, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.IConnectionInfoResolver: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.WebJobsConnectionInfoProvider, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.Auth.ITokenCredentialFactory: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.Auth.AzureCredentialFactory, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.IStorageAccountProvider: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.AzureStorageAccountProvider, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableHttpMessageHandlerFactory: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableHttpMessageHandlerFactory, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurabilityProviderFactory: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.AzureStorageDurabilityProviderFactory, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.IMessageSerializerSettingsFactory: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.MessageSerializerSettingsFactory, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.IErrorSerializerSettingsFactory: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.ErrorSerializerSettingsFactory, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.IApplicationLifetimeWrapper: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.HostLifecycleService, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.Correlation.ITelemetryActivator: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.Correlation.TelemetryActivator, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.ContextImplementations.IDurableClientFactory: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.ContextImplementations.DurableClientFactory, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.IConnectionStringResolver: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.WebJobsConnectionStringProvider, Lifetime: Singleton
+[2025-04-30T21:16:12.424Z]  Microsoft.Azure.WebJobs.Extensions.DurableTask.IPlatformInformation: Implementation: Microsoft.Azure.WebJobs.Extensions.DurableTask.DefaultPlatformInformation, Lifetime: Singleton
+[2025-04-30T21:16:12.426Z] Services registered by external startup type Microsoft.Azure.WebJobs.Extensions.Storage.AzureStorageQueuesWebJobsStartup:
+[2025-04-30T21:16:12.426Z]  Microsoft.Azure.WebJobs.Extensions.Storage.Common.Listeners.SharedQueueWatcher: Implementation: Microsoft.Azure.WebJobs.Extensions.Storage.Common.Listeners.SharedQueueWatcher, Lifetime: Singleton
+[2025-04-30T21:16:12.426Z]  Microsoft.Azure.WebJobs.Extensions.Storage.Common.Listeners.ISharedContextProvider: Implementation: Microsoft.Azure.WebJobs.Extensions.Storage.Common.Listeners.SharedContextProvider, Lifetime: Singleton
+[2025-04-30T21:16:12.426Z]  Microsoft.Azure.WebJobs.Extensions.Storage.Queues.QueueServiceClientProvider: Implementation: Microsoft.Azure.WebJobs.Extensions.Storage.Queues.QueueServiceClientProvider, Lifetime: Singleton
+[2025-04-30T21:16:12.427Z]  Microsoft.Azure.WebJobs.Extensions.Storage.Queues.QueueCausalityManager: Implementation: Microsoft.Azure.WebJobs.Extensions.Storage.Queues.QueueCausalityManager, Lifetime: Singleton
+[2025-04-30T21:16:12.427Z]  Microsoft.Azure.WebJobs.Extensions.Storage.Common.IContextSetter`1[[Microsoft.Azure.WebJobs.Extensions.Storage.Common.IMessageEnqueuedWatcher, Microsoft.Azure.WebJobs.Extensions.Storage.Queues, Version=5.3.3.0, Culture=neutral, PublicKeyToken=92742159e12e44c8]]: Factory, Lifetime: Singleton
+[2025-04-30T21:16:12.427Z]  Microsoft.Azure.WebJobs.Extensions.Storage.Common.IContextGetter`1[[Microsoft.Azure.WebJobs.Extensions.Storage.Common.IMessageEnqueuedWatcher, Microsoft.Azure.WebJobs.Extensions.Storage.Queues, Version=5.3.3.0, Culture=neutral, PublicKeyToken=92742159e12e44c8]]: Factory, Lifetime: Singleton
+[2025-04-30T21:16:12.427Z]  Microsoft.Azure.WebJobs.Extensions.Storage.Queues.Triggers.QueueTriggerAttributeBindingProvider: Implementation: Microsoft.Azure.WebJobs.Extensions.Storage.Queues.Triggers.QueueTriggerAttributeBindingProvider, Lifetime: Singleton
+[2025-04-30T21:16:12.427Z]  Microsoft.Azure.WebJobs.Host.Config.IExtensionConfigProvider: Implementation: Microsoft.Azure.WebJobs.Extensions.Storage.Queues.Config.QueuesExtensionConfigProvider, Lifetime: Singleton
+[2025-04-30T21:16:12.427Z]  Microsoft.Extensions.Options.IConfigureOptions`1[[Microsoft.Azure.WebJobs.Host.QueuesOptions, Microsoft.Azure.WebJobs.Extensions.Storage.Queues, Version=5.3.3.0, Culture=neutral, PublicKeyToken=92742159e12e44c8]]: Factory, Lifetime: Singleton
+[2025-04-30T21:16:12.427Z]  Microsoft.Azure.WebJobs.Host.Config.IExtensionOptionsProvider: Factory, Lifetime: Singleton
+[2025-04-30T21:16:12.427Z]  Microsoft.Azure.WebJobs.Host.Queues.IQueueProcessorFactory: Implementation: Microsoft.Azure.WebJobs.Extensions.Storage.Queues.DefaultQueueProcessorFactory, Lifetime: Singleton
+[2025-04-30T21:16:12.427Z]  Microsoft.Extensions.Options.IConfigureOptions`1[[Microsoft.Azure.WebJobs.Host.QueuesOptions, Microsoft.Azure.WebJobs.Extensions.Storage.Queues, Version=5.3.3.0, Culture=neutral, PublicKeyToken=92742159e12e44c8]]: Factory, Lifetime: Transient
+[2025-04-30T21:16:12.439Z] FUNCTIONS_TARGET_GROUP is null or empty after specialization.
+[2025-04-30T21:16:12.439Z] Starting host metrics provider.
+[2025-04-30T21:16:12.449Z] Active host changing from '(null)' to '236d8b96-cb09-4709-8e8a-8018066c856e'.
+[2025-04-30T21:16:12.461Z] Workers Directory set to: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers
+[2025-04-30T21:16:12.462Z] Found worker config: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/python/worker.config.json
+[2025-04-30T21:16:12.462Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME: python
+[2025-04-30T21:16:12.462Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME_VERSION: 3.11
+[2025-04-30T21:16:12.462Z] Added WorkerConfig for language: python
+[2025-04-30T21:16:12.462Z] Found worker config: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/java/worker.config.json
+[2025-04-30T21:16:12.463Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME: python
+[2025-04-30T21:16:12.463Z] FUNCTIONS_WORKER_RUNTIME set to python. Skipping WorkerConfig for language: java
+[2025-04-30T21:16:12.463Z] Found worker config: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/powershell/worker.config.json
+[2025-04-30T21:16:12.463Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME: python
+[2025-04-30T21:16:12.463Z] FUNCTIONS_WORKER_RUNTIME set to python. Skipping WorkerConfig for language: powershell
+[2025-04-30T21:16:12.463Z] Found worker config: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/node/worker.config.json
+[2025-04-30T21:16:12.464Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME: python
+[2025-04-30T21:16:12.464Z] FUNCTIONS_WORKER_RUNTIME set to python. Skipping WorkerConfig for language: node
+[2025-04-30T21:16:12.464Z] Workers Directory set to: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers
+[2025-04-30T21:16:12.464Z] Found worker config: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/python/worker.config.json
+[2025-04-30T21:16:12.464Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME: python
+[2025-04-30T21:16:12.464Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME_VERSION: 3.11
+[2025-04-30T21:16:12.464Z] Added WorkerConfig for language: python
+[2025-04-30T21:16:12.464Z] Found worker config: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/java/worker.config.json
+[2025-04-30T21:16:12.464Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME: python
+[2025-04-30T21:16:12.464Z] FUNCTIONS_WORKER_RUNTIME set to python. Skipping WorkerConfig for language: java
+[2025-04-30T21:16:12.464Z] Found worker config: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/powershell/worker.config.json
+[2025-04-30T21:16:12.464Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME: python
+[2025-04-30T21:16:12.465Z] FUNCTIONS_WORKER_RUNTIME set to python. Skipping WorkerConfig for language: powershell
+[2025-04-30T21:16:12.465Z] Found worker config: /opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/node/worker.config.json
+[2025-04-30T21:16:12.465Z] EnvironmentVariable FUNCTIONS_WORKER_RUNTIME: python
+[2025-04-30T21:16:12.465Z] FUNCTIONS_WORKER_RUNTIME set to python. Skipping WorkerConfig for language: node
+[2025-04-30T21:16:12.502Z] Using the default storage provider: AzureStorage.
+[2025-04-30T21:16:12.808Z] Initializing Warmup Extension.
+[2025-04-30T21:16:12.877Z] Sentinel watcher initialized for path /var/folders/zk/kh23pfj169q3gl56jlcrg8fm0000gp/T/secrets/functions/secrets/Sentinels
+[2025-04-30T21:16:12.877Z] Resolved secret storage provider BlobStorageSecretsRepository
+[2025-04-30T21:16:12.879Z] Loading host secrets
+[2025-04-30T21:16:12.892Z] Request [e71533fb-8b83-4449-8650-f3723c184ab8] GET http://127.0.0.1:10000/devstoreaccount1/azure-webjobs-secrets?restype=container
+[2025-04-30T21:16:12.893Z] x-ms-version:2023-11-03
+[2025-04-30T21:16:12.893Z] Accept:application/xml
+[2025-04-30T21:16:12.893Z] x-ms-client-request-id:e71533fb-8b83-4449-8650-f3723c184ab8
+[2025-04-30T21:16:12.893Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:12.893Z] User-Agent:azsdk-net-Storage.Blobs/12.19.1 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:12.893Z] x-ms-date:Wed, 30 Apr 2025 21:16:12 GMT
+[2025-04-30T21:16:12.893Z] Authorization:REDACTED
+[2025-04-30T21:16:12.893Z] client assembly: Azure.Storage.Blobs
+[2025-04-30T21:16:12.898Z] Response [e71533fb-8b83-4449-8650-f3723c184ab8] 200 OK (00.0s)
+[2025-04-30T21:16:12.898Z] Server:Azurite-Blob/3.34.0
+[2025-04-30T21:16:12.898Z] ETag:"0x250D42926D73F20"
+[2025-04-30T21:16:12.898Z] x-ms-lease-state:available
+[2025-04-30T21:16:12.898Z] x-ms-lease-status:unlocked
+[2025-04-30T21:16:12.898Z] x-ms-client-request-id:e71533fb-8b83-4449-8650-f3723c184ab8
+[2025-04-30T21:16:12.898Z] x-ms-request-id:bb51fe98-9cd5-483d-8351-7970afb52879
+[2025-04-30T21:16:12.898Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:12.898Z] x-ms-has-immutability-policy:false
+[2025-04-30T21:16:12.898Z] x-ms-has-legal-hold:false
+[2025-04-30T21:16:12.898Z] Date:Wed, 30 Apr 2025 21:16:12 GMT
+[2025-04-30T21:16:12.898Z] Connection:keep-alive
+[2025-04-30T21:16:12.898Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:12.898Z] Last-Modified:Tue, 15 Apr 2025 16:37:22 GMT
+[2025-04-30T21:16:12.898Z] Content-Length:0
+[2025-04-30T21:16:12.898Z] 
+[2025-04-30T21:16:12.905Z] Request [c18841aa-abfd-43dc-958a-107355e0f03f] HEAD http://127.0.0.1:10000/devstoreaccount1/azure-webjobs-secrets/bluetrain-1303596477/host.json
+[2025-04-30T21:16:12.905Z] x-ms-version:2023-11-03
+[2025-04-30T21:16:12.905Z] Accept:application/xml
+[2025-04-30T21:16:12.905Z] x-ms-client-request-id:c18841aa-abfd-43dc-958a-107355e0f03f
+[2025-04-30T21:16:12.905Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:12.905Z] User-Agent:azsdk-net-Storage.Blobs/12.19.1 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:12.905Z] x-ms-date:Wed, 30 Apr 2025 21:16:12 GMT
+[2025-04-30T21:16:12.905Z] Authorization:REDACTED
+[2025-04-30T21:16:12.905Z] client assembly: Azure.Storage.Blobs
+[2025-04-30T21:16:12.908Z] Response [c18841aa-abfd-43dc-958a-107355e0f03f] 200 OK (00.0s)
+[2025-04-30T21:16:12.908Z] Server:Azurite-Blob/3.34.0
+[2025-04-30T21:16:12.908Z] x-ms-creation-time:Tue, 29 Apr 2025 17:22:19 GMT
+[2025-04-30T21:16:12.908Z] x-ms-blob-type:BlockBlob
+[2025-04-30T21:16:12.908Z] x-ms-lease-state:available
+[2025-04-30T21:16:12.908Z] x-ms-lease-status:unlocked
+[2025-04-30T21:16:12.908Z] ETag:"0x200615B940FA660"
+[2025-04-30T21:16:12.908Z] x-ms-client-request-id:c18841aa-abfd-43dc-958a-107355e0f03f
+[2025-04-30T21:16:12.908Z] x-ms-request-id:bc38bae1-bdce-4f4f-af89-9b5311e0a5ab
+[2025-04-30T21:16:12.908Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:12.908Z] Date:Wed, 30 Apr 2025 21:16:12 GMT
+[2025-04-30T21:16:12.908Z] Accept-Ranges:bytes
+[2025-04-30T21:16:12.908Z] x-ms-server-encrypted:true
+[2025-04-30T21:16:12.908Z] x-ms-access-tier:Hot
+[2025-04-30T21:16:12.908Z] x-ms-access-tier-inferred:true
+[2025-04-30T21:16:12.908Z] x-ms-access-tier-change-time:Tue, 29 Apr 2025 17:22:19 GMT
+[2025-04-30T21:16:12.908Z] Connection:keep-alive
+[2025-04-30T21:16:12.908Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:12.908Z] Last-Modified:Tue, 29 Apr 2025 17:22:19 GMT
+[2025-04-30T21:16:12.908Z] Content-Length:610
+[2025-04-30T21:16:12.908Z] Content-Type:application/octet-stream
+[2025-04-30T21:16:12.908Z] Content-MD5:eGMeS3bdPvmJ6XLufauN9w==
+[2025-04-30T21:16:12.908Z] 
+[2025-04-30T21:16:12.914Z] Request [38d78438-e976-45d2-a263-34330bed11d1] GET http://127.0.0.1:10000/devstoreaccount1/azure-webjobs-secrets/bluetrain-1303596477/host.json
+[2025-04-30T21:16:12.914Z] x-ms-version:2023-11-03
+[2025-04-30T21:16:12.914Z] Accept:application/xml
+[2025-04-30T21:16:12.914Z] x-ms-client-request-id:38d78438-e976-45d2-a263-34330bed11d1
+[2025-04-30T21:16:12.914Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:12.914Z] User-Agent:azsdk-net-Storage.Blobs/12.19.1 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:12.914Z] x-ms-date:Wed, 30 Apr 2025 21:16:12 GMT
+[2025-04-30T21:16:12.914Z] Authorization:REDACTED
+[2025-04-30T21:16:12.914Z] client assembly: Azure.Storage.Blobs
+[2025-04-30T21:16:12.916Z] Response [38d78438-e976-45d2-a263-34330bed11d1] 200 OK (00.0s)
+[2025-04-30T21:16:12.916Z] Server:Azurite-Blob/3.34.0
+[2025-04-30T21:16:12.916Z] x-ms-creation-time:Tue, 29 Apr 2025 17:22:19 GMT
+[2025-04-30T21:16:12.916Z] ETag:"0x200615B940FA660"
+[2025-04-30T21:16:12.916Z] x-ms-blob-type:BlockBlob
+[2025-04-30T21:16:12.916Z] x-ms-lease-state:available
+[2025-04-30T21:16:12.916Z] x-ms-lease-status:unlocked
+[2025-04-30T21:16:12.916Z] x-ms-client-request-id:38d78438-e976-45d2-a263-34330bed11d1
+[2025-04-30T21:16:12.916Z] x-ms-request-id:dd736115-fc4d-4fd7-987f-479d3e222b93
+[2025-04-30T21:16:12.916Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:12.916Z] Accept-Ranges:bytes
+[2025-04-30T21:16:12.916Z] Date:Wed, 30 Apr 2025 21:16:12 GMT
+[2025-04-30T21:16:12.916Z] x-ms-server-encrypted:true
+[2025-04-30T21:16:12.916Z] x-ms-blob-content-md5:eGMeS3bdPvmJ6XLufauN9w==
+[2025-04-30T21:16:12.916Z] Connection:keep-alive
+[2025-04-30T21:16:12.916Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:12.916Z] Last-Modified:Tue, 29 Apr 2025 17:22:19 GMT
+[2025-04-30T21:16:12.916Z] Content-Length:610
+[2025-04-30T21:16:12.916Z] Content-Type:application/octet-stream
+[2025-04-30T21:16:12.916Z] Content-MD5:eGMeS3bdPvmJ6XLufauN9w==
+[2025-04-30T21:16:12.916Z] 
+[2025-04-30T21:16:12.934Z] Durable extension configuration loaded: {"httpSettings":{"defaultAsyncRequestSleepTimeMilliseconds":30000},"hubName":"TestHubName","storageProvider":{"connectionName":null,"connectionStringName":null,"controlQueueBatchSize":32,"partitionCount":4,"controlQueueBufferThreshold":256,"controlQueueVisibilityTimeout":"00:05:00","workItemQueueVisibilityTimeout":"00:05:00","trackingStoreConnectionName":null,"trackingStoreConnectionStringName":null,"trackingStoreNamePrefix":null,"fetchLargeMessagesAutomatically":true,"maxQueuePollingInterval":"00:00:30","useLegacyPartitionManagement":false,"useTablePartitionManagement":false,"allowReplayingTerminalInstances":false},"tracing":{"traceInputsAndOutputs":false,"allowVerboseLinuxTelemetry":false,"traceReplayEvents":false,"distributedTracingEnabled":false,"distributedTracingProtocol":"HttpCorrelationProtocol","version":"V1"},"notifications":{"eventGrid":null},"maxConcurrentActivityFunctions":140,"maxConcurrentOrchestratorFunctions":140,"maxConcurrentEntityFunctions":140,"localRpcEndpointEnabled":null,"maxEntityOperationBatchSize":5000,"extendedSessionsEnabled":false,"extendedSessionIdleTimeoutInSeconds":30,"maxOrchestrationActions":100000,"overridableExistingInstanceStates":"NonRunningStates","entityMessageReorderWindowInMinutes":30,"useGracefulShutdown":false,"rollbackEntityOperationsOnExceptions":true,"throwStatusExceptionsOnRaiseEvent":null,"useAppLease":true,"storeInputsInOrchestrationHistory":false,"appLeaseOptions":{"renewInterval":"00:00:25","acquireInterval":"00:05:00","leaseInterval":"00:01:00"}}. HubName: TestHubName. AppName: . SlotName: . ExtensionVersion: 2.13.7.
+[2025-04-30T21:16:12.939Z] Opened local http RPC endpoint: http://127.0.0.1:17071/durabletask/. InstanceId: . Function: . HubName: TestHubName. AppName: . SlotName: . ExtensionVersion: 2.13.7. SequenceNumber: 0.
+[2025-04-30T21:16:12.941Z] Using BlobLeaseDistributedLockManager
+[2025-04-30T21:16:12.948Z] Initializing Host. OperationId: '76178b9f-8128-4da9-9d29-9bdc98858fbd'.
+[2025-04-30T21:16:12.953Z] Host initialization: ConsecutiveErrors=0, StartupCount=1, OperationId=76178b9f-8128-4da9-9d29-9bdc98858fbd
+[2025-04-30T21:16:12.962Z] {
+[2025-04-30T21:16:12.962Z]   "OriginalFunctionWorkerRuntime": "python",
+[2025-04-30T21:16:12.962Z]   "FunctionsWorkerRuntime": "python",
+[2025-04-30T21:16:12.962Z]   "OriginalFunctionWorkerRuntimeVersion": "3.11",
+[2025-04-30T21:16:12.962Z]   "FunctionsWorkerRuntimeVersion": "3.11",
+[2025-04-30T21:16:12.962Z]   "FunctionsExtensionVesion": null,
+[2025-04-30T21:16:12.962Z]   "HostDirectory": "/Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep",
+[2025-04-30T21:16:12.962Z]   "InStandbyMode": false,
+[2025-04-30T21:16:12.962Z]   "HasBeenSpecialized": false,
+[2025-04-30T21:16:12.962Z]   "UsePlaceholderDotNetIsolated": false,
+[2025-04-30T21:16:12.962Z]   "WebSiteSku": null,
+[2025-04-30T21:16:12.962Z]   "FeatureFlags": null,
+[2025-04-30T21:16:12.962Z]   "HostingConfig": {},
+[2025-04-30T21:16:12.962Z]   "HISMode": "Disabled"
+[2025-04-30T21:16:12.962Z] }
+[2025-04-30T21:16:12.964Z] Startup operation '76178b9f-8128-4da9-9d29-9bdc98858fbd' is starting host instance '236d8b96-cb09-4709-8e8a-8018066c856e'.
+[2025-04-30T21:16:12.965Z] Hosting starting
+[2025-04-30T21:16:12.970Z] LoggerFilterOptions
+[2025-04-30T21:16:12.970Z] {
+[2025-04-30T21:16:12.970Z]   "MinLevel": "None",
+[2025-04-30T21:16:12.970Z]   "Rules": [
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": null,
+[2025-04-30T21:16:12.970Z]       "CategoryName": "Microsoft.Hosting.Lifetime",
+[2025-04-30T21:16:12.970Z]       "LogLevel": "None",
+[2025-04-30T21:16:12.970Z]       "Filter": null
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": "Azure.Functions.Cli.Diagnostics.ColoredConsoleLoggerProvider",
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": "None",
+[2025-04-30T21:16:12.970Z]       "Filter": null
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": "Azure.Functions.Cli.Diagnostics.ColoredConsoleLoggerProvider",
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": null,
+[2025-04-30T21:16:12.970Z]       "Filter": "<AddFilter>b__0"
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": null,
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": null,
+[2025-04-30T21:16:12.970Z]       "Filter": "<AddFilter>b__0"
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": null,
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": null,
+[2025-04-30T21:16:12.970Z]       "Filter": "<AddFilter>b__0"
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": null,
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": "Debug",
+[2025-04-30T21:16:12.970Z]       "Filter": null
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": "Microsoft.Azure.WebJobs.Script.WebHost.Diagnostics.SystemLoggerProvider",
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": "None",
+[2025-04-30T21:16:12.970Z]       "Filter": null
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": "Microsoft.Azure.WebJobs.Script.WebHost.Diagnostics.SystemLoggerProvider",
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": null,
+[2025-04-30T21:16:12.970Z]       "Filter": "<AddFilter>b__0"
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": "Azure.Functions.Cli.Diagnostics.ColoredConsoleLoggerProvider",
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": null,
+[2025-04-30T21:16:12.970Z]       "Filter": "<AddFilter>b__0"
+[2025-04-30T21:16:12.970Z]     }
+[2025-04-30T21:16:12.970Z]   ]
+[2025-04-30T21:16:12.970Z] }
+[2025-04-30T21:16:12.970Z] LoggerFilterOptions
+[2025-04-30T21:16:12.970Z] {
+[2025-04-30T21:16:12.970Z]   "MinLevel": "None",
+[2025-04-30T21:16:12.970Z]   "Rules": [
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": null,
+[2025-04-30T21:16:12.970Z]       "CategoryName": "Microsoft.Hosting.Lifetime",
+[2025-04-30T21:16:12.970Z]       "LogLevel": "None",
+[2025-04-30T21:16:12.970Z]       "Filter": null
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": "Azure.Functions.Cli.Diagnostics.ColoredConsoleLoggerProvider",
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": "None",
+[2025-04-30T21:16:12.970Z]       "Filter": null
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": "Azure.Functions.Cli.Diagnostics.ColoredConsoleLoggerProvider",
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": null,
+[2025-04-30T21:16:12.970Z]       "Filter": "<AddFilter>b__0"
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": null,
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": null,
+[2025-04-30T21:16:12.970Z]       "Filter": "<AddFilter>b__0"
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": null,
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": null,
+[2025-04-30T21:16:12.970Z]       "Filter": "<AddFilter>b__0"
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": null,
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.970Z]       "LogLevel": "Debug",
+[2025-04-30T21:16:12.970Z]       "Filter": null
+[2025-04-30T21:16:12.970Z]     },
+[2025-04-30T21:16:12.970Z]     {
+[2025-04-30T21:16:12.970Z]       "ProviderName": "Microsoft.Azure.WebJobs.Script.WebHost.Diagnostics.SystemLoggerProvider",
+[2025-04-30T21:16:12.970Z]       "CategoryName": null,
+[2025-04-30T21:16:12.971Z]       "LogLevel": "None",
+[2025-04-30T21:16:12.971Z]       "Filter": null
+[2025-04-30T21:16:12.971Z]     },
+[2025-04-30T21:16:12.971Z]     {
+[2025-04-30T21:16:12.971Z]       "ProviderName": "Microsoft.Azure.WebJobs.Script.WebHost.Diagnostics.SystemLoggerProvider",
+[2025-04-30T21:16:12.971Z]       "CategoryName": null,
+[2025-04-30T21:16:12.971Z]       "LogLevel": null,
+[2025-04-30T21:16:12.971Z]       "Filter": "<AddFilter>b__0"
+[2025-04-30T21:16:12.971Z]     },
+[2025-04-30T21:16:12.971Z]     {
+[2025-04-30T21:16:12.971Z]       "ProviderName": "Azure.Functions.Cli.Diagnostics.ColoredConsoleLoggerProvider",
+[2025-04-30T21:16:12.971Z]       "CategoryName": null,
+[2025-04-30T21:16:12.971Z]       "LogLevel": null,
+[2025-04-30T21:16:12.971Z]       "Filter": "<AddFilter>b__0"
+[2025-04-30T21:16:12.971Z]     }
+[2025-04-30T21:16:12.971Z]   ]
+[2025-04-30T21:16:12.971Z] }
+[2025-04-30T21:16:12.971Z] LanguageWorkerOptions
+[2025-04-30T21:16:12.971Z] {
+[2025-04-30T21:16:12.971Z]   "WorkerConfigs": [
+[2025-04-30T21:16:12.971Z]     {
+[2025-04-30T21:16:12.971Z]       "Description": {
+[2025-04-30T21:16:12.971Z]         "Language": "python",
+[2025-04-30T21:16:12.971Z]         "DefaultRuntimeName": null,
+[2025-04-30T21:16:12.971Z]         "DefaultRuntimeVersion": "3.11",
+[2025-04-30T21:16:12.971Z]         "SupportedArchitectures": [
+[2025-04-30T21:16:12.971Z]           "X64",
+[2025-04-30T21:16:12.971Z]           "X86",
+[2025-04-30T21:16:12.971Z]           "Arm64"
+[2025-04-30T21:16:12.971Z]         ],
+[2025-04-30T21:16:12.971Z]         "SupportedOperatingSystems": [
+[2025-04-30T21:16:12.971Z]           "LINUX",
+[2025-04-30T21:16:12.971Z]           "OSX",
+[2025-04-30T21:16:12.971Z]           "WINDOWS"
+[2025-04-30T21:16:12.971Z]         ],
+[2025-04-30T21:16:12.971Z]         "SupportedRuntimeVersions": [
+[2025-04-30T21:16:12.971Z]           "3.7",
+[2025-04-30T21:16:12.971Z]           "3.8",
+[2025-04-30T21:16:12.971Z]           "3.9",
+[2025-04-30T21:16:12.971Z]           "3.10",
+[2025-04-30T21:16:12.971Z]           "3.11",
+[2025-04-30T21:16:12.971Z]           "3.12"
+[2025-04-30T21:16:12.971Z]         ],
+[2025-04-30T21:16:12.971Z]         "SanitizeRuntimeVersionRegex": null,
+[2025-04-30T21:16:12.971Z]         "WorkerIndexing": "true",
+[2025-04-30T21:16:12.971Z]         "Extensions": [
+[2025-04-30T21:16:12.971Z]           ".py"
+[2025-04-30T21:16:12.971Z]         ],
+[2025-04-30T21:16:12.971Z]         "UseStdErrorStreamForErrorsOnly": false,
+[2025-04-30T21:16:12.971Z]         "DefaultExecutablePath": "python3",
+[2025-04-30T21:16:12.971Z]         "DefaultWorkerPath": "/opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/python/3.11/OSX/Arm64/worker.py",
+[2025-04-30T21:16:12.971Z]         "WorkerDirectory": "/opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/python",
+[2025-04-30T21:16:12.971Z]         "Arguments": [],
+[2025-04-30T21:16:12.971Z]         "WorkerArguments": null,
+[2025-04-30T21:16:12.971Z]         "IsDisabled": null
+[2025-04-30T21:16:12.971Z]       },
+[2025-04-30T21:16:12.971Z]       "Arguments": {
+[2025-04-30T21:16:12.971Z]         "ExecutablePath": "python3",
+[2025-04-30T21:16:12.971Z]         "ExecutableArguments": [],
+[2025-04-30T21:16:12.971Z]         "WorkerPath": "/opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/python/3.11/OSX/Arm64/worker.py",
+[2025-04-30T21:16:12.971Z]         "WorkerArguments": []
+[2025-04-30T21:16:12.971Z]       },
+[2025-04-30T21:16:12.971Z]       "CountOptions": {
+[2025-04-30T21:16:12.971Z]         "SetProcessCountToNumberOfCpuCores": false,
+[2025-04-30T21:16:12.971Z]         "ProcessCount": 1,
+[2025-04-30T21:16:12.971Z]         "MaxProcessCount": 10,
+[2025-04-30T21:16:12.971Z]         "ProcessStartupInterval": "00:00:10",
+[2025-04-30T21:16:12.971Z]         "ProcessStartupTimeout": "00:01:00",
+[2025-04-30T21:16:12.971Z]         "InitializationTimeout": "00:00:10",
+[2025-04-30T21:16:12.971Z]         "EnvironmentReloadTimeout": "00:00:30",
+[2025-04-30T21:16:12.971Z]         "ProcessRestartInterval": "00:00:10",
+[2025-04-30T21:16:12.971Z]         "ProcessShutdownTimeout": "00:00:10"
+[2025-04-30T21:16:12.971Z]       }
+[2025-04-30T21:16:12.971Z]     }
+[2025-04-30T21:16:12.971Z]   ]
+[2025-04-30T21:16:12.971Z] }
+[2025-04-30T21:16:12.971Z] FunctionResultAggregatorOptions
+[2025-04-30T21:16:12.971Z] {
+[2025-04-30T21:16:12.971Z]   "BatchSize": 1000,
+[2025-04-30T21:16:12.971Z]   "FlushTimeout": "00:00:30",
+[2025-04-30T21:16:12.971Z]   "IsEnabled": true
+[2025-04-30T21:16:12.971Z] }
+[2025-04-30T21:16:12.971Z] ConcurrencyOptions
+[2025-04-30T21:16:12.971Z] {
+[2025-04-30T21:16:12.971Z]   "DynamicConcurrencyEnabled": false,
+[2025-04-30T21:16:12.971Z]   "MaximumFunctionConcurrency": 500,
+[2025-04-30T21:16:12.971Z]   "CPUThreshold": 0.8,
+[2025-04-30T21:16:12.971Z]   "SnapshotPersistenceEnabled": true
+[2025-04-30T21:16:12.971Z] }
+[2025-04-30T21:16:12.971Z] QueuesOptions
+[2025-04-30T21:16:12.971Z] {
+[2025-04-30T21:16:12.971Z]   "BatchSize": 8,
+[2025-04-30T21:16:12.971Z]   "NewBatchThreshold": 4,
+[2025-04-30T21:16:12.971Z]   "MaxPollingInterval": "00:00:05",
+[2025-04-30T21:16:12.971Z]   "MaxDequeueCount": 5,
+[2025-04-30T21:16:12.971Z]   "VisibilityTimeout": "00:01:00",
+[2025-04-30T21:16:12.971Z]   "MessageEncoding": "Base64"
+[2025-04-30T21:16:12.971Z] }
+[2025-04-30T21:16:12.971Z] SingletonOptions
+[2025-04-30T21:16:12.971Z] {
+[2025-04-30T21:16:12.971Z]   "LockPeriod": "00:00:15",
+[2025-04-30T21:16:12.971Z]   "ListenerLockPeriod": "00:00:15",
+[2025-04-30T21:16:12.971Z]   "LockAcquisitionTimeout": "10675199.02:48:05.4775807",
+[2025-04-30T21:16:12.971Z]   "LockAcquisitionPollingInterval": "00:00:05",
+[2025-04-30T21:16:12.971Z]   "ListenerLockRecoveryPollingInterval": "00:01:00"
+[2025-04-30T21:16:12.971Z] }
+[2025-04-30T21:16:12.971Z] ScaleOptions
+[2025-04-30T21:16:12.971Z] {
+[2025-04-30T21:16:12.971Z]   "ScaleMetricsMaxAge": "00:02:00",
+[2025-04-30T21:16:12.971Z]   "ScaleMetricsSampleInterval": "00:00:10",
+[2025-04-30T21:16:12.971Z]   "MetricsPurgeEnabled": true,
+[2025-04-30T21:16:12.971Z]   "IsTargetScalingEnabled": true,
+[2025-04-30T21:16:12.971Z]   "IsRuntimeScalingEnabled": false
+[2025-04-30T21:16:12.971Z] }
+[2025-04-30T21:16:12.972Z] Starting JobHost
+[2025-04-30T21:16:12.972Z] Starting Host (HostId=bluetrain-1303596477, InstanceId=236d8b96-cb09-4709-8e8a-8018066c856e, Version=4.1036.1.23224, ProcessId=47175, AppDomainId=1, InDebugMode=False, InDiagnosticMode=False, FunctionsExtensionVersion=(null))
+[2025-04-30T21:16:12.975Z] Loading functions metadata
+[2025-04-30T21:16:12.975Z] Worker indexing is enabled
+[2025-04-30T21:16:12.975Z] Fetching metadata for workerRuntime: python
+[2025-04-30T21:16:12.975Z] Reading functions metadata (Worker)
+[2025-04-30T21:16:12.976Z] Reading functions metadata (Custom)
+[2025-04-30T21:16:12.981Z] 0 functions found (Custom)
+[2025-04-30T21:16:12.982Z] 9 functions loaded
+[2025-04-30T21:16:12.983Z] FUNCTIONS_WORKER_RUNTIME value: 'python'
+[2025-04-30T21:16:12.984Z] Adding Function descriptor provider for language python.
+[2025-04-30T21:16:12.985Z] Creating function descriptors.
+[2025-04-30T21:16:12.995Z] Function descriptors created.
+[2025-04-30T21:16:12.996Z] Placeholder mode is enabled: False
+[2025-04-30T21:16:12.996Z] Found initialized language worker channel for runtime: python workerId:94d2e643-2f2f-43b1-868b-690396872918
+[2025-04-30T21:16:12.996Z] Setting up FunctionInvocationBuffer for function: 'combine_report_chunks_activity' with functionId: '0aca94d5-2711-5ff9-adcf-22e97835b203'
+[2025-04-30T21:16:12.996Z] Setting up FunctionInvocationBuffer for function: 'dataprep_queue_trigger' with functionId: '140d71e0-defb-58e2-a37c-c5a05d2c23c3'
+[2025-04-30T21:16:12.996Z] Setting up FunctionInvocationBuffer for function: 'health_check' with functionId: '633f194c-5737-505b-b100-6f91854050d9'
+[2025-04-30T21:16:12.996Z] Setting up FunctionInvocationBuffer for function: 'merge_reports_activity' with functionId: 'e89d6c6d-42f8-55bc-b33b-e7c7a8b0bcef'
+[2025-04-30T21:16:12.996Z] Setting up FunctionInvocationBuffer for function: 'multi_report_email_workflow' with functionId: '0a7885d3-56e2-522e-b7b4-077d16b99043'
+[2025-04-30T21:16:12.996Z] Setting up FunctionInvocationBuffer for function: 'orchestrator_function' with functionId: '5fb6e742-bf75-5e4f-8555-06c2c65575a7'
+[2025-04-30T21:16:12.996Z] Setting up FunctionInvocationBuffer for function: 'process_and_send_single_report_activity' with functionId: 'bbc3d80f-6fff-5928-96ad-be06e69eeb8c'
+[2025-04-30T21:16:12.996Z] Setting up FunctionInvocationBuffer for function: 'report_tracker_entity_trigger' with functionId: 'a10b7ff3-5e07-58cd-9830-faabd1d102e2'
+[2025-04-30T21:16:12.996Z] Setting up FunctionInvocationBuffer for function: 'single_report_email_workflow' with functionId: 'f8a62a58-fa78-58f0-b40e-f83f96a329ea'
+[2025-04-30T21:16:12.997Z] Sending FunctionLoadRequest for function: 'combine_report_chunks_activity' with functionId: '0aca94d5-2711-5ff9-adcf-22e97835b203'
+[2025-04-30T21:16:12.998Z] Sending FunctionLoadRequest for function: 'dataprep_queue_trigger' with functionId: '140d71e0-defb-58e2-a37c-c5a05d2c23c3'
+[2025-04-30T21:16:12.998Z] Sending FunctionLoadRequest for function: 'health_check' with functionId: '633f194c-5737-505b-b100-6f91854050d9'
+[2025-04-30T21:16:12.998Z] Sending FunctionLoadRequest for function: 'merge_reports_activity' with functionId: 'e89d6c6d-42f8-55bc-b33b-e7c7a8b0bcef'
+[2025-04-30T21:16:12.998Z] Sending FunctionLoadRequest for function: 'multi_report_email_workflow' with functionId: '0a7885d3-56e2-522e-b7b4-077d16b99043'
+[2025-04-30T21:16:12.998Z] Sending FunctionLoadRequest for function: 'orchestrator_function' with functionId: '5fb6e742-bf75-5e4f-8555-06c2c65575a7'
+[2025-04-30T21:16:12.998Z] Sending FunctionLoadRequest for function: 'process_and_send_single_report_activity' with functionId: 'bbc3d80f-6fff-5928-96ad-be06e69eeb8c'
+[2025-04-30T21:16:12.998Z] Sending FunctionLoadRequest for function: 'report_tracker_entity_trigger' with functionId: 'a10b7ff3-5e07-58cd-9830-faabd1d102e2'
+[2025-04-30T21:16:12.998Z] Sending FunctionLoadRequest for function: 'single_report_email_workflow' with functionId: 'f8a62a58-fa78-58f0-b40e-f83f96a329ea'
+[2025-04-30T21:16:12.998Z] Generating 9 job function(s)
+[2025-04-30T21:16:12.999Z] Worker process started and initialized.
+[2025-04-30T21:16:13.000Z] Received WorkerLoadRequest, request ID 0f656d92-0d89-4cb4-b556-73fe0a387437, function_id: 0aca94d5-2711-5ff9-adcf-22e97835b203,function_name: combine_report_chunks_activity, function_app_directory : /Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep
+[2025-04-30T21:16:13.000Z] Successfully processed FunctionLoadRequest, request ID: 0f656d92-0d89-4cb4-b556-73fe0a387437, function ID: 0aca94d5-2711-5ff9-adcf-22e97835b203,function Name: combine_report_chunks_activity,programming model: V2
+[2025-04-30T21:16:13.000Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: FunctionLoadResponse
+[2025-04-30T21:16:13.000Z] Received WorkerLoadRequest, request ID 0f656d92-0d89-4cb4-b556-73fe0a387437, function_id: 140d71e0-defb-58e2-a37c-c5a05d2c23c3,function_name: dataprep_queue_trigger, function_app_directory : /Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep
+[2025-04-30T21:16:13.000Z] Successfully processed FunctionLoadRequest, request ID: 0f656d92-0d89-4cb4-b556-73fe0a387437, function ID: 140d71e0-defb-58e2-a37c-c5a05d2c23c3,function Name: dataprep_queue_trigger,programming model: V2
+[2025-04-30T21:16:13.000Z] Received FunctionLoadResponse for function: 'combine_report_chunks_activity' with functionId: '0aca94d5-2711-5ff9-adcf-22e97835b203'.
+[2025-04-30T21:16:13.001Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: FunctionLoadResponse
+[2025-04-30T21:16:13.001Z] Received FunctionLoadResponse for function: 'dataprep_queue_trigger' with functionId: '140d71e0-defb-58e2-a37c-c5a05d2c23c3'.
+[2025-04-30T21:16:13.001Z] Received WorkerLoadRequest, request ID 0f656d92-0d89-4cb4-b556-73fe0a387437, function_id: 633f194c-5737-505b-b100-6f91854050d9,function_name: health_check, function_app_directory : /Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep
+[2025-04-30T21:16:13.001Z] Successfully processed FunctionLoadRequest, request ID: 0f656d92-0d89-4cb4-b556-73fe0a387437, function ID: 633f194c-5737-505b-b100-6f91854050d9,function Name: health_check,programming model: V2
+[2025-04-30T21:16:13.001Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: FunctionLoadResponse
+[2025-04-30T21:16:13.001Z] Received FunctionLoadResponse for function: 'health_check' with functionId: '633f194c-5737-505b-b100-6f91854050d9'.
+[2025-04-30T21:16:13.001Z] Received WorkerLoadRequest, request ID 0f656d92-0d89-4cb4-b556-73fe0a387437, function_id: e89d6c6d-42f8-55bc-b33b-e7c7a8b0bcef,function_name: merge_reports_activity, function_app_directory : /Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep
+[2025-04-30T21:16:13.001Z] Successfully processed FunctionLoadRequest, request ID: 0f656d92-0d89-4cb4-b556-73fe0a387437, function ID: e89d6c6d-42f8-55bc-b33b-e7c7a8b0bcef,function Name: merge_reports_activity,programming model: V2
+[2025-04-30T21:16:13.001Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: FunctionLoadResponse
+[2025-04-30T21:16:13.001Z] Received FunctionLoadResponse for function: 'merge_reports_activity' with functionId: 'e89d6c6d-42f8-55bc-b33b-e7c7a8b0bcef'.
+[2025-04-30T21:16:13.001Z] Received WorkerLoadRequest, request ID 0f656d92-0d89-4cb4-b556-73fe0a387437, function_id: 0a7885d3-56e2-522e-b7b4-077d16b99043,function_name: multi_report_email_workflow, function_app_directory : /Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep
+[2025-04-30T21:16:13.001Z] Successfully processed FunctionLoadRequest, request ID: 0f656d92-0d89-4cb4-b556-73fe0a387437, function ID: 0a7885d3-56e2-522e-b7b4-077d16b99043,function Name: multi_report_email_workflow,programming model: V2
+[2025-04-30T21:16:13.001Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: FunctionLoadResponse
+[2025-04-30T21:16:13.002Z] Received FunctionLoadResponse for function: 'multi_report_email_workflow' with functionId: '0a7885d3-56e2-522e-b7b4-077d16b99043'.
+[2025-04-30T21:16:13.002Z] Received WorkerLoadRequest, request ID 0f656d92-0d89-4cb4-b556-73fe0a387437, function_id: 5fb6e742-bf75-5e4f-8555-06c2c65575a7,function_name: orchestrator_function, function_app_directory : /Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep
+[2025-04-30T21:16:13.002Z] Successfully processed FunctionLoadRequest, request ID: 0f656d92-0d89-4cb4-b556-73fe0a387437, function ID: 5fb6e742-bf75-5e4f-8555-06c2c65575a7,function Name: orchestrator_function,programming model: V2
+[2025-04-30T21:16:13.002Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: FunctionLoadResponse
+[2025-04-30T21:16:13.002Z] Received FunctionLoadResponse for function: 'orchestrator_function' with functionId: '5fb6e742-bf75-5e4f-8555-06c2c65575a7'.
+[2025-04-30T21:16:13.002Z] Received WorkerLoadRequest, request ID 0f656d92-0d89-4cb4-b556-73fe0a387437, function_id: bbc3d80f-6fff-5928-96ad-be06e69eeb8c,function_name: process_and_send_single_report_activity, function_app_directory : /Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep
+[2025-04-30T21:16:13.002Z] Successfully processed FunctionLoadRequest, request ID: 0f656d92-0d89-4cb4-b556-73fe0a387437, function ID: bbc3d80f-6fff-5928-96ad-be06e69eeb8c,function Name: process_and_send_single_report_activity,programming model: V2
+[2025-04-30T21:16:13.002Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: FunctionLoadResponse
+[2025-04-30T21:16:13.002Z] Received FunctionLoadResponse for function: 'process_and_send_single_report_activity' with functionId: 'bbc3d80f-6fff-5928-96ad-be06e69eeb8c'.
+[2025-04-30T21:16:13.002Z] Received WorkerLoadRequest, request ID 0f656d92-0d89-4cb4-b556-73fe0a387437, function_id: a10b7ff3-5e07-58cd-9830-faabd1d102e2,function_name: report_tracker_entity_trigger, function_app_directory : /Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep
+[2025-04-30T21:16:13.002Z] Successfully processed FunctionLoadRequest, request ID: 0f656d92-0d89-4cb4-b556-73fe0a387437, function ID: a10b7ff3-5e07-58cd-9830-faabd1d102e2,function Name: report_tracker_entity_trigger,programming model: V2
+[2025-04-30T21:16:13.002Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: FunctionLoadResponse
+[2025-04-30T21:16:13.002Z] Received FunctionLoadResponse for function: 'report_tracker_entity_trigger' with functionId: 'a10b7ff3-5e07-58cd-9830-faabd1d102e2'.
+[2025-04-30T21:16:13.002Z] Received WorkerLoadRequest, request ID 0f656d92-0d89-4cb4-b556-73fe0a387437, function_id: f8a62a58-fa78-58f0-b40e-f83f96a329ea,function_name: single_report_email_workflow, function_app_directory : /Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep
+[2025-04-30T21:16:13.002Z] Successfully processed FunctionLoadRequest, request ID: 0f656d92-0d89-4cb4-b556-73fe0a387437, function ID: f8a62a58-fa78-58f0-b40e-f83f96a329ea,function Name: single_report_email_workflow,programming model: V2
+[2025-04-30T21:16:13.002Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: FunctionLoadResponse
+[2025-04-30T21:16:13.002Z] Received FunctionLoadResponse for function: 'single_report_email_workflow' with functionId: 'f8a62a58-fa78-58f0-b40e-f83f96a329ea'.
+[2025-04-30T21:16:13.042Z] Found the following functions:
+[2025-04-30T21:16:13.042Z] Host.Functions.combine_report_chunks_activity
+[2025-04-30T21:16:13.042Z] Host.Functions.dataprep_queue_trigger
+[2025-04-30T21:16:13.042Z] Host.Functions.health_check
+[2025-04-30T21:16:13.042Z] Host.Functions.merge_reports_activity
+[2025-04-30T21:16:13.042Z] Host.Functions.multi_report_email_workflow
+[2025-04-30T21:16:13.043Z] Host.Functions.orchestrator_function
+[2025-04-30T21:16:13.043Z] Host.Functions.process_and_send_single_report_activity
+[2025-04-30T21:16:13.043Z] Host.Functions.report_tracker_entity_trigger
+[2025-04-30T21:16:13.043Z] Host.Functions.single_report_email_workflow
+[2025-04-30T21:16:13.043Z] 
+[2025-04-30T21:16:13.050Z] HttpOptions
+[2025-04-30T21:16:13.050Z] {
+[2025-04-30T21:16:13.050Z]   "DynamicThrottlesEnabled": false,
+[2025-04-30T21:16:13.050Z]   "EnableChunkedRequestBinding": false,
+[2025-04-30T21:16:13.050Z]   "MaxConcurrentRequests": -1,
+[2025-04-30T21:16:13.050Z]   "MaxOutstandingRequests": -1,
+[2025-04-30T21:16:13.050Z]   "RoutePrefix": "api"
+[2025-04-30T21:16:13.050Z] }
+[2025-04-30T21:16:13.050Z] Initializing function HTTP routes
+[2025-04-30T21:16:13.050Z] Mapped function route 'api/health' [all] to 'health_check'
+[2025-04-30T21:16:13.050Z] 
+[2025-04-30T21:16:13.052Z] Host initialized (77ms)
+[2025-04-30T21:16:13.052Z] Host state changed from Default to Initialized.
+[2025-04-30T21:16:13.055Z] Starting task hub worker. Extension GUID 0152f53d-3d2c-401c-9ec7-17dc4943a510. InstanceId: . Function: . HubName: TestHubName. AppName: . SlotName: . ExtensionVersion: 2.13.7. SequenceNumber: 1.
+[2025-04-30T21:16:13.069Z] Storage queue listener started (queue name='datacombinequeue', storage account name='devstoreaccount1')
+
+Functions:
+
+	health_check:  http://localhost:7071/api/health
+
+	combine_report_chunks_activity: activityTrigger
+
+	dataprep_queue_trigger: queueTrigger
+
+	merge_reports_activity: activityTrigger
+
+	multi_report_email_workflow: orchestrationTrigger
+
+	orchestrator_function: orchestrationTrigger
+
+	process_and_send_single_report_activity: activityTrigger
+
+	report_tracker_entity_trigger: entityTrigger
+
+	single_report_email_workflow: orchestrationTrigger
+
+[2025-04-30T21:16:13.080Z] Request [ab7308e2-ffb5-480a-adec-f57cd4eed6c6] GET http://127.0.0.1:10001/devstoreaccount1/datacombinequeue?comp=metadata
+[2025-04-30T21:16:13.080Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:13.081Z] Accept:application/xml
+[2025-04-30T21:16:13.081Z] x-ms-client-request-id:ab7308e2-ffb5-480a-adec-f57cd4eed6c6
+[2025-04-30T21:16:13.081Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:13.081Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:13.081Z] x-ms-date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.081Z] Authorization:REDACTED
+[2025-04-30T21:16:13.081Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:13.085Z] Response [ab7308e2-ffb5-480a-adec-f57cd4eed6c6] 200 OK (00.0s)
+[2025-04-30T21:16:13.085Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:13.085Z] x-ms-client-request-id:ab7308e2-ffb5-480a-adec-f57cd4eed6c6
+[2025-04-30T21:16:13.085Z] x-ms-approximate-messages-count:2
+[2025-04-30T21:16:13.085Z] x-ms-request-id:5b71faac-c05f-43af-920e-87bf4128dce4
+[2025-04-30T21:16:13.085Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:13.085Z] Date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.085Z] Connection:keep-alive
+[2025-04-30T21:16:13.085Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:13.085Z] Content-Length:0
+[2025-04-30T21:16:13.085Z] 
+[2025-04-30T21:16:13.089Z] Request [ab7308e2-ffb5-480a-adec-f57cd4eed6c6] GET http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages?numofmessages=8&visibilitytimeout=600
+[2025-04-30T21:16:13.089Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:13.089Z] Accept:application/xml
+[2025-04-30T21:16:13.089Z] x-ms-client-request-id:ab7308e2-ffb5-480a-adec-f57cd4eed6c6
+[2025-04-30T21:16:13.090Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:13.090Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:13.090Z] x-ms-date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.090Z] Authorization:REDACTED
+[2025-04-30T21:16:13.090Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:13.091Z] Response [ab7308e2-ffb5-480a-adec-f57cd4eed6c6] 200 OK (00.0s)
+[2025-04-30T21:16:13.091Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:13.091Z] x-ms-client-request-id:ab7308e2-ffb5-480a-adec-f57cd4eed6c6
+[2025-04-30T21:16:13.091Z] x-ms-request-id:63a8b0d1-b13c-423b-b894-26fbea9803ef
+[2025-04-30T21:16:13.091Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:13.091Z] Date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.091Z] Connection:keep-alive
+[2025-04-30T21:16:13.091Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:13.091Z] Transfer-Encoding:chunked
+[2025-04-30T21:16:13.091Z] Content-Type:application/xml
+[2025-04-30T21:16:13.091Z] 
+[2025-04-30T21:16:13.095Z] Poll for function 'dataprep_queue_trigger' on queue 'datacombinequeue' with ClientRequestId 'ab7308e2-ffb5-480a-adec-f57cd4eed6c6' found 2 messages in 4 ms.
+[2025-04-30T21:16:13.101Z] Unable to resolve FunctionGroupTag, FUNCTIONS_TARGET_GROUP is null or empty.
+[2025-04-30T21:16:13.111Z] Executing 'Functions.dataprep_queue_trigger' (Reason='New queue message detected on 'datacombinequeue'.', Id=e0b5be34-149b-48f9-b78b-9aead911a57c)
+[2025-04-30T21:16:13.111Z] Trigger Details: MessageId: aea9a9bc-84a0-4ce0-940d-96f9fbbade59, DequeueCount: 1, InsertedOn: 2025-04-30T21:14:23.000+00:00
+[2025-04-30T21:16:13.115Z] testhubname-control-03: CreateLeaseIfNotExistAsync - leaseContainerName: testhubname-leases, leaseType: intent, partitionId: testhubname-control-03
+[2025-04-30T21:16:13.116Z] testhubname-control-03: CreateLeaseIfNotExistAsync - leaseContainerName: testhubname-leases, leaseType: ownership, partitionId: testhubname-control-03
+[2025-04-30T21:16:13.116Z] testhubname-control-02: CreateLeaseIfNotExistAsync - leaseContainerName: testhubname-leases, leaseType: intent, partitionId: testhubname-control-02
+[2025-04-30T21:16:13.116Z] testhubname-control-02: CreateLeaseIfNotExistAsync - leaseContainerName: testhubname-leases, leaseType: ownership, partitionId: testhubname-control-02
+[2025-04-30T21:16:13.117Z] testhubname-control-01: CreateLeaseIfNotExistAsync - leaseContainerName: testhubname-leases, leaseType: intent, partitionId: testhubname-control-01
+[2025-04-30T21:16:13.121Z] testhubname-control-01: CreateLeaseIfNotExistAsync - leaseContainerName: testhubname-leases, leaseType: ownership, partitionId: testhubname-control-01
+[2025-04-30T21:16:13.121Z] testhubname-control-00: CreateLeaseIfNotExistAsync - leaseContainerName: testhubname-leases, leaseType: intent, partitionId: testhubname-control-00
+[2025-04-30T21:16:13.121Z] testhubname-control-00: CreateLeaseIfNotExistAsync - leaseContainerName: testhubname-leases, leaseType: ownership, partitionId: testhubname-control-00
+[2025-04-30T21:16:13.121Z] Unable to resolve FunctionGroupTag, FUNCTIONS_TARGET_GROUP is null or empty.
+[2025-04-30T21:16:13.125Z] Executing 'Functions.dataprep_queue_trigger' (Reason='New queue message detected on 'datacombinequeue'.', Id=ca0dfaba-c090-43dc-a4ca-a26a7ca1c769)
+[2025-04-30T21:16:13.136Z] Trigger Details: MessageId: 6bf99edb-398e-42e3-bd5d-afcf924ff049, DequeueCount: 1, InsertedOn: 2025-04-30T21:14:23.000+00:00
+[2025-04-30T21:16:13.137Z] Request [3c70423c-d65c-4134-a47c-dd4e18777987] GET http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages?numofmessages=8&visibilitytimeout=600
+[2025-04-30T21:16:13.140Z] Received FunctionInvocationRequest, request ID: 0f656d92-0d89-4cb4-b556-73fe0a387437, function ID: 140d71e0-defb-58e2-a37c-c5a05d2c23c3, function name: dataprep_queue_trigger, invocation ID: e0b5be34-149b-48f9-b78b-9aead911a57c, function type: async, timestamp (UTC): 2025-04-30 21:16:13.140028
+[2025-04-30T21:16:13.142Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:13.142Z] Accept:application/xml
+[2025-04-30T21:16:13.142Z] x-ms-client-request-id:3c70423c-d65c-4134-a47c-dd4e18777987
+[2025-04-30T21:16:13.142Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:13.142Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:13.143Z] x-ms-date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.143Z] Authorization:REDACTED
+[2025-04-30T21:16:13.143Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:13.143Z] Response [3c70423c-d65c-4134-a47c-dd4e18777987] 200 OK (00.0s)
+[2025-04-30T21:16:13.144Z] Received FunctionInvocationRequest, request ID: 0f656d92-0d89-4cb4-b556-73fe0a387437, function ID: 140d71e0-defb-58e2-a37c-c5a05d2c23c3, function name: dataprep_queue_trigger, invocation ID: ca0dfaba-c090-43dc-a4ca-a26a7ca1c769, function type: async, timestamp (UTC): 2025-04-30 21:16:13.144176
+[2025-04-30T21:16:13.147Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:13.147Z] x-ms-client-request-id:3c70423c-d65c-4134-a47c-dd4e18777987
+[2025-04-30T21:16:13.147Z] x-ms-request-id:8868677a-e471-44b6-8ac0-1b4918a7c914
+[2025-04-30T21:16:13.147Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:13.147Z] Date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.147Z] Connection:keep-alive
+[2025-04-30T21:16:13.147Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:13.147Z] Transfer-Encoding:chunked
+[2025-04-30T21:16:13.147Z] Content-Type:application/xml
+[2025-04-30T21:16:13.147Z] 
+[2025-04-30T21:16:13.147Z] Poll for function 'dataprep_queue_trigger' on queue 'datacombinequeue' with ClientRequestId '3c70423c-d65c-4134-a47c-dd4e18777987' found 0 messages in 10 ms.
+[2025-04-30T21:16:13.149Z] Durable task hub worker is starting
+[2025-04-30T21:16:13.151Z] Function 'dataprep_queue_trigger' will wait 100 ms before polling queue 'datacombinequeue'.
+[2025-04-30T21:16:13.155Z] TaskOrchestrationDispatcher-bd8787ae68fb4fd6b52158f8bb5ea018-0: Starting dispatch loop
+[2025-04-30T21:16:13.155Z] TaskActivityDispatcher-a1bba59ed1c048b1ba7da974d94928c1-0: Starting dispatch loop
+[2025-04-30T21:16:13.155Z] Durable task hub worker started successfully after 5ms
+[2025-04-30T21:16:13.155Z] Task hub worker started. Latency: 00:00:00.1007581. Extension GUID 0152f53d-3d2c-401c-9ec7-17dc4943a510. InstanceId: . Function: . HubName: TestHubName. AppName: . SlotName: . ExtensionVersion: 2.13.7. SequenceNumber: 2.
+[2025-04-30T21:16:13.156Z] testhubname-applease: Attempting to acquire app lease
+[2025-04-30T21:16:13.156Z] TaskOrchestrationDispatcher-bd8787ae68fb4fd6b52158f8bb5ea018-0: Fetching next work item. Current active work-item count: 0. Maximum active work-item count: 140. Timeout: 30s
+[2025-04-30T21:16:13.157Z] TaskActivityDispatcher-a1bba59ed1c048b1ba7da974d94928c1-0: Fetching next work item. Current active work-item count: 0. Maximum active work-item count: 140. Timeout: 30s
+[2025-04-30T21:16:13.157Z] Host started (183ms)
+[2025-04-30T21:16:13.157Z] Job host started
+[2025-04-30T21:16:13.157Z] Fetched instance status for dp-timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306
+[2025-04-30T21:16:13.157Z] Fetched instance status for dp-timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306
+[2025-04-30T21:16:13.161Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: InvocationResponse
+[2025-04-30T21:16:13.162Z] testhubname-applease: Successfully acquired app lease
+[2025-04-30T21:16:13.162Z] Fetched instance status for dp-timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306
+[2025-04-30T21:16:13.162Z] Received message for job 'timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306', report 1/2. Checking orchestrator status for instance 'dp-timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306'.
+[2025-04-30T21:16:13.162Z] Received message for job 'timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306', report 2/2. Checking orchestrator status for instance 'dp-timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306'.
+[2025-04-30T21:16:13.162Z] Orchestrator instance 'dp-timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306' found with status 'None'. Raising 'ReportMetadataReady' event for report 2/2.
+[2025-04-30T21:16:13.162Z] Received message with sequence_number 1 for job 'timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306', but orchestrator instance 'dp-timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306' is already running (None). Ignoring start request, assuming initial data was already processed or will be handled by the running instance.
+[2025-04-30T21:16:13.162Z] InvocationResponse received for invocation: 'e0b5be34-149b-48f9-b78b-9aead911a57c'
+[2025-04-30T21:16:13.164Z] [channel] received 94d2e643-2f2f-43b1-868b-690396872918: InvocationResponse
+[2025-04-30T21:16:13.164Z] Error processing queue message for job 'timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306': No instance with ID dp-timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306 found.
+[2025-04-30T21:16:13.164Z] Traceback (most recent call last):
+[2025-04-30T21:16:13.164Z]   File "/Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep/handlers/main_orchestrator_bp.py", line 128, in dataprep_queue_trigger
+[2025-04-30T21:16:13.164Z]     await starter.raise_event(
+[2025-04-30T21:16:13.164Z]   File "/Users/trb74/azure-functions/wrlc/barcode_checks/shared_code/.venv/lib/python3.11/site-packages/azure/durable_functions/models/DurableOrchestrationClient.py", line 259, in raise_event
+[2025-04-30T21:16:13.164Z]     raise Exception(error_message)
+[2025-04-30T21:16:13.164Z] Exception: No instance with ID dp-timer_SCF Missing or Incorrect Row-Tray Data_20250430211354_855f7306 found.
+[2025-04-30T21:16:13.164Z] InvocationResponse received for invocation: 'ca0dfaba-c090-43dc-a4ca-a26a7ca1c769'
+[2025-04-30T21:16:13.169Z] Executed 'Functions.dataprep_queue_trigger' (Succeeded, Id=e0b5be34-149b-48f9-b78b-9aead911a57c, Duration=66ms)
+[2025-04-30T21:16:13.169Z] Executed 'Functions.dataprep_queue_trigger' (Succeeded, Id=ca0dfaba-c090-43dc-a4ca-a26a7ca1c769, Duration=45ms)
+[2025-04-30T21:16:13.176Z] Request [77aba16e-4cf7-4c79-ab9a-e2e87d0039f3] DELETE http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages/aea9a9bc-84a0-4ce0-940d-96f9fbbade59?popreceipt=MzBBcHIyMDI1MjE6MTY6MTM5OTVm
+[2025-04-30T21:16:13.176Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:13.176Z] Request [c29855c2-b8fc-468a-802a-fc4f01d37336] DELETE http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages/6bf99edb-398e-42e3-bd5d-afcf924ff049?popreceipt=MzBBcHIyMDI1MjE6MTY6MTM5OTVm
+[2025-04-30T21:16:13.176Z] Accept:application/xml
+[2025-04-30T21:16:13.176Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:13.176Z] x-ms-client-request-id:77aba16e-4cf7-4c79-ab9a-e2e87d0039f3
+[2025-04-30T21:16:13.176Z] Accept:application/xml
+[2025-04-30T21:16:13.176Z] x-ms-client-request-id:c29855c2-b8fc-468a-802a-fc4f01d37336
+[2025-04-30T21:16:13.176Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:13.176Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:13.176Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)[2025-04-30T21:16:13.176Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+
+[2025-04-30T21:16:13.176Z] x-ms-date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.176Z] x-ms-date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.176Z] Authorization:REDACTED
+[2025-04-30T21:16:13.176Z] Authorization:REDACTED
+[2025-04-30T21:16:13.176Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:13.176Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:13.177Z] Response [c29855c2-b8fc-468a-802a-fc4f01d37336] 204 No Content (00.0s)
+[2025-04-30T21:16:13.177Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:13.177Z] x-ms-client-request-id:c29855c2-b8fc-468a-802a-fc4f01d37336
+[2025-04-30T21:16:13.177Z] x-ms-request-id:889cdeb3-257d-475c-af02-22e58d8f1e4d
+[2025-04-30T21:16:13.177Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:13.177Z] Date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.177Z] Connection:keep-alive
+[2025-04-30T21:16:13.177Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:13.177Z] 
+[2025-04-30T21:16:13.177Z] Starting background renewal of intent leases with interval: 00:00:10.
+[2025-04-30T21:16:13.178Z] Response [77aba16e-4cf7-4c79-ab9a-e2e87d0039f3] 204 No Content (00.0s)
+[2025-04-30T21:16:13.178Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:13.178Z] x-ms-client-request-id:77aba16e-4cf7-4c79-ab9a-e2e87d0039f3
+[2025-04-30T21:16:13.178Z] x-ms-request-id:82e635eb-cce1-4dde-9491-028eb5fd2ade
+[2025-04-30T21:16:13.178Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:13.178Z] Date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.178Z] Connection:keep-alive
+[2025-04-30T21:16:13.178Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:13.178Z] 
+[2025-04-30T21:16:13.179Z] Starting to check for available intent leases with interval: 00:00:10.
+[2025-04-30T21:16:13.187Z] testhubname-control-00: Attempting to acquire intent lease
+[2025-04-30T21:16:13.188Z] Starting background renewal of ownership leases with interval: 00:00:10.
+[2025-04-30T21:16:13.188Z] Starting to check for available ownership leases with interval: 00:00:05.
+[2025-04-30T21:16:13.189Z] testhubname-applease: Starting background renewal of app lease with interval: 00:00:25.
+[2025-04-30T21:16:13.189Z] testhubname-applease: Starting app lease renewal with token 811c9dc5-0000-0000-0000-000000000000
+[2025-04-30T21:16:13.191Z] testhubname-applease: app lease renewal with token 811c9dc5-0000-0000-0000-000000000000 succeeded
+[2025-04-30T21:16:13.193Z] testhubname-control-00: Skipping ownership lease aquiring for testhubname-control-00
+[2025-04-30T21:16:13.197Z] testhubname-control-01: Skipping ownership lease aquiring for testhubname-control-01
+[2025-04-30T21:16:13.197Z] testhubname-control-02: Skipping ownership lease aquiring for testhubname-control-02
+[2025-04-30T21:16:13.197Z] testhubname-control-03: Skipping ownership lease aquiring for testhubname-control-03
+[2025-04-30T21:16:13.198Z] testhubname-control-00: Successfully acquired intent lease
+[2025-04-30T21:16:13.198Z] testhubname-control-01: Attempting to acquire intent lease
+[2025-04-30T21:16:13.205Z] testhubname-control-01: Successfully acquired intent lease
+[2025-04-30T21:16:13.205Z] testhubname-control-02: Attempting to acquire intent lease
+[2025-04-30T21:16:13.214Z] testhubname-control-02: Successfully acquired intent lease
+[2025-04-30T21:16:13.214Z] testhubname-control-03: Attempting to acquire intent lease
+[2025-04-30T21:16:13.223Z] testhubname-control-03: Successfully acquired intent lease
+[2025-04-30T21:16:13.224Z] File event source initialized.
+[2025-04-30T21:16:13.273Z] Request [a50ef9ea-6917-4f2c-9a27-03ae80650790] GET http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages?numofmessages=8&visibilitytimeout=600
+[2025-04-30T21:16:13.273Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:13.273Z] Accept:application/xml
+[2025-04-30T21:16:13.273Z] x-ms-client-request-id:a50ef9ea-6917-4f2c-9a27-03ae80650790
+[2025-04-30T21:16:13.273Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:13.273Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:13.273Z] x-ms-date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.273Z] Authorization:REDACTED
+[2025-04-30T21:16:13.273Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:13.274Z] Response [a50ef9ea-6917-4f2c-9a27-03ae80650790] 200 OK (00.0s)
+[2025-04-30T21:16:13.274Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:13.274Z] x-ms-client-request-id:a50ef9ea-6917-4f2c-9a27-03ae80650790
+[2025-04-30T21:16:13.274Z] x-ms-request-id:2d45b98c-9ac1-4bc6-8093-9fbcf6fff46d
+[2025-04-30T21:16:13.274Z] Debug file watch initialized.
+[2025-04-30T21:16:13.274Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:13.274Z] Date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.274Z] Connection:keep-alive
+[2025-04-30T21:16:13.274Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:13.274Z] Transfer-Encoding:chunked
+[2025-04-30T21:16:13.274Z] Content-Type:application/xml
+[2025-04-30T21:16:13.274Z] 
+[2025-04-30T21:16:13.275Z] Poll for function 'dataprep_queue_trigger' on queue 'datacombinequeue' with ClientRequestId 'a50ef9ea-6917-4f2c-9a27-03ae80650790' found 0 messages in 1 ms.
+[2025-04-30T21:16:13.275Z] Function 'dataprep_queue_trigger' will wait 196.7928 ms before polling queue 'datacombinequeue'.
+[2025-04-30T21:16:13.325Z] Diagnostic file watch initialized.
+[2025-04-30T21:16:13.325Z] Hosting started
+[2025-04-30T21:16:13.325Z] Host state changed from Initialized to Running.
+[2025-04-30T21:16:13.326Z] Startup operation '76178b9f-8128-4da9-9d29-9bdc98858fbd' completed.
+[2025-04-30T21:16:13.472Z] Request [91264ede-999e-4b48-88cc-502132cf22b4] GET http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages?numofmessages=8&visibilitytimeout=600
+[2025-04-30T21:16:13.472Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:13.472Z] Accept:application/xml
+[2025-04-30T21:16:13.472Z] x-ms-client-request-id:91264ede-999e-4b48-88cc-502132cf22b4
+[2025-04-30T21:16:13.472Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:13.472Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:13.472Z] x-ms-date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.472Z] Authorization:REDACTED
+[2025-04-30T21:16:13.472Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:13.474Z] Response [91264ede-999e-4b48-88cc-502132cf22b4] 200 OK (00.0s)
+[2025-04-30T21:16:13.474Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:13.474Z] x-ms-client-request-id:91264ede-999e-4b48-88cc-502132cf22b4
+[2025-04-30T21:16:13.474Z] x-ms-request-id:1722f28c-f66a-41ad-a8da-f02657e58676
+[2025-04-30T21:16:13.474Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:13.474Z] Date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.474Z] Connection:keep-alive
+[2025-04-30T21:16:13.474Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:13.474Z] Transfer-Encoding:chunked
+[2025-04-30T21:16:13.474Z] Content-Type:application/xml
+[2025-04-30T21:16:13.474Z] 
+[2025-04-30T21:16:13.474Z] Poll for function 'dataprep_queue_trigger' on queue 'datacombinequeue' with ClientRequestId '91264ede-999e-4b48-88cc-502132cf22b4' found 0 messages in 2 ms.
+[2025-04-30T21:16:13.474Z] Function 'dataprep_queue_trigger' will wait 295.6317 ms before polling queue 'datacombinequeue'.
+[2025-04-30T21:16:13.771Z] Request [5c5d793e-2d5a-4069-9b50-14cf428fc24a] GET http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages?numofmessages=8&visibilitytimeout=600
+[2025-04-30T21:16:13.771Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:13.771Z] Accept:application/xml
+[2025-04-30T21:16:13.771Z] x-ms-client-request-id:5c5d793e-2d5a-4069-9b50-14cf428fc24a
+[2025-04-30T21:16:13.771Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:13.771Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:13.771Z] x-ms-date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.771Z] Authorization:REDACTED
+[2025-04-30T21:16:13.771Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:13.771Z] Response [5c5d793e-2d5a-4069-9b50-14cf428fc24a] 200 OK (00.0s)
+[2025-04-30T21:16:13.771Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:13.771Z] x-ms-client-request-id:5c5d793e-2d5a-4069-9b50-14cf428fc24a
+[2025-04-30T21:16:13.771Z] x-ms-request-id:2f9373b0-4fd3-4a62-8cb8-36ca9e51f7a7
+[2025-04-30T21:16:13.771Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:13.771Z] Date:Wed, 30 Apr 2025 21:16:13 GMT
+[2025-04-30T21:16:13.771Z] Connection:keep-alive
+[2025-04-30T21:16:13.771Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:13.771Z] Transfer-Encoding:chunked
+[2025-04-30T21:16:13.771Z] Content-Type:application/xml
+[2025-04-30T21:16:13.771Z] 
+[2025-04-30T21:16:13.772Z] Poll for function 'dataprep_queue_trigger' on queue 'datacombinequeue' with ClientRequestId '5c5d793e-2d5a-4069-9b50-14cf428fc24a' found 0 messages in 1 ms.
+[2025-04-30T21:16:13.772Z] Function 'dataprep_queue_trigger' will wait 560.712 ms before polling queue 'datacombinequeue'.
+[2025-04-30T21:16:14.333Z] Request [ad52cd32-a6d2-4c5a-afe1-62fbece69b12] GET http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages?numofmessages=8&visibilitytimeout=600
+[2025-04-30T21:16:14.333Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:14.333Z] Accept:application/xml
+[2025-04-30T21:16:14.333Z] x-ms-client-request-id:ad52cd32-a6d2-4c5a-afe1-62fbece69b12
+[2025-04-30T21:16:14.333Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:14.333Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:14.333Z] x-ms-date:Wed, 30 Apr 2025 21:16:14 GMT
+[2025-04-30T21:16:14.333Z] Authorization:REDACTED
+[2025-04-30T21:16:14.333Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:14.334Z] Response [ad52cd32-a6d2-4c5a-afe1-62fbece69b12] 200 OK (00.0s)
+[2025-04-30T21:16:14.334Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:14.334Z] x-ms-client-request-id:ad52cd32-a6d2-4c5a-afe1-62fbece69b12
+[2025-04-30T21:16:14.334Z] x-ms-request-id:60b564fd-de0c-40f5-9411-f315368fe729
+[2025-04-30T21:16:14.334Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:14.334Z] Date:Wed, 30 Apr 2025 21:16:14 GMT
+[2025-04-30T21:16:14.334Z] Connection:keep-alive
+[2025-04-30T21:16:14.334Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:14.334Z] Transfer-Encoding:chunked
+[2025-04-30T21:16:14.334Z] Content-Type:application/xml
+[2025-04-30T21:16:14.334Z] 
+[2025-04-30T21:16:14.334Z] Poll for function 'dataprep_queue_trigger' on queue 'datacombinequeue' with ClientRequestId 'ad52cd32-a6d2-4c5a-afe1-62fbece69b12' found 0 messages in 2 ms.
+[2025-04-30T21:16:14.335Z] Function 'dataprep_queue_trigger' will wait 976.5464 ms before polling queue 'datacombinequeue'.
+[2025-04-30T21:16:15.313Z] Request [3432e4ee-35bd-4df1-823f-31633a0ac9f9] GET http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages?numofmessages=8&visibilitytimeout=600
+[2025-04-30T21:16:15.313Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:15.313Z] Accept:application/xml
+[2025-04-30T21:16:15.313Z] x-ms-client-request-id:3432e4ee-35bd-4df1-823f-31633a0ac9f9
+[2025-04-30T21:16:15.313Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:15.313Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:15.313Z] x-ms-date:Wed, 30 Apr 2025 21:16:15 GMT
+[2025-04-30T21:16:15.313Z] Authorization:REDACTED
+[2025-04-30T21:16:15.313Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:15.318Z] Response [3432e4ee-35bd-4df1-823f-31633a0ac9f9] 200 OK (00.0s)
+[2025-04-30T21:16:15.318Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:15.318Z] x-ms-client-request-id:3432e4ee-35bd-4df1-823f-31633a0ac9f9
+[2025-04-30T21:16:15.318Z] x-ms-request-id:9e40b968-27b7-4205-809e-46ab269fe6f2
+[2025-04-30T21:16:15.318Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:15.318Z] Date:Wed, 30 Apr 2025 21:16:15 GMT
+[2025-04-30T21:16:15.318Z] Connection:keep-alive
+[2025-04-30T21:16:15.318Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:15.318Z] Transfer-Encoding:chunked
+[2025-04-30T21:16:15.318Z] Content-Type:application/xml
+[2025-04-30T21:16:15.318Z] 
+[2025-04-30T21:16:15.319Z] Poll for function 'dataprep_queue_trigger' on queue 'datacombinequeue' with ClientRequestId '3432e4ee-35bd-4df1-823f-31633a0ac9f9' found 0 messages in 7 ms.
+[2025-04-30T21:16:15.319Z] Function 'dataprep_queue_trigger' will wait 1673.5942 ms before polling queue 'datacombinequeue'.
+[2025-04-30T21:16:16.993Z] Request [c320e539-5651-44b4-98f5-62df34a5eee5] GET http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages?numofmessages=8&visibilitytimeout=600
+[2025-04-30T21:16:16.993Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:16.993Z] Accept:application/xml
+[2025-04-30T21:16:16.993Z] x-ms-client-request-id:c320e539-5651-44b4-98f5-62df34a5eee5
+[2025-04-30T21:16:16.993Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:16.993Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:16.993Z] x-ms-date:Wed, 30 Apr 2025 21:16:16 GMT
+[2025-04-30T21:16:16.993Z] Authorization:REDACTED
+[2025-04-30T21:16:16.993Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:16.996Z] Response [c320e539-5651-44b4-98f5-62df34a5eee5] 200 OK (00.0s)
+[2025-04-30T21:16:16.996Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:16.996Z] x-ms-client-request-id:c320e539-5651-44b4-98f5-62df34a5eee5
+[2025-04-30T21:16:16.996Z] x-ms-request-id:f4d71b3a-8565-487a-a2e8-116b52b1004f
+[2025-04-30T21:16:16.996Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:16.996Z] Date:Wed, 30 Apr 2025 21:16:16 GMT
+[2025-04-30T21:16:16.996Z] Connection:keep-alive
+[2025-04-30T21:16:16.996Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:16.996Z] Transfer-Encoding:chunked
+[2025-04-30T21:16:16.996Z] Content-Type:application/xml
+[2025-04-30T21:16:16.996Z] 
+[2025-04-30T21:16:16.997Z] Poll for function 'dataprep_queue_trigger' on queue 'datacombinequeue' with ClientRequestId 'c320e539-5651-44b4-98f5-62df34a5eee5' found 0 messages in 4 ms.
+[2025-04-30T21:16:16.997Z] Function 'dataprep_queue_trigger' will wait 2973.2546 ms before polling queue 'datacombinequeue'.
+[2025-04-30T21:16:17.979Z] Request [6cd50f1f-07e9-49d5-98ab-681e420ed916] HEAD http://127.0.0.1:10000/devstoreaccount1/azure-webjobs-hosts/locks/bluetrain-1303596477/host
+[2025-04-30T21:16:17.979Z] x-ms-version:2023-11-03
+[2025-04-30T21:16:17.979Z] Accept:application/xml
+[2025-04-30T21:16:17.979Z] x-ms-client-request-id:6cd50f1f-07e9-49d5-98ab-681e420ed916
+[2025-04-30T21:16:17.979Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:17.979Z] User-Agent:azsdk-net-Storage.Blobs/12.19.1 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:17.979Z] x-ms-date:Wed, 30 Apr 2025 21:16:17 GMT
+[2025-04-30T21:16:17.979Z] Authorization:REDACTED
+[2025-04-30T21:16:17.979Z] client assembly: Azure.Storage.Blobs
+[2025-04-30T21:16:17.983Z] Response [6cd50f1f-07e9-49d5-98ab-681e420ed916] 200 OK (00.0s)
+[2025-04-30T21:16:17.983Z] Server:Azurite-Blob/3.34.0
+[2025-04-30T21:16:17.983Z] x-ms-creation-time:Wed, 16 Apr 2025 16:37:36 GMT
+[2025-04-30T21:16:17.983Z] x-ms-meta-FunctionInstance:REDACTED
+[2025-04-30T21:16:17.983Z] x-ms-blob-type:BlockBlob
+[2025-04-30T21:16:17.983Z] x-ms-lease-state:available
+[2025-04-30T21:16:17.983Z] x-ms-lease-status:unlocked
+[2025-04-30T21:16:17.983Z] ETag:"0x253623D7EDD1A40"
+[2025-04-30T21:16:17.983Z] x-ms-client-request-id:6cd50f1f-07e9-49d5-98ab-681e420ed916
+[2025-04-30T21:16:17.983Z] x-ms-request-id:cd195e17-eda7-430b-8ffa-753545b6a6ea
+[2025-04-30T21:16:17.983Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:17.983Z] Date:Wed, 30 Apr 2025 21:16:17 GMT
+[2025-04-30T21:16:17.983Z] Accept-Ranges:bytes
+[2025-04-30T21:16:17.983Z] x-ms-server-encrypted:true
+[2025-04-30T21:16:17.983Z] x-ms-access-tier:Hot
+[2025-04-30T21:16:17.983Z] x-ms-access-tier-inferred:true
+[2025-04-30T21:16:17.983Z] x-ms-access-tier-change-time:Wed, 16 Apr 2025 16:37:36 GMT
+[2025-04-30T21:16:17.983Z] Connection:keep-alive
+[2025-04-30T21:16:17.983Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:17.983Z] Last-Modified:Wed, 30 Apr 2025 21:09:38 GMT
+[2025-04-30T21:16:17.983Z] Content-Length:0
+[2025-04-30T21:16:17.983Z] Content-Type:application/octet-stream
+[2025-04-30T21:16:17.983Z] Content-MD5:1B2M2Y8AsgTpgAmY7PhCfg==
+[2025-04-30T21:16:17.983Z] 
+[2025-04-30T21:16:17.989Z] Request [ec6c5113-bda3-43bf-8e0c-66f3f02923a7] PUT http://127.0.0.1:10000/devstoreaccount1/azure-webjobs-hosts/locks/bluetrain-1303596477/host?comp=lease
+[2025-04-30T21:16:17.989Z] x-ms-lease-action:acquire
+[2025-04-30T21:16:17.989Z] x-ms-version:2023-11-03
+[2025-04-30T21:16:17.989Z] Accept:application/xml
+[2025-04-30T21:16:17.989Z] x-ms-lease-duration:15
+[2025-04-30T21:16:17.989Z] x-ms-proposed-lease-id:00000000000000000000000092B8062C
+[2025-04-30T21:16:17.989Z] x-ms-client-request-id:ec6c5113-bda3-43bf-8e0c-66f3f02923a7
+[2025-04-30T21:16:17.989Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:17.989Z] User-Agent:azsdk-net-Storage.Blobs/12.19.1 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:17.989Z] x-ms-date:Wed, 30 Apr 2025 21:16:17 GMT
+[2025-04-30T21:16:17.989Z] Authorization:REDACTED
+[2025-04-30T21:16:17.989Z] client assembly: Azure.Storage.Blobs
+[2025-04-30T21:16:17.991Z] Response [ec6c5113-bda3-43bf-8e0c-66f3f02923a7] 201 Created (00.0s)
+[2025-04-30T21:16:17.991Z] Server:Azurite-Blob/3.34.0
+[2025-04-30T21:16:17.991Z] ETag:"0x253623D7EDD1A40"
+[2025-04-30T21:16:17.991Z] x-ms-lease-id:00000000000000000000000092B8062C
+[2025-04-30T21:16:17.991Z] x-ms-client-request-id:ec6c5113-bda3-43bf-8e0c-66f3f02923a7
+[2025-04-30T21:16:17.991Z] x-ms-request-id:ff6b63ff-fbf5-4ee2-8693-54978f5f5a9c
+[2025-04-30T21:16:17.991Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:17.991Z] Date:Wed, 30 Apr 2025 21:16:17 GMT
+[2025-04-30T21:16:17.991Z] Connection:keep-alive
+[2025-04-30T21:16:17.991Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:17.991Z] Last-Modified:Wed, 30 Apr 2025 21:09:38 GMT
+[2025-04-30T21:16:17.991Z] Content-Length:0
+[2025-04-30T21:16:17.991Z] 
+[2025-04-30T21:16:17.993Z] Request [935beb75-2afe-4dc0-a97e-90f7e899744f] HEAD http://127.0.0.1:10000/devstoreaccount1/azure-webjobs-hosts/locks/bluetrain-1303596477/host
+[2025-04-30T21:16:17.993Z] x-ms-version:2023-11-03
+[2025-04-30T21:16:17.993Z] Accept:application/xml
+[2025-04-30T21:16:17.993Z] x-ms-client-request-id:935beb75-2afe-4dc0-a97e-90f7e899744f
+[2025-04-30T21:16:17.993Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:17.993Z] User-Agent:azsdk-net-Storage.Blobs/12.19.1 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:17.993Z] x-ms-date:Wed, 30 Apr 2025 21:16:17 GMT
+[2025-04-30T21:16:17.993Z] Authorization:REDACTED
+[2025-04-30T21:16:17.993Z] client assembly: Azure.Storage.Blobs
+[2025-04-30T21:16:17.994Z] Response [935beb75-2afe-4dc0-a97e-90f7e899744f] 200 OK (00.0s)
+[2025-04-30T21:16:17.994Z] Server:Azurite-Blob/3.34.0
+[2025-04-30T21:16:17.994Z] x-ms-creation-time:Wed, 16 Apr 2025 16:37:36 GMT
+[2025-04-30T21:16:17.994Z] x-ms-meta-FunctionInstance:REDACTED
+[2025-04-30T21:16:17.994Z] x-ms-blob-type:BlockBlob
+[2025-04-30T21:16:17.994Z] x-ms-lease-duration:fixed
+[2025-04-30T21:16:17.994Z] x-ms-lease-state:leased
+[2025-04-30T21:16:17.994Z] x-ms-lease-status:locked
+[2025-04-30T21:16:17.994Z] ETag:"0x253623D7EDD1A40"
+[2025-04-30T21:16:17.994Z] x-ms-client-request-id:935beb75-2afe-4dc0-a97e-90f7e899744f
+[2025-04-30T21:16:17.994Z] x-ms-request-id:82172c38-269b-47bd-b900-4f0bd93dd5a6
+[2025-04-30T21:16:17.994Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:17.994Z] Date:Wed, 30 Apr 2025 21:16:17 GMT
+[2025-04-30T21:16:17.994Z] Accept-Ranges:bytes
+[2025-04-30T21:16:17.994Z] x-ms-server-encrypted:true
+[2025-04-30T21:16:17.994Z] x-ms-access-tier:Hot
+[2025-04-30T21:16:17.994Z] x-ms-access-tier-inferred:true
+[2025-04-30T21:16:17.995Z] x-ms-access-tier-change-time:Wed, 16 Apr 2025 16:37:36 GMT
+[2025-04-30T21:16:17.995Z] Connection:keep-alive
+[2025-04-30T21:16:17.995Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:17.995Z] Last-Modified:Wed, 30 Apr 2025 21:09:38 GMT
+[2025-04-30T21:16:17.995Z] Content-Length:0
+[2025-04-30T21:16:17.995Z] Content-Type:application/octet-stream
+[2025-04-30T21:16:17.995Z] Content-MD5:1B2M2Y8AsgTpgAmY7PhCfg==
+[2025-04-30T21:16:17.995Z] 
+[2025-04-30T21:16:17.999Z] Request [2977b08a-2b55-4ccc-a1d1-980a1b92c78c] PUT http://127.0.0.1:10000/devstoreaccount1/azure-webjobs-hosts/locks/bluetrain-1303596477/host?comp=metadata
+[2025-04-30T21:16:17.999Z] x-ms-meta-FunctionInstance:REDACTED
+[2025-04-30T21:16:17.999Z] x-ms-lease-id:00000000000000000000000092B8062C
+[2025-04-30T21:16:17.999Z] x-ms-version:2023-11-03
+[2025-04-30T21:16:17.999Z] Accept:application/xml
+[2025-04-30T21:16:17.999Z] x-ms-client-request-id:2977b08a-2b55-4ccc-a1d1-980a1b92c78c
+[2025-04-30T21:16:17.999Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:17.999Z] User-Agent:azsdk-net-Storage.Blobs/12.19.1 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:17.999Z] x-ms-date:Wed, 30 Apr 2025 21:16:17 GMT
+[2025-04-30T21:16:17.999Z] Authorization:REDACTED
+[2025-04-30T21:16:17.999Z] client assembly: Azure.Storage.Blobs
+[2025-04-30T21:16:18.000Z] Response [2977b08a-2b55-4ccc-a1d1-980a1b92c78c] 200 OK (00.0s)
+[2025-04-30T21:16:18.000Z] Server:Azurite-Blob/3.34.0
+[2025-04-30T21:16:18.000Z] ETag:"0x1DD77947C9BDEF0"
+[2025-04-30T21:16:18.000Z] x-ms-client-request-id:2977b08a-2b55-4ccc-a1d1-980a1b92c78c
+[2025-04-30T21:16:18.000Z] x-ms-request-id:ef53b9b5-90e1-44db-8697-941cf8a95a11
+[2025-04-30T21:16:18.000Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:18.000Z] Date:Wed, 30 Apr 2025 21:16:17 GMT
+[2025-04-30T21:16:18.000Z] x-ms-request-server-encrypted:true
+[2025-04-30T21:16:18.000Z] Connection:keep-alive
+[2025-04-30T21:16:18.000Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:18.000Z] Last-Modified:Wed, 30 Apr 2025 21:16:17 GMT
+[2025-04-30T21:16:18.000Z] Content-Length:0
+[2025-04-30T21:16:18.000Z] 
+[2025-04-30T21:16:18.004Z] Host lock lease acquired by instance ID '00000000000000000000000092B8062C'.
+[2025-04-30T21:16:18.220Z] testhubname-control-00: Attempting to acquire ownership lease
+[2025-04-30T21:16:18.232Z] testhubname-control-00: Successfully acquired ownership lease
+[2025-04-30T21:16:18.232Z] testhubname-control-01: Attempting to acquire ownership lease
+[2025-04-30T21:16:18.241Z] testhubname-control-01: Successfully acquired ownership lease
+[2025-04-30T21:16:18.241Z] testhubname-control-02: Attempting to acquire ownership lease
+[2025-04-30T21:16:18.249Z] testhubname-control-02: Successfully acquired ownership lease
+[2025-04-30T21:16:18.249Z] testhubname-control-03: Attempting to acquire ownership lease
+[2025-04-30T21:16:18.257Z] testhubname-control-03: Successfully acquired ownership lease
+[2025-04-30T21:16:18.261Z] testhubname-control-01: Started listening for messages on queue testhubname-control-01.
+[2025-04-30T21:16:18.261Z] testhubname-control-03: Started listening for messages on queue testhubname-control-03.
+[2025-04-30T21:16:18.261Z] testhubname-control-02: Started listening for messages on queue testhubname-control-02.
+[2025-04-30T21:16:18.261Z] testhubname-control-00: Started listening for messages on queue testhubname-control-00.
+[2025-04-30T21:16:18.268Z] testhubname-control-00: No new messages were found - backing off
+[2025-04-30T21:16:18.268Z] testhubname-control-01: No new messages were found - backing off
+[2025-04-30T21:16:18.268Z] testhubname-control-02: No new messages were found - backing off
+[2025-04-30T21:16:18.268Z] testhubname-control-03: No new messages were found - backing off
+[2025-04-30T21:16:19.971Z] Request [90bfee18-8687-43b2-9624-e671df2f9d9d] GET http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages?numofmessages=8&visibilitytimeout=600
+[2025-04-30T21:16:19.971Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:19.971Z] Accept:application/xml
+[2025-04-30T21:16:19.971Z] x-ms-client-request-id:90bfee18-8687-43b2-9624-e671df2f9d9d
+[2025-04-30T21:16:19.971Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:19.971Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:19.972Z] x-ms-date:Wed, 30 Apr 2025 21:16:19 GMT
+[2025-04-30T21:16:19.972Z] Authorization:REDACTED
+[2025-04-30T21:16:19.972Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:19.975Z] Response [90bfee18-8687-43b2-9624-e671df2f9d9d] 200 OK (00.0s)
+[2025-04-30T21:16:19.976Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:19.976Z] x-ms-client-request-id:90bfee18-8687-43b2-9624-e671df2f9d9d
+[2025-04-30T21:16:19.976Z] x-ms-request-id:0379f0ce-2579-48f1-9a14-4c30214bbec1
+[2025-04-30T21:16:19.976Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:19.976Z] Date:Wed, 30 Apr 2025 21:16:19 GMT
+[2025-04-30T21:16:19.976Z] Connection:keep-alive
+[2025-04-30T21:16:19.976Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:19.976Z] Transfer-Encoding:chunked
+[2025-04-30T21:16:19.976Z] Content-Type:application/xml
+[2025-04-30T21:16:19.976Z] 
+[2025-04-30T21:16:19.978Z] Poll for function 'dataprep_queue_trigger' on queue 'datacombinequeue' with ClientRequestId '90bfee18-8687-43b2-9624-e671df2f9d9d' found 0 messages in 7 ms.
+[2025-04-30T21:16:19.978Z] Function 'dataprep_queue_trigger' will wait 5000 ms before polling queue 'datacombinequeue'.
+[2025-04-30T21:16:23.180Z] testhubname-control-03: Starting intent lease renewal with token 6cf65028-b25b-4125-aa7d-fc03e56c5aea
+[2025-04-30T21:16:23.186Z] testhubname-control-02: Starting intent lease renewal with token 0275f3b9-febc-49ed-b658-42a65c0669e3
+[2025-04-30T21:16:23.186Z] testhubname-control-01: Starting intent lease renewal with token d6facc50-03d3-4158-bbbd-cfc6c0d4e983
+[2025-04-30T21:16:23.187Z] testhubname-control-00: Starting intent lease renewal with token f3d0ffc0-b734-407c-a654-cdac638cf740
+[2025-04-30T21:16:23.188Z] testhubname-control-03: intent lease renewal with token 6cf65028-b25b-4125-aa7d-fc03e56c5aea succeeded
+[2025-04-30T21:16:23.188Z] testhubname-control-03: Starting ownership lease renewal with token 7977c37e-7abe-4a36-8789-9ba48239b56e
+[2025-04-30T21:16:23.189Z] testhubname-control-02: Starting ownership lease renewal with token 29c2cc3c-2667-402f-9caa-93382ddad24c
+[2025-04-30T21:16:23.189Z] testhubname-control-01: Starting ownership lease renewal with token 869ac557-c3b8-43ed-a4fc-93867b15c6cc
+[2025-04-30T21:16:23.189Z] testhubname-control-02: intent lease renewal with token 0275f3b9-febc-49ed-b658-42a65c0669e3 succeeded
+[2025-04-30T21:16:23.189Z] testhubname-control-00: Starting ownership lease renewal with token 8fecc6c0-e572-494c-a618-4ffd47fdab3d
+[2025-04-30T21:16:23.190Z] testhubname-control-01: intent lease renewal with token d6facc50-03d3-4158-bbbd-cfc6c0d4e983 succeeded
+[2025-04-30T21:16:23.191Z] testhubname-control-03: ownership lease renewal with token 7977c37e-7abe-4a36-8789-9ba48239b56e succeeded
+[2025-04-30T21:16:23.192Z] testhubname-control-00: intent lease renewal with token f3d0ffc0-b734-407c-a654-cdac638cf740 succeeded
+[2025-04-30T21:16:23.194Z] testhubname-control-02: ownership lease renewal with token 29c2cc3c-2667-402f-9caa-93382ddad24c succeeded
+[2025-04-30T21:16:23.195Z] testhubname-control-01: ownership lease renewal with token 869ac557-c3b8-43ed-a4fc-93867b15c6cc succeeded
+[2025-04-30T21:16:23.196Z] testhubname-control-00: ownership lease renewal with token 8fecc6c0-e572-494c-a618-4ffd47fdab3d succeeded
+[2025-04-30T21:16:24.980Z] Request [5001bd45-88e5-4f48-afc1-8df528c8517b] GET http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages?numofmessages=8&visibilitytimeout=600
+[2025-04-30T21:16:24.980Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:24.980Z] Accept:application/xml
+[2025-04-30T21:16:24.980Z] x-ms-client-request-id:5001bd45-88e5-4f48-afc1-8df528c8517b
+[2025-04-30T21:16:24.980Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:24.981Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:24.981Z] x-ms-date:Wed, 30 Apr 2025 21:16:24 GMT
+[2025-04-30T21:16:24.981Z] Authorization:REDACTED
+[2025-04-30T21:16:24.981Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:24.985Z] Response [5001bd45-88e5-4f48-afc1-8df528c8517b] 200 OK (00.0s)
+[2025-04-30T21:16:24.985Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:24.985Z] x-ms-client-request-id:5001bd45-88e5-4f48-afc1-8df528c8517b
+[2025-04-30T21:16:24.985Z] x-ms-request-id:d038ceb5-a930-4a34-99d0-731af60b1819
+[2025-04-30T21:16:24.985Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:24.986Z] Date:Wed, 30 Apr 2025 21:16:24 GMT
+[2025-04-30T21:16:24.986Z] Connection:keep-alive
+[2025-04-30T21:16:24.986Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:24.986Z] Transfer-Encoding:chunked
+[2025-04-30T21:16:24.986Z] Content-Type:application/xml
+[2025-04-30T21:16:24.986Z] 
+[2025-04-30T21:16:24.986Z] Poll for function 'dataprep_queue_trigger' on queue 'datacombinequeue' with ClientRequestId '5001bd45-88e5-4f48-afc1-8df528c8517b' found 0 messages in 6 ms.
+[2025-04-30T21:16:24.986Z] Function 'dataprep_queue_trigger' will wait 5000 ms before polling queue 'datacombinequeue'.
+[2025-04-30T21:16:29.989Z] Request [dcb72b86-7f32-434b-a981-13d784eaf1eb] GET http://127.0.0.1:10001/devstoreaccount1/datacombinequeue/messages?numofmessages=8&visibilitytimeout=600
+[2025-04-30T21:16:29.990Z] x-ms-version:2025-01-05
+[2025-04-30T21:16:29.990Z] Accept:application/xml
+[2025-04-30T21:16:29.990Z] x-ms-client-request-id:dcb72b86-7f32-434b-a981-13d784eaf1eb
+[2025-04-30T21:16:29.990Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:29.991Z] User-Agent:azsdk-net-Storage.Queues/12.21.0 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:29.991Z] x-ms-date:Wed, 30 Apr 2025 21:16:29 GMT
+[2025-04-30T21:16:29.991Z] Authorization:REDACTED
+[2025-04-30T21:16:29.991Z] client assembly: Azure.Storage.Queues
+[2025-04-30T21:16:29.995Z] Response [dcb72b86-7f32-434b-a981-13d784eaf1eb] 200 OK (00.0s)
+[2025-04-30T21:16:29.995Z] Server:Azurite-Queue/3.34.0
+[2025-04-30T21:16:29.995Z] x-ms-client-request-id:dcb72b86-7f32-434b-a981-13d784eaf1eb
+[2025-04-30T21:16:29.996Z] x-ms-request-id:d8808224-d8c8-4cbb-94a9-765276dffa97
+[2025-04-30T21:16:29.996Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:29.996Z] Date:Wed, 30 Apr 2025 21:16:29 GMT
+[2025-04-30T21:16:29.996Z] Connection:keep-alive
+[2025-04-30T21:16:29.997Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:29.997Z] Transfer-Encoding:chunked
+[2025-04-30T21:16:29.997Z] Content-Type:application/xml
+[2025-04-30T21:16:29.997Z] 
+[2025-04-30T21:16:29.998Z] Poll for function 'dataprep_queue_trigger' on queue 'datacombinequeue' with ClientRequestId 'dcb72b86-7f32-434b-a981-13d784eaf1eb' found 0 messages in 9 ms.
+[2025-04-30T21:16:29.998Z] Function 'dataprep_queue_trigger' will wait 5000 ms before polling queue 'datacombinequeue'.
+[2025-04-30T21:16:30.014Z] Request [710a8f42-c747-4813-93f5-33de722751ee] PUT http://127.0.0.1:10000/devstoreaccount1/azure-webjobs-hosts/locks/bluetrain-1303596477/host?comp=lease
+[2025-04-30T21:16:30.014Z] x-ms-lease-action:renew
+[2025-04-30T21:16:30.014Z] x-ms-lease-id:00000000000000000000000092B8062C
+[2025-04-30T21:16:30.014Z] x-ms-version:2023-11-03
+[2025-04-30T21:16:30.014Z] Accept:application/xml
+[2025-04-30T21:16:30.014Z] x-ms-client-request-id:710a8f42-c747-4813-93f5-33de722751ee
+[2025-04-30T21:16:30.014Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:30.014Z] User-Agent:azsdk-net-Storage.Blobs/12.19.1 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:30.014Z] x-ms-date:Wed, 30 Apr 2025 21:16:30 GMT
+[2025-04-30T21:16:30.014Z] Authorization:REDACTED
+[2025-04-30T21:16:30.014Z] client assembly: Azure.Storage.Blobs
+[2025-04-30T21:16:30.018Z] Response [710a8f42-c747-4813-93f5-33de722751ee] 200 OK (00.0s)
+[2025-04-30T21:16:30.018Z] Server:Azurite-Blob/3.34.0
+[2025-04-30T21:16:30.018Z] ETag:"0x1DD77947C9BDEF0"
+[2025-04-30T21:16:30.018Z] x-ms-lease-id:00000000000000000000000092B8062C
+[2025-04-30T21:16:30.018Z] x-ms-client-request-id:710a8f42-c747-4813-93f5-33de722751ee
+[2025-04-30T21:16:30.018Z] x-ms-request-id:cae21497-f438-4d7d-a694-949c0a0f9ae8
+[2025-04-30T21:16:30.018Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:30.018Z] Date:Wed, 30 Apr 2025 21:16:30 GMT
+[2025-04-30T21:16:30.018Z] Connection:keep-alive
+[2025-04-30T21:16:30.018Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:30.018Z] Last-Modified:Wed, 30 Apr 2025 21:16:17 GMT
+[2025-04-30T21:16:30.018Z] Content-Length:0
+[2025-04-30T21:16:30.018Z] 
+[2025-04-30T21:16:33.193Z] testhubname-control-03: Starting intent lease renewal with token 6cf65028-b25b-4125-aa7d-fc03e56c5aea
+[2025-04-30T21:16:33.194Z] testhubname-control-02: Starting intent lease renewal with token 0275f3b9-febc-49ed-b658-42a65c0669e3
+[2025-04-30T21:16:33.195Z] testhubname-control-01: Starting intent lease renewal with token d6facc50-03d3-4158-bbbd-cfc6c0d4e983
+[2025-04-30T21:16:33.195Z] testhubname-control-00: Starting intent lease renewal with token f3d0ffc0-b734-407c-a654-cdac638cf740
+[2025-04-30T21:16:33.197Z] testhubname-control-03: Starting ownership lease renewal with token 7977c37e-7abe-4a36-8789-9ba48239b56e
+[2025-04-30T21:16:33.198Z] testhubname-control-02: Starting ownership lease renewal with token 29c2cc3c-2667-402f-9caa-93382ddad24c
+[2025-04-30T21:16:33.198Z] testhubname-control-01: Starting ownership lease renewal with token 869ac557-c3b8-43ed-a4fc-93867b15c6cc
+[2025-04-30T21:16:33.198Z] testhubname-control-00: Starting ownership lease renewal with token 8fecc6c0-e572-494c-a618-4ffd47fdab3d
+[2025-04-30T21:16:33.199Z] testhubname-control-03: intent lease renewal with token 6cf65028-b25b-4125-aa7d-fc03e56c5aea succeeded
+[2025-04-30T21:16:33.201Z] testhubname-control-02: ownership lease renewal with token 29c2cc3c-2667-402f-9caa-93382ddad24c succeeded
+[2025-04-30T21:16:33.202Z] testhubname-control-02: intent lease renewal with token 0275f3b9-febc-49ed-b658-42a65c0669e3 succeeded
+[2025-04-30T21:16:33.204Z] testhubname-control-01: intent lease renewal with token d6facc50-03d3-4158-bbbd-cfc6c0d4e983 succeeded
+[2025-04-30T21:16:33.205Z] testhubname-control-00: intent lease renewal with token f3d0ffc0-b734-407c-a654-cdac638cf740 succeeded
+[2025-04-30T21:16:33.206Z] testhubname-control-03: ownership lease renewal with token 7977c37e-7abe-4a36-8789-9ba48239b56e succeeded
+[2025-04-30T21:16:33.207Z] testhubname-control-00: ownership lease renewal with token 8fecc6c0-e572-494c-a618-4ffd47fdab3d succeeded
+[2025-04-30T21:16:33.209Z] testhubname-control-01: ownership lease renewal with token 869ac557-c3b8-43ed-a4fc-93867b15c6cc succeeded
+[2025-04-30T21:16:33.213Z]  WARNING: Switched to console logging due to exception.
+[2025-04-30T21:16:33.213Z] Detaching gRPC logging due to exception.
+[2025-04-30T21:16:33.217Z] Host state changed from Running to Stopping.
+[2025-04-30T21:16:33.217Z] Stopping host...
+[2025-04-30T21:16:33.217Z] Active host changing from '236d8b96-cb09-4709-8e8a-8018066c856e' to '(null)'.
+[2025-04-30T21:16:33.219Z] Hosting stopping
+[2025-04-30T21:16:33.220Z] Stopping file watchers.
+[2025-04-30T21:16:33.220Z] Traceback (most recent call last):
+[2025-04-30T21:16:33.220Z]   File "/opt/homebrew/Cellar/python@3.11/3.11.12/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 118, in run
+[2025-04-30T21:16:33.220Z]     return self._loop.run_until_complete(task)
+[2025-04-30T21:16:33.220Z]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-04-30T21:16:33.220Z]   File "/opt/homebrew/Cellar/python@3.11/3.11.12/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+[2025-04-30T21:16:33.221Z]     return future.result()
+[2025-04-30T21:16:33.221Z]            ^^^^^^^^^^^^^^^
+[2025-04-30T21:16:33.221Z]   File "/opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/python/3.11/OSX/Arm64/azure_functions_worker/main.py", line 78, in start_async
+[2025-04-30T21:16:33.222Z]     await disp.dispatch_forever()
+[2025-04-30T21:16:33.222Z]   File "/opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/python/3.11/OSX/Arm64/azure_functions_worker/dispatcher.py", line 195, in dispatch_forever
+[2025-04-30T21:16:33.222Z]     await forever
+[2025-04-30T21:16:33.222Z] asyncio.exceptions.CancelledError
+[2025-04-30T21:16:33.222Z] During handling of the above exception, another exception occurred:
+[2025-04-30T21:16:33.222Z] Traceback (most recent call last):
+[2025-04-30T21:16:33.222Z]   File "/opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/python/3.11/OSX/Arm64/worker.py", line 68, in <module>
+[2025-04-30T21:16:33.223Z]     main.main()
+[2025-04-30T21:16:33.223Z]   File "/opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/python/3.11/OSX/Arm64/azure_functions_worker/main.py", line 61, in main
+[2025-04-30T21:16:33.223Z]     return asyncio.run(start_async(
+[2025-04-30T21:16:33.223Z]            ^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-04-30T21:16:33.223Z]   File "/opt/homebrew/Cellar/python@3.11/3.11.12/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 190, in run
+[2025-04-30T21:16:33.223Z]     return runner.run(main)
+[2025-04-30T21:16:33.223Z] Waiting for RpcFunctionInvocationDispatcher to shutdown
+[2025-04-30T21:16:33.223Z]            ^^^^^^^^^^^^^^^^
+[2025-04-30T21:16:33.223Z]   File "/opt/homebrew/Cellar/python@3.11/3.11.12/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/runners.py", line 123, in run
+[2025-04-30T21:16:33.223Z]     raise KeyboardInterrupt()
+[2025-04-30T21:16:33.223Z] KeyboardInterrupt
+[2025-04-30T21:16:33.223Z] Count of in-buffer invocations waiting to be drained out: 0
+[2025-04-30T21:16:33.223Z] Draining invocations from language worker channel completed. Shutting down 'RpcFunctionInvocationDispatcher'
+[2025-04-30T21:16:33.224Z] Stopping JobHost
+[2025-04-30T21:16:33.224Z] Stopping ScriptHost instance '236d8b96-cb09-4709-8e8a-8018066c856e'.
+[2025-04-30T21:16:33.225Z] Stopping the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'combine_report_chunks_activity'
+[2025-04-30T21:16:33.227Z] Stopped the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'combine_report_chunks_activity'
+[2025-04-30T21:16:33.227Z] Stopping the listener 'Microsoft.Azure.WebJobs.Extensions.Storage.Common.Listeners.QueueListener' for function 'dataprep_queue_trigger'
+[2025-04-30T21:16:33.228Z] Storage queue listener stopped (queue name='datacombinequeue', storage account name='devstoreaccount1')
+[2025-04-30T21:16:33.228Z] Stopping the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'merge_reports_activity'
+[2025-04-30T21:16:33.228Z] Stopped the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'merge_reports_activity'
+[2025-04-30T21:16:33.228Z] Stopping the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'multi_report_email_workflow'
+[2025-04-30T21:16:33.228Z] Stopped the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'multi_report_email_workflow'
+[2025-04-30T21:16:33.228Z] Stopped the listener 'Microsoft.Azure.WebJobs.Extensions.Storage.Common.Listeners.QueueListener' for function 'dataprep_queue_trigger'
+[2025-04-30T21:16:33.228Z] Stopping the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'orchestrator_function'
+[2025-04-30T21:16:33.228Z] Stopped the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'orchestrator_function'
+[2025-04-30T21:16:33.228Z] Stopping the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'process_and_send_single_report_activity'
+[2025-04-30T21:16:33.228Z] Stopped the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'process_and_send_single_report_activity'
+[2025-04-30T21:16:33.228Z] Stopping the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'report_tracker_entity_trigger'
+[2025-04-30T21:16:33.228Z] Stopped the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'report_tracker_entity_trigger'
+[2025-04-30T21:16:33.228Z] Stopping the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'single_report_email_workflow'
+[2025-04-30T21:16:33.228Z] Stopping task hub worker. IsGracefulStop: False. Extension GUID 0152f53d-3d2c-401c-9ec7-17dc4943a510. InstanceId: . Function: . HubName: TestHubName. AppName: . SlotName: . ExtensionVersion: 2.13.7. SequenceNumber: 3.
+[2025-04-30T21:16:33.229Z] Durable task hub worker is stopping (isForced = True)
+[2025-04-30T21:16:33.231Z] testhubname-control-02: ControlQueue GetMessagesAsync cancelled by:  shutdown token cancelled is releasing partition testhubname-control-02 for reason: Shutdown
+[2025-04-30T21:16:33.231Z] testhubname-control-03: ControlQueue GetMessagesAsync cancelled by:  shutdown token cancelled is releasing partition testhubname-control-03 for reason: Shutdown
+[2025-04-30T21:16:33.231Z] testhubname-control-01: ControlQueue GetMessagesAsync cancelled by:  shutdown token cancelled is releasing partition testhubname-control-01 for reason: Shutdown
+[2025-04-30T21:16:33.231Z] testhubname-control-00: ControlQueue GetMessagesAsync cancelled by:  shutdown token cancelled is releasing partition testhubname-control-00 for reason: Shutdown
+[2025-04-30T21:16:33.231Z] TaskActivityDispatcher-a1bba59ed1c048b1ba7da974d94928c1-0: Stopped dispatch loop
+[2025-04-30T21:16:33.231Z] TaskOrchestrationDispatcher-bd8787ae68fb4fd6b52158f8bb5ea018-0: Stopped dispatch loop
+[2025-04-30T21:16:33.231Z] testhubname-control-02: Stopped listening for messages on queue testhubname-control-02.[2025-04-30T21:16:33.231Z] testhubname-control-01: Stopped listening for messages on queue testhubname-control-01.
+[2025-04-30T21:16:33.231Z] testhubname-control-00: Stopped listening for messages on queue testhubname-control-00.
+[2025-04-30T21:16:33.231Z] testhubname-control-03: Stopped listening for messages on queue testhubname-control-03.
+
+[2025-04-30T21:16:33.232Z] There are currently 0 orchestration(s) and 0 activities loaded into memory on this worker
+[2025-04-30T21:16:33.234Z] Background AcquireLease task for intent leases was canceled.
+[2025-04-30T21:16:33.234Z] Background AcquireLease task for intent leases completed.
+[2025-04-30T21:16:33.236Z] testhubname-control-03: Blue-Train is no longer processing messages for this partition
+[2025-04-30T21:16:33.238Z] testhubname-control-02: Blue-Train is no longer processing messages for this partition
+[2025-04-30T21:16:33.238Z] testhubname-control-01: Blue-Train is no longer processing messages for this partition
+[2025-04-30T21:16:33.238Z] testhubname-control-00: Blue-Train is no longer processing messages for this partition
+[2025-04-30T21:16:33.259Z] testhubname-control-03: Blue-Train has released its intent lease
+[2025-04-30T21:16:33.259Z] testhubname-control-01: Blue-Train has released its intent lease
+[2025-04-30T21:16:33.263Z] testhubname-control-02: Blue-Train has released its intent lease
+[2025-04-30T21:16:33.272Z] testhubname-control-00: Blue-Train has released its intent lease
+[2025-04-30T21:16:33.272Z] Background renewal task for intent leases was canceled.
+[2025-04-30T21:16:33.272Z] Background renewer task for intent leases completed.
+[2025-04-30T21:16:33.273Z] Background AcquireLease task for ownership leases was canceled.
+[2025-04-30T21:16:33.273Z] Background AcquireLease task for ownership leases completed.
+[2025-04-30T21:16:33.273Z] testhubname-control-03: Blue-Train is no longer processing messages for this partition
+[2025-04-30T21:16:33.273Z] testhubname-control-02: Blue-Train is no longer processing messages for this partition
+[2025-04-30T21:16:33.273Z] testhubname-control-01: Blue-Train is no longer processing messages for this partition
+[2025-04-30T21:16:33.273Z] testhubname-control-00: Blue-Train is no longer processing messages for this partition
+[2025-04-30T21:16:33.280Z] testhubname-control-02: Blue-Train has released its ownership lease
+[2025-04-30T21:16:33.280Z] testhubname-control-03: Blue-Train has released its ownership lease
+[2025-04-30T21:16:33.283Z] testhubname-control-00: Blue-Train has released its ownership lease
+[2025-04-30T21:16:33.285Z] Process 47188 has exited with code 130.
+[2025-04-30T21:16:33.287Z] Language Worker Process exited. Pid=47188.
+[2025-04-30T21:16:33.287Z] python3 exited with code 130 (0x82). asyncio.exceptions.CancelledError.
+[2025-04-30T21:16:33.287Z] Handling WorkerErrorEvent for runtime:python, workerId:python. Failed with: Microsoft.Azure.WebJobs.Script.Workers.WorkerProcessExitException: python3 exited with code 130 (0x82)
+[2025-04-30T21:16:33.287Z]  ---> System.Exception: asyncio.exceptions.CancelledError
+[2025-04-30T21:16:33.287Z]    --- End of inner exception stack trace ---
+[2025-04-30T21:16:33.287Z] testhubname-control-01: Blue-Train has released its ownership lease
+[2025-04-30T21:16:33.288Z] Background renewal task for ownership leases was canceled.
+[2025-04-30T21:16:33.288Z] Background renewer task for ownership leases completed.
+[2025-04-30T21:16:33.288Z] Attempting to dispose webhost or jobhost channel for workerId: '94d2e643-2f2f-43b1-868b-690396872918', runtime: 'python'
+[2025-04-30T21:16:33.288Z] testhubname-applease: Background app lease renewer task completed.
+[2025-04-30T21:16:33.288Z] testhubname-applease: Lease renewer task completing. Stopping AppLeaseManager.
+[2025-04-30T21:16:33.288Z] No initialized worker channels for runtime 'python'. Delaying future invocations
+[2025-04-30T21:16:33.288Z] Restarting worker channel for runtime: 'python'
+[2025-04-30T21:16:33.288Z] Disposing WebHost channel for workerId: 94d2e643-2f2f-43b1-868b-690396872918, for runtime:python
+[2025-04-30T21:16:33.288Z] Durable task hub worker stopped successfully after 58ms
+[2025-04-30T21:16:33.288Z] Task hub worker stopped. IsGracefulStop: False. Latency: 00:00:00.0598232. Extension GUID 0152f53d-3d2c-401c-9ec7-17dc4943a510. InstanceId: . Function: . HubName: TestHubName. AppName: . SlotName: . ExtensionVersion: 2.13.7. SequenceNumber: 4.
+[2025-04-30T21:16:33.288Z] Stopped the listener 'Microsoft.Azure.WebJobs.Extensions.DurableTask.DurableTaskListener' for function 'single_report_email_workflow'
+[2025-04-30T21:16:33.289Z] Using OrderedInvocationMessageDispatcherFactory.
+[2025-04-30T21:16:33.289Z] Unable to resolve ScriptJobHostOptions
+[2025-04-30T21:16:33.289Z] Initiating Worker Process start up
+[2025-04-30T21:16:33.289Z] [channel] processing reader loop for worker 67706151-2ecc-46eb-a159-e0fd492a0b08:
+[2025-04-30T21:16:33.289Z] Job host stopped
+[2025-04-30T21:16:33.289Z] Starting worker process with FileName:python3 WorkingDirectory:/Users/trb74/azure-functions/wrlc/barcode_checks/func_alma_dataprep Arguments: "/opt/homebrew/Cellar/azure-functions-core-tools@4/4.0.6610/workers/python/3.11/OSX/Arm64/worker.py" --host 127.0.0.1 --port 65359 --workerId 67706151-2ecc-46eb-a159-e0fd492a0b08 --requestId 1a078cc3-3b77-4124-ba3c-b81a442edfd1 --grpcMaxMessageLength 2147483647 --functions-uri http://127.0.0.1:65359/ --functions-worker-id 67706151-2ecc-46eb-a159-e0fd492a0b08 --functions-request-id 1a078cc3-3b77-4124-ba3c-b81a442edfd1 --functions-grpc-max-message-length 2147483647
+[2025-04-30T21:16:33.289Z] Stopped ScriptHost instance '236d8b96-cb09-4709-8e8a-8018066c856e'.
+[2025-04-30T21:16:33.315Z] Closing local http RPC endpoint: http://127.0.0.1:17071/durabletask/. InstanceId: . Function: . HubName: TestHubName. AppName: . SlotName: . ExtensionVersion: 2.13.7. SequenceNumber: 5.
+[2025-04-30T21:16:33.316Z] Hosting stopped
+[2025-04-30T21:16:33.316Z] Disposing ScriptHost.
+[2025-04-30T21:16:33.316Z] DependencyTrackingTelemetryModule disposed.
+[2025-04-30T21:16:33.316Z] python3 process with Id=47213 started
+[2025-04-30T21:16:33.318Z] Disposing ScriptHost instance '236d8b96-cb09-4709-8e8a-8018066c856e'.
+[2025-04-30T21:16:33.318Z] Disposing FunctionDispatcher
+[2025-04-30T21:16:33.318Z] Disposing language worker channel with id:67706151-2ecc-46eb-a159-e0fd492a0b08
+[2025-04-30T21:16:33.319Z] Process 47213 has exited with code 137.
+[2025-04-30T21:16:33.319Z] Disposed ScriptHost instance '236d8b96-cb09-4709-8e8a-8018066c856e'.
+[2025-04-30T21:16:33.319Z] Disposing ScriptHost instance '236d8b96-cb09-4709-8e8a-8018066c856e'.
+[2025-04-30T21:16:33.320Z] Disposed ScriptHost instance '236d8b96-cb09-4709-8e8a-8018066c856e'.
+[2025-04-30T21:16:33.321Z] Request [5831e686-36c3-4751-9c5b-4d868498a801] PUT http://127.0.0.1:10000/devstoreaccount1/azure-webjobs-hosts/locks/bluetrain-1303596477/host?comp=lease
+[2025-04-30T21:16:33.321Z] x-ms-lease-action:release
+[2025-04-30T21:16:33.321Z] x-ms-lease-id:00000000000000000000000092B8062C
+[2025-04-30T21:16:33.321Z] x-ms-version:2023-11-03
+[2025-04-30T21:16:33.321Z] Accept:application/xml
+[2025-04-30T21:16:33.321Z] x-ms-client-request-id:5831e686-36c3-4751-9c5b-4d868498a801
+[2025-04-30T21:16:33.321Z] x-ms-return-client-request-id:true
+[2025-04-30T21:16:33.321Z] User-Agent:azsdk-net-Storage.Blobs/12.19.1 (.NET 8.0.8; Darwin 24.4.0 Darwin Kernel Version 24.4.0: Fri Apr 11 18:33:40 PDT 2025; root:xnu-11417.101.15~117/RELEASE_ARM64_T6031)
+[2025-04-30T21:16:33.321Z] x-ms-date:Wed, 30 Apr 2025 21:16:33 GMT
+[2025-04-30T21:16:33.321Z] Authorization:REDACTED
+[2025-04-30T21:16:33.321Z] client assembly: Azure.Storage.Blobs
+[2025-04-30T21:16:33.323Z] Response [5831e686-36c3-4751-9c5b-4d868498a801] 200 OK (00.0s)
+[2025-04-30T21:16:33.323Z] Server:Azurite-Blob/3.34.0
+[2025-04-30T21:16:33.323Z] ETag:"0x1DD77947C9BDEF0"
+[2025-04-30T21:16:33.323Z] x-ms-client-request-id:5831e686-36c3-4751-9c5b-4d868498a801
+[2025-04-30T21:16:33.323Z] x-ms-request-id:93f04f56-622a-4a8d-9e66-592b5e66de24
+[2025-04-30T21:16:33.323Z] x-ms-version:2025-05-05
+[2025-04-30T21:16:33.323Z] Date:Wed, 30 Apr 2025 21:16:33 GMT
+[2025-04-30T21:16:33.323Z] Connection:keep-alive
+[2025-04-30T21:16:33.323Z] Keep-Alive:REDACTED
+[2025-04-30T21:16:33.323Z] Last-Modified:Wed, 30 Apr 2025 21:16:17 GMT
+[2025-04-30T21:16:33.323Z] Content-Length:0
+[2025-04-30T21:16:33.323Z] 
+[2025-04-30T21:16:33.323Z] Host instance '00000000000000000000000092B8062C' released lock lease.
+[2025-04-30T21:16:33.323Z] Disposing ScriptHost instance '236d8b96-cb09-4709-8e8a-8018066c856e'.
+[2025-04-30T21:16:33.323Z] Disposed ScriptHost instance '236d8b96-cb09-4709-8e8a-8018066c856e'.
+[2025-04-30T21:16:33.324Z] ScriptHost disposed
+[2025-04-30T21:16:33.325Z] Host shutdown completed.
+[2025-04-30T21:16:33.325Z] Host state changed from Stopping to Stopped.
+[2025-04-30T21:16:33.325Z] Shutting down Rpc Channels Manager
+[2025-04-30T21:16:33.325Z] Shutting down language worker channels for runtime:python
+[2025-04-30T21:16:33.325Z] Shutting down RPC server
+[2025-04-30T21:16:33.326Z] PrimaryHostStateProvider is not available. Skipping the check for primary host.
+[2025-04-30T21:16:33.350Z] Disposing MetricsEventManager

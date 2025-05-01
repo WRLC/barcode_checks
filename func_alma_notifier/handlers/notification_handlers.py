@@ -143,82 +143,52 @@ def report_notifier(msg: func.QueueMessage) -> None:
             logging.exception(f"Job {job_id}: Failed DB lookup for TriggerConfig ID {trigger_config_id}: {db_err}")
             raise db_err
 
-        # --- Download Combined Data CSV ---
+        # --- Download Combined Data JSON ---
         # noinspection PyUnusedLocal
-        csv_data_string: Optional[str] = None
+        json_data_string: Optional[str] = None
         try:
             logging.debug(f"Job {job_id}: Downloading combined data from {combined_container}/{combined_blob}")
-            csv_data_string = storage_helpers.download_blob_as_text(combined_container, combined_blob)
-            logging.info(f"Job {job_id}: Successfully downloaded combined data CSV.")
+            json_data_string = storage_helpers.download_blob_as_text(combined_container, combined_blob)
+            logging.info(f"Job {job_id}: Successfully downloaded combined data JSON.")
         except Exception as download_err:
             logging.error(
-                f"Job {job_id}: Failed CSV download from {combined_container}/{combined_blob}: {download_err}",
+                f"Job {job_id}: Failed JSON download from {combined_container}/{combined_blob}: {download_err}",
                 exc_info=True)
             raise download_err
 
-        # --- Convert CSV to HTML Table ---
+        # --- Convert JSON to HTML Table ---
         html_table = "Error generating table from data."
         record_count = 0
         try:
-            if csv_data_string == "[]":
-                logging.warning(f"Job {job_id}: CSV data is empty (empty list).")
-                csv_data_string = None
+            if json_data_string:
+                json_io = io.StringIO(json_data_string)
+                df = pd.read_json(json_io, orient='records')  # Adjust 'orient' if needed
 
-            if csv_data_string:
-                csv_io = io.StringIO(csv_data_string)
-                df = pd.read_csv(csv_io)
+                # Check if column '0' exists and all its values are '0' (as string or int)
+                if '0' in df.columns and df['0'].astype(str).eq('0').all():
+                    logging.debug(f"Job {job_id}: Column '0' contains only '0' values. Dropping column.")
+                    df.drop('0', axis=1, inplace=True)
+
                 record_count = len(df)
                 logging.debug(f"Job {job_id}: Read {record_count} rows into DataFrame.")
                 if not df.empty:
-                    columns_to_drop = []
-                    for col in df.columns:
-                        # Check if column header is the string "0"
-                        if col == '0':
-                            # Check if ALL values in the column are also the string "0"
-                            # Use astype(str) for robust comparison, in case pandas inferred numeric type
-                            if (df[col].astype(str) == '0').all():
-                                columns_to_drop.append(col)
-                                logging.debug(
-                                    f"Job {job_id}: Identified column '{col}' for removal (header and all values are "
-                                    f"'0')."
-                                )
-
-                    if columns_to_drop:
-                        logging.info(
-                            f"Job {job_id}: Removing {len(columns_to_drop)} column(s) where header and all values are "
-                            f"'0': {columns_to_drop}"
-                        )
-                        df.drop(columns=columns_to_drop, inplace=True)
-                    else:
-                        logging.debug(f"Job {job_id}: No columns met the criteria for removal.")
-
-                    # --- END MODIFICATION ---
-
-                    # Proceed with HTML generation using the potentially modified DataFrame
-                    if not df.empty:  # Check again in case all columns were dropped (unlikely but possible)
-                        html_table = df.to_html(
-                            index=False, border=1, escape=True, na_rep=''
-                        ).replace(
-                            'border="1"',
-                            'border="1" style="border-collapse: collapse; border: 1px solid black;"'
-                        )
-                        logging.debug(f"Job {job_id}: Converted DataFrame to HTML string.")
-                    else:
-                        html_table = (
-                            f"<i>Report '{analysis_name}' generated, but contained no displayable data columns after "
-                            f"filtering.</i><br>"
-                            f"(Report Path: {original_report_path or 'N/A'})"
-                        )
-
-                else:  # Original df was empty
+                    html_table = df.to_html(
+                        index=False, border=1, escape=True, na_rep=''
+                    ).replace(
+                        'border="1"',
+                        'border="1" style="border-collapse: collapse; border: 1px solid black;"'
+                    )
+                    logging.debug(f"Job {job_id}: Converted DataFrame to HTML string.")
+                else:
                     html_table = (
-                        f"<i>Report '{analysis_name}' but contained no data.</i><br>"
+                        f"<i>Report '{analysis_name}' generated, but contained no displayable data.</i><br>"
                         f"(Report Path: {original_report_path or 'N/A'})"
                     )
             else:
-                html_table = "<i>Could not retrieve report data to display.</i>"
+                logging.warning(f"Job {job_id}: No JSON data string available for conversion.")
+                return
         except Exception as convert_err:
-            logging.error(f"Job {job_id}: Failed CSV->HTML conversion: {convert_err}", exc_info=True)
+            logging.error(f"Job {job_id}: Failed JSON->HTML conversion: {convert_err}", exc_info=True)
 
         # --- Render HTML Email Body using Jinja2 ---
         # noinspection PyUnusedLocal
